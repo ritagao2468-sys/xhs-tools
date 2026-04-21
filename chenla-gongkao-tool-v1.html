@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公考赛道 · 内容洞察 & 笔记Prompt灵感 · 橙啦公考定制版</title>
+<style>
+:root {
+  --green:  #2D6A4F;
+  --green2: #52B788;
+  --green3: #95D5B2;
+  --green4: #D8F3E8;
+  --bg:     #F5F7F5;
+  --white:  #fff;
+  --border: #E0EAE4;
+  --gray:   #6B7C74;
+  --dark:   #1A2E24;
+  --orange: #E8821A;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--dark); font-size: 14px; }
+
+.header { background: var(--green); padding: 28px 0 22px; }
+.header-inner { max-width: 860px; margin: 0 auto; padding: 0 16px; display: flex; align-items: flex-start; justify-content: space-between; }
+.header-left h1 { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.3; }
+.header-left .sub { font-size: 13px; color: var(--green3); margin-top: 6px; }
+.badge-internal { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 4px 10px; font-size: 11px; white-space: nowrap; margin-top: 4px; }
+
+.period-bar { background: #1B4332; padding: 8px 0; }
+.period-bar-inner { max-width: 860px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.period-tag { background: var(--green2); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; }
+.period-bar-inner p { color: var(--green3); font-size: 12px; }
+
+.container { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+
+.section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.section-num { background: var(--green); color: #fff; border-radius: 50%; width: 26px; height: 26px; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.section-title h2 { font-size: 16px; font-weight: 700; color: var(--dark); }
+
+.cards-grid { display: grid; gap: 12px; }
+.cards-4 { grid-template-columns: repeat(4, 1fr); }
+@media(max-width:640px){ .cards-4 { grid-template-columns: 1fr 1fr; } }
+@media(max-width:400px){ .cards-4 { grid-template-columns: 1fr; } }
+
+.card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.card .tag { display: inline-block; background: var(--green4); color: var(--green); border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 600; margin-bottom: 6px; }
+.card .count { font-size: 20px; font-weight: 700; color: var(--green); line-height: 1.2; }
+.card .count-label { font-size: 11px; color: var(--gray); margin-top: 2px; }
+.card .meta { font-size: 12px; color: var(--gray); line-height: 1.6; margin-top: 8px; }
+
+.section-sep { height: 1px; background: var(--border); margin: 28px 0; }
+
+/* 品牌笔记 Top3 */
+.brand-notes { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 12px; }
+.brand-notes h3 { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 10px; }
+.note-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; line-height: 1.5; }
+.note-item:last-child { border-bottom: none; }
+.note-rank { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--green4); color: var(--green); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.note-title { flex: 1; color: var(--dark); font-weight: 600; }
+.note-meta { flex-shrink: 0; color: var(--gray); font-size: 11px; white-space: nowrap; }
+
+/* 人群 */
+.crowd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media(max-width:580px){ .crowd-grid { grid-template-columns: 1fr; } }
+.crowd-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.crowd-type { font-size: 11px; font-weight: 700; color: var(--white); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
+.crowd-type.core   { background: var(--green); }
+.crowd-type.high   { background: var(--green2); }
+.crowd-type.extend { background: var(--orange); }
+.crowd-card h3 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.4; }
+.crowd-row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 12px; line-height: 1.5; }
+.crowd-label { flex-shrink: 0; width: 52px; white-space: nowrap; color: var(--gray); }
+.crowd-val { color: var(--dark); }
+.crowd-card a { display: inline-block; margin-top: 10px; font-size: 11px; color: var(--green2); text-decoration: none; border: 1px solid var(--green3); border-radius: 4px; padding: 3px 8px; }
+.crowd-card a:hover { background: var(--green4); }
+.crowd-source-note { font-size: 11px; color: var(--gray); margin-top: 12px; }
+
+/* 关键词 */
+.kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:580px){ .kw-grid { grid-template-columns: 1fr; } }
+.kw-list { list-style: none; }
+.kw-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.kw-list li:last-child { border-bottom: none; }
+.kw-rank { color: var(--gray); font-size: 11px; width: 18px; flex-shrink: 0; text-align: right; }
+.kw-rise { background: #FFF0E0; color: var(--orange); border: 1px solid #FFDCB0; border-radius: 4px; padding: 1px 5px; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+.kw-word { flex: 1; color: var(--dark); }
+.kw-vol { font-size: 11px; color: var(--gray); }
+
+.cat-list { list-style: none; }
+.cat-list li { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.cat-list li:last-child { border-bottom: none; }
+.cat-bar-wrap { flex: 1; background: var(--green4); border-radius: 3px; height: 6px; overflow: hidden; }
+.cat-bar { background: var(--green2); height: 100%; border-radius: 3px; }
+.cat-name { font-size: 12px; color: var(--dark); width: 110px; flex-shrink: 0; }
+.cat-pct  { font-size: 12px; color: var(--green); font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
+
+/* Prompt */
+.prompt-group-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--green4); }
+.prompt-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+@media(max-width:640px){ .prompt-cards { grid-template-columns: 1fr; } }
+.prompt-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.prompt-card .p-label { font-size: 10px; font-weight: 700; color: var(--white); background: var(--green); border-radius: 4px; padding: 2px 7px; display: inline-block; margin-bottom: 8px; }
+.prompt-card.b .p-label { background: var(--green2); }
+.prompt-card.c .p-label { background: var(--orange); }
+.prompt-card h4 { font-size: 12px; font-weight: 700; color: var(--dark); margin-bottom: 6px; line-height: 1.4; }
+.prompt-card .p-desc { font-size: 11px; color: var(--gray); line-height: 1.5; margin-bottom: 10px; }
+.btn-expand { background: var(--green4); color: var(--green); border: none; border-radius: 6px; padding: 5px 10px; font-size: 11px; cursor: pointer; font-weight: 600; transition: background .15s; }
+.btn-expand:hover { background: var(--green3); }
+.prompt-full { display: none; margin-top: 10px; font-size: 11.5px; line-height: 1.7; color: var(--dark); white-space: pre-wrap; border-top: 1px solid var(--border); padding-top: 10px; }
+.btn-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.btn-copy, .btn-dl { background: var(--white); border: 1px solid var(--border); border-radius: 5px; padding: 4px 9px; font-size: 11px; cursor: pointer; color: var(--green); font-weight: 600; }
+.btn-copy:hover, .btn-dl:hover { background: var(--green4); }
+
+/* 变量 */
+.var-section { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+.var-section h3 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+.var-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+@media(max-width:580px){ .var-grid { grid-template-columns: 1fr; } }
+.var-field label { display: block; font-size: 11px; color: var(--gray); margin-bottom: 4px; font-weight: 600; }
+.var-field input { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 12px; color: var(--dark); background: var(--bg); }
+.var-field input:focus { outline: none; border-color: var(--green2); background: var(--white); }
+
+em.var-highlight { background:#FFF3CD; color:#B45309; font-weight:700; border-radius:4px; padding:0 3px; font-style:normal; }
+em.var-filled    { background:#D8F3E8; color:#2D6A4F; font-weight:700; border-radius:4px; padding:0 3px; font-style:normal; }
+
+.float-btn { position: fixed; bottom: 28px; right: 24px; background: var(--green); color: #fff; border: none; border-radius: 50px; padding: 10px 18px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(45,106,79,0.35); z-index: 99; }
+.float-btn:hover { background: #1B4332; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>公考赛道 · 内容洞察 &amp; 笔记Prompt灵感</h1>
+      <div class="sub">适用于聚光图文笔记 · 橙啦公考定制版</div>
+    </div>
+    <div class="badge-internal">仅限内部使用</div>
+  </div>
+</div>
+
+<div class="period-bar">
+  <div class="period-bar-inner">
+    <span class="period-tag">公考赛道</span>
+    <p>行业笔记近60天 · 热搜词近14天 · 灵犀热点近7天 · 如需更新请联系运营同学</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 01 数据来源 -->
+  <div class="section-title">
+    <div class="section-num">01</div>
+    <h2>数据来源</h2>
+  </div>
+  <div class="cards-grid cards-4">
+    <div class="card">
+      <div class="tag">行业优质笔记</div>
+      <div class="count">50条</div>
+      <div class="count-label">公考赛道高消耗高CTR</div>
+      <div class="meta">近60天消耗&gt;200 · CTR&gt;3%<br>已过滤考研/驾考/语言培训</div>
+    </div>
+    <div class="card">
+      <div class="tag">品牌自身笔记</div>
+      <div class="count">30条</div>
+      <div class="count-label">橙啦公考 · 橙啦考公</div>
+      <div class="meta">近60天消耗&gt;200 · CTR&gt;3%<br>广告主含"橙啦"的投放笔记</div>
+    </div>
+    <div class="card">
+      <div class="tag">社区热搜词</div>
+      <div class="count">1.9万+词</div>
+      <div class="count-label">多维度分类打标 · 近14天</div>
+      <div class="meta">识别搜索意图 · 覆盖省考/国考/行测/申论/面试/上岸经验等细分方向</div>
+    </div>
+    <div class="card">
+      <div class="tag">灵犀社区热点</div>
+      <div class="count">15篇</div>
+      <div class="count-label">公考/考编真实社区内容</div>
+      <div class="meta">近7天高互动笔记 · 含考公考编讨论、省考成绩、面试热点等</div>
+    </div>
+  </div>
+
+  <!-- 品牌笔记 Top3 -->
+  <div class="brand-notes">
+    <h3>📌 橙啦公考 · 投放跑通内容 Top3（真实数据）</h3>
+    <div class="note-item">
+      <div class="note-rank">1</div>
+      <div class="note-title">不私藏了🔥被疯狂安利的1v1线上考公私教班</div>
+      <div class="note-meta">橙啦考公 · CTR 6.7%</div>
+    </div>
+    <div class="note-item">
+      <div class="note-rank">2</div>
+      <div class="note-title">关于橙啦公考，你想知道的都在这儿！</div>
+      <div class="note-meta">橙啦公考（定制上岸）· CTR 11.4%</div>
+    </div>
+    <div class="note-item">
+      <div class="note-rank">3</div>
+      <div class="note-title">考公考编快报班✅别当两手抓不完的牛马</div>
+      <div class="note-meta">橙啦公考（定制上岸）· CTR 6.2%</div>
+    </div>
+  </div>
+
+  <div class="section-sep"></div>
+
+  <!-- 02 核心人群图谱 -->
+  <div class="section-title">
+    <div class="section-num">02</div>
+    <h2>核心人群图谱</h2>
+  </div>
+  <div class="crowd-grid">
+
+    <div class="crowd-card">
+      <span class="crowd-type core">核心人群</span>
+      <h3>公务员考试意向人群</h3>
+      <div class="crowd-row"><span class="crowd-label">人群特征</span><span class="crowd-val">对公务员考试存在明确需求，关注国考/省考/行测申论等相关内容</span></div>
+      <div class="crowd-row"><span class="crowd-label">行为特征</span><span class="crowd-val">笔记阅读/搜索/留资等内容消费行为活跃</span></div>
+      <div class="crowd-row"><span class="crowd-label">内容方向</span><span class="crowd-val">备考攻略 · 上岸经验 · 机构横评</span></div>
+      <a href="https://idea.devops.xiaohongshu.com/idea/creativity/crowd/detail?groupId=17604006" target="_blank">🔗 查看灵犀画像</a>
+    </div>
+
+    <div class="crowd-card">
+      <span class="crowd-type high">高价值人群</span>
+      <h3>公务员考试教辅人群</h3>
+      <div class="crowd-row"><span class="crowd-label">人群特征</span><span class="crowd-val">对公务员考试教辅书/课程有需求，正处于主动备考阶段</span></div>
+      <div class="crowd-row"><span class="crowd-label">决策关注</span><span class="crowd-val">行测申论资料 · 线上课程 · 1v1私教</span></div>
+      <div class="crowd-row"><span class="crowd-label">内容方向</span><span class="crowd-val">课程推荐 · 教材对比 · 定制上岸方案</span></div>
+      <a href="https://idea.devops.xiaohongshu.com/idea/creativity/crowd/detail?groupId=17604135" target="_blank">🔗 查看灵犀画像</a>
+    </div>
+
+    <div class="crowd-card">
+      <span class="crowd-type extend">潜在破圈人群</span>
+      <h3>「争渡上岸」生活方式人群</h3>
+      <div class="crowd-row"><span class="crowd-label">人群特征</span><span class="crowd-val">通过大型资格考试改变人生路径的人群，重视稳定/编制/职业通道</span></div>
+      <div class="crowd-row"><span class="crowd-label">核心动机</span><span class="crowd-val">逃离内卷 · 追求稳定 · 人生转轨</span></div>
+      <div class="crowd-row"><span class="crowd-label">内容方向</span><span class="crowd-val">打工人上岸故事 · 考公 vs 工作 · 备考生活vlog</span></div>
+      <a href="https://idea.devops.xiaohongshu.com/idea/creativity/crowd/detail?groupId=15466486" target="_blank">🔗 查看灵犀画像</a>
+    </div>
+
+  </div>
+  <p class="crowd-source-note">人群数据来源：灵犀人群市场 · 算法模型识别 · 共匹配11个相关人群包，取高匹配前3个</p>
+
+  <div class="section-sep"></div>
+
+  <!-- 03 飙升词汇 & 热门词汇 -->
+  <div class="section-title">
+    <div class="section-num">03</div>
+    <h2>飙升词汇 &amp; 热门词汇</h2>
+  </div>
+  <div class="kw-grid">
+    <div class="card" style="padding:16px">
+      <h3 style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:12px">🔥 飙升关键词 · TOP 8</h3>
+      <p style="font-size:11px;color:var(--orange);margin-bottom:10px">⚡ 近14天时效：省考成绩季+新一轮备考启动期，双窗口叠加</p>
+      <ul class="kw-list">
+        <li><span class="kw-rank">1</span><span class="kw-rise">↑飙升</span><span class="kw-word">湖南/安徽/辽宁省考成绩</span><span class="kw-vol">多省同步出分</span></li>
+        <li><span class="kw-rank">2</span><span class="kw-rise">↑飙升</span><span class="kw-word">省考成绩什么时候出</span><span class="kw-vol">时效查询热搜</span></li>
+        <li><span class="kw-rank">3</span><span class="kw-rise">↑飙升</span><span class="kw-word">考公怎么备考</span><span class="kw-vol">新一轮备考启动</span></li>
+        <li><span class="kw-rank">4</span><span class="kw-rise">↑飙升</span><span class="kw-word">2026省考备考计划</span><span class="kw-vol">年度备考规划需求</span></li>
+        <li><span class="kw-rank">5</span><span class="kw-rise">↑飙升</span><span class="kw-word">申论怎么学 / 申论听哪个老师</span><span class="kw-vol">申论焦虑高频</span></li>
+        <li><span class="kw-rank">6</span><span class="kw-rise">↑飙升</span><span class="kw-word">行测五大模块学习顺序</span><span class="kw-vol">方法论强需求</span></li>
+        <li><span class="kw-rank">7</span><span class="kw-rise">↑飙升</span><span class="kw-word">行测怎么备考 / 行测真题</span><span class="kw-vol">刷题启动期</span></li>
+        <li><span class="kw-rank">8</span><span class="kw-rise">↑飙升</span><span class="kw-word">国考怎么备考</span><span class="kw-vol">国考备考意图</span></li>
+      </ul>
+    </div>
+    <div class="card" style="padding:16px">
+      <h3 style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:12px">📊 搜索意图分类分布</h3>
+      <ul class="cat-list">
+        <li>
+          <span class="cat-name">省考/国考信息</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:80%"></div></div>
+          <span class="cat-pct">80%</span>
+        </li>
+        <li>
+          <span class="cat-name">申论写作</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:8%"></div></div>
+          <span class="cat-pct">8%</span>
+        </li>
+        <li>
+          <span class="cat-name">行测技巧</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:4%"></div></div>
+          <span class="cat-pct">4%</span>
+        </li>
+        <li>
+          <span class="cat-name">备考方法/资料</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:3%"></div></div>
+          <span class="cat-pct">3%</span>
+        </li>
+        <li>
+          <span class="cat-name">机构/课程选择</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:2%"></div></div>
+          <span class="cat-pct">2%</span>
+        </li>
+        <li>
+          <span class="cat-name">面试备考</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:2%"></div></div>
+          <span class="cat-pct">2%</span>
+        </li>
+      </ul>
+      <div style="margin-top:12px; font-size:11px; color:var(--gray)">
+        📌 近14天：信息查询类占主导（成绩季）· 但「考公怎么备考」「2026省考备考计划」「申论怎么学」等备考启动词已明显上量，是内容投放切入口
+      </div>
+    </div>
+  </div>
+
+  <div class="section-sep"></div>
+
+  <!-- 04 笔记创作 Prompt -->
+  <div class="section-title">
+    <div class="section-num">04</div>
+    <h2>笔记创作 Prompt</h2>
+  </div>
+
+  <div class="var-section">
+    <h3>✏️ 填入你的参数，Prompt 自动定制</h3>
+    <div class="var-grid">
+      <div class="var-field">
+        <label>热门关键词 {{KEYWORDS}}</label>
+        <input type="text" id="v-kw" placeholder="如：省考 / 公考备考 / 行测申论" oninput="updatePrompts()">
+      </div>
+      <div class="var-field">
+        <label>品牌/产品名称 {{BRAND}}</label>
+        <input type="text" id="v-brand" value="橙啦公考" oninput="updatePrompts()">
+      </div>
+      <div class="var-field">
+        <label>品牌优势 {{ADVANTAGES}}</label>
+        <input type="text" id="v-adv" value="1v1线上定制私教·全国线上课·行测申论专项辅导·定制上岸方案" oninput="updatePrompts()">
+      </div>
+    </div>
+  </div>
+
+  <!-- A组 -->
+  <div class="prompt-group-title">🌱 A组 — 先种后收（内容种草，品牌自然渗透）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-A1">
+      <span class="p-label">A1 · 考公人情绪钩子型</span>
+      <h4>打工人纠结"考公 vs 继续工作"，真实情绪共鸣</h4>
+      <div class="p-desc">钩子："全职备考还是边工作边考"的现实困惑，自然带出橙啦1v1定制方案，品牌出现≤2次</div>
+      <button class="btn-expand" onclick="toggleFull('A1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-A1"></div>
+      <div class="btn-row" style="display:none" id="btns-A1">
+        <button class="btn-copy" onclick="copyPrompt('A1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('A1','A1-情绪钩子型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-A2">
+      <span class="p-label">A2 · 上岸故事/蜕变型</span>
+      <h4>三幕结构：迷茫打工→决心考公→上岸那一刻</h4>
+      <div class="p-desc">有细节、有转折、有情绪，品牌只在第二幕"找到方法"时出现一次，第一人称真实感强</div>
+      <button class="btn-expand" onclick="toggleFull('A2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-A2"></div>
+      <div class="btn-row" style="display:none" id="btns-A2">
+        <button class="btn-copy" onclick="copyPrompt('A2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('A2','A2-上岸故事型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-A3">
+      <span class="p-label">A3 · 备考生活vlog型</span>
+      <h4>不说"课程好"，只呈现备考中的真实日常细节</h4>
+      <div class="p-desc">日记风格，记录备考中某一天/某个阶段，品牌作为学习工具自然出镜，不做推销感</div>
+      <button class="btn-expand" onclick="toggleFull('A3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-A3"></div>
+      <div class="btn-row" style="display:none" id="btns-A3">
+        <button class="btn-copy" onclick="copyPrompt('A3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('A3','A3-备考vlog型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- B组 -->
+  <div class="prompt-group-title">📝 B组 — 软文笔记（攻略感强，收藏率优先）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card b" id="card-B1">
+      <span class="p-label">B1 · 备考攻略拆解型</span>
+      <h4>省考/国考备考全路径攻略，收藏率优先</h4>
+      <div class="p-desc">结构感强，给出行测/申论分模块练法清单，橙啦作为1v1定制选项自然出现在「高效方案」环节</div>
+      <button class="btn-expand" onclick="toggleFull('B1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-B1"></div>
+      <div class="btn-row" style="display:none" id="btns-B1">
+        <button class="btn-copy" onclick="copyPrompt('B1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('B1','B1-备考攻略型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card b" id="card-B2">
+      <span class="p-label">B2 · 机构/课程横评型</span>
+      <h4>几家公考机构横评，自然推荐橙啦1v1定制</h4>
+      <div class="p-desc">结论先行，竞品用"某大机构""某网课平台"代称，突出1v1定制vs大班课的核心差异</div>
+      <button class="btn-expand" onclick="toggleFull('B2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-B2"></div>
+      <div class="btn-row" style="display:none" id="btns-B2">
+        <button class="btn-copy" onclick="copyPrompt('B2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('B2','B2-机构横评型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card b" id="card-B3">
+      <span class="p-label">B3 · 搜索承接型</span>
+      <h4>命中「全职备考还是边工作边考」热门搜索意图</h4>
+      <div class="p-desc">直接回答高频搜索问题，给出不同情况的具体判断，橙啦的线上1v1课是解决方案之一</div>
+      <button class="btn-expand" onclick="toggleFull('B3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-B3"></div>
+      <div class="btn-row" style="display:none" id="btns-B3">
+        <button class="btn-copy" onclick="copyPrompt('B3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('B3','B3-搜索承接型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- G组 -->
+  <div class="prompt-group-title">🌿 G组 — 品牌官号·先种后收（官号视角，内容价值在前，品牌轻触在后）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-G1">
+      <span class="p-label" style="background:#2D6A4F">G1 · 学员故事型</span>
+      <h4>以"我们见过的备考故事"为主体，橙啦只作配角出现一次</h4>
+      <div class="p-desc">官号视角讲述真实学员卡点突破故事，品牌≤1次出现，末尾轻CTA——信息流，互动量和收藏兼顾</div>
+      <button class="btn-expand" onclick="toggleFull('G1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-G1"></div>
+      <div class="btn-row" style="display:none" id="btns-G1">
+        <button class="btn-copy" onclick="copyPrompt('G1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('G1','G1-学员故事型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-G2">
+      <span class="p-label" style="background:#2D6A4F">G2 · 行业观察型</span>
+      <h4>"我们发现备考失败的人有一个共同点" — 官号洞察视角</h4>
+      <div class="p-desc">切入备考失败的真实原因，用"我们发现"语态输出，1v1定制在最后作为解法自然落地</div>
+      <button class="btn-expand" onclick="toggleFull('G2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-G2"></div>
+      <div class="btn-row" style="display:none" id="btns-G2">
+        <button class="btn-copy" onclick="copyPrompt('G2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('G2','G2-行业观察型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-G3">
+      <span class="p-label" style="background:#2D6A4F">G3 · 成绩节点共情型</span>
+      <h4>"陪你复盘这次省考" — 不推课，先帮用户分析，品牌是最后一句</h4>
+      <div class="p-desc">成绩季时效性内容，官号做情绪容器和分析者，帮用户找失利真实原因，品牌轻触收尾</div>
+      <button class="btn-expand" onclick="toggleFull('G3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-G3"></div>
+      <div class="btn-row" style="display:none" id="btns-G3">
+        <button class="btn-copy" onclick="copyPrompt('G3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('G3','G3-成绩节点型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- D组 -->
+  <div class="prompt-group-title">🏢 D组 — 品牌官号·干货型（搜索场域，收藏率优先）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-D1">
+      <span class="p-label" style="background:#1A5276">D1 · 行测模块攻略型</span>
+      <h4>官号输出行测五大模块优先级学习顺序</h4>
+      <div class="p-desc">承接热搜「行测五大模块学习顺序」，品牌官号人设发攻略，强化"专业公考机构"认知</div>
+      <button class="btn-expand" onclick="toggleFull('D1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-D1"></div>
+      <div class="btn-row" style="display:none" id="btns-D1">
+        <button class="btn-copy" onclick="copyPrompt('D1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('D1','D1-行测攻略型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-D2">
+      <span class="p-label" style="background:#1A5276">D2 · 申论方法论型</span>
+      <h4>官号解析申论"听哪个老师"的选老师逻辑</h4>
+      <div class="p-desc">承接热搜「申论听哪个老师」，不直接推荐自家，而是给出"选老师的判断标准"，最后自然落到{{BRAND}}老师特点</div>
+      <button class="btn-expand" onclick="toggleFull('D2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-D2"></div>
+      <div class="btn-row" style="display:none" id="btns-D2">
+        <button class="btn-copy" onclick="copyPrompt('D2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('D2','D2-申论方法型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-D3">
+      <span class="p-label" style="background:#1A5276">D3 · 备考规划干货型</span>
+      <h4>官号发布"2026省考备考计划模板"</h4>
+      <div class="p-desc">承接热搜「2026省考备考计划」，给出可直接复用的分阶段计划框架，收藏率极高，品牌认知沉淀</div>
+      <button class="btn-expand" onclick="toggleFull('D3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-D3"></div>
+      <div class="btn-row" style="display:none" id="btns-D3">
+        <button class="btn-copy" onclick="copyPrompt('D3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('D3','D3-备考计划型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- E组 -->
+  <div class="prompt-group-title">🎬 E组 — 品牌官号·产品展示型（信任感建立，信息流优先）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-E1">
+      <span class="p-label" style="background:#6E2F8E">E1 · 1v1上课过程展示型</span>
+      <h4>还原一节1v1定制课的真实上课流程</h4>
+      <div class="p-desc">让用户"看到"课是怎么上的：诊断→专项→跟进，用具体课堂细节建立信任，不说"效果好"，只呈现过程</div>
+      <button class="btn-expand" onclick="toggleFull('E1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-E1"></div>
+      <div class="btn-row" style="display:none" id="btns-E1">
+        <button class="btn-copy" onclick="copyPrompt('E1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('E1','E1-上课展示型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-E2">
+      <span class="p-label" style="background:#6E2F8E">E2 · 老师服务细节型</span>
+      <h4>展示1v1老师的真实服务细节（批改/回复/规划）</h4>
+      <div class="p-desc">用具体服务截图式文字描写，展示"有老师带"和"自己刷题"的本质区别，信任感来自细节</div>
+      <button class="btn-expand" onclick="toggleFull('E2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-E2"></div>
+      <div class="btn-row" style="display:none" id="btns-E2">
+        <button class="btn-copy" onclick="copyPrompt('E2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('E2','E2-服务细节型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-E3">
+      <span class="p-label" style="background:#6E2F8E">E3 · 学员画像匹配型</span>
+      <h4>"哪种人适合选{{BRAND}}1v1" — 精准筛选意向用户</h4>
+      <div class="p-desc">反向说明"不适合"人群（自律极强+基础扎实+时间充裕→自学即可），让真正适合的人自我识别并留资</div>
+      <button class="btn-expand" onclick="toggleFull('E3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-E3"></div>
+      <div class="btn-row" style="display:none" id="btns-E3">
+        <button class="btn-copy" onclick="copyPrompt('E3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('E3','E3-学员画像型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- F组 -->
+  <div class="prompt-group-title">💬 F组 — 品牌官号·UGC激活型（评论区截流，账号活跃度）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-F1">
+      <span class="p-label" style="background:#B7470A">F1 · 备考进度打卡型</span>
+      <h4>"你现在备考到哪了？" — 发起评论区打卡</h4>
+      <div class="p-desc">官号发起备考阶段投票/打卡，评论区高互动，私信跟进高意图用户，适合维持账号活跃度</div>
+      <button class="btn-expand" onclick="toggleFull('F1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-F1"></div>
+      <div class="btn-row" style="display:none" id="btns-F1">
+        <button class="btn-copy" onclick="copyPrompt('F1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('F1','F1-打卡互动型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-F2">
+      <span class="p-label" style="background:#B7470A">F2 · 行测弱项诊断型</span>
+      <h4>"行测卡在哪个模块？" — 评论区收集痛点后私信跟进</h4>
+      <div class="p-desc">发起行测模块自测投票，让用户说出卡点，官号在评论区给针对性建议，私信引导到1v1诊断</div>
+      <button class="btn-expand" onclick="toggleFull('F2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-F2"></div>
+      <div class="btn-row" style="display:none" id="btns-F2">
+        <button class="btn-copy" onclick="copyPrompt('F2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('F2','F2-弱项诊断型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-F3">
+      <span class="p-label" style="background:#B7470A">F3 · 成绩节点共情型</span>
+      <h4>省考成绩出来，官号发"没过的来这里"互动帖</h4>
+      <div class="p-desc">借力成绩季情绪，官号做情绪容器，评论区高互动，精准截流高意图（刚出成绩没过的人）用户</div>
+      <button class="btn-expand" onclick="toggleFull('F3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-F3"></div>
+      <div class="btn-row" style="display:none" id="btns-F3">
+        <button class="btn-copy" onclick="copyPrompt('F3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('F3','F3-成绩共情型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- C组 -->
+  <div class="prompt-group-title">📣 C组 — 硬广笔记（转化导向，每句话为留资服务）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card c" id="card-C1">
+      <span class="p-label">C1 · 1v1报名招募型</span>
+      <h4>「不私藏了」招募体系，直接点名1v1名额</h4>
+      <div class="p-desc">对标橙啦自身高CTR笔记风格，160-210字，每句话为留资服务，封面必须有1v1+价格钩子</div>
+      <button class="btn-expand" onclick="toggleFull('C1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-C1"></div>
+      <div class="btn-row" style="display:none" id="btns-C1">
+        <button class="btn-copy" onclick="copyPrompt('C1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('C1','C1-招募型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card c" id="card-C2">
+      <span class="p-label">C2 · 定制方案差异化型</span>
+      <h4>从"为什么大班课上岸率低"切入，建立1v1信任感</h4>
+      <div class="p-desc">科普视角：大班课的核心问题 → 1v1定制如何解决 → 橙啦定制上岸方案引导体验</div>
+      <button class="btn-expand" onclick="toggleFull('C2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-C2"></div>
+      <div class="btn-row" style="display:none" id="btns-C2">
+        <button class="btn-copy" onclick="copyPrompt('C2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('C2','C2-差异化型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card c" id="card-C3">
+      <span class="p-label">C3 · 限时名额/活动型</span>
+      <h4>成绩出来了=备考窗口开启，趁热打铁招募</h4>
+      <div class="p-desc">借力省考成绩发布热点，"成绩出来了，下次一定上岸"情绪节点 + 限时报名名额引导留资</div>
+      <button class="btn-expand" onclick="toggleFull('C3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-C3"></div>
+      <div class="btn-row" style="display:none" id="btns-C3">
+        <button class="btn-copy" onclick="copyPrompt('C3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('C3','C3-限时活动型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<button class="float-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆ 回到顶部</button>
+
+<script>
+const PROMPTS = {
+
+A1: `🎭 角色设定
+你是一个在体制外工作两年、纠结要不要辞职考公的打工人，用第一人称、口语化语气写小红书笔记。
+
+📌 主题
+核心困惑：全职备考 vs 边工作边考——哪条路更适合我？还原这个决策纠结过程，最后落到"找到了适合自己路径"的轻松感，自然带出{{BRAND}}的1v1定制方案（我不用纠结了，因为老师帮我设计了一条专属路线）。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 纠结型：「辞职考公 vs 边干边考，我纠结了三个月」（效果：共鸣极强，讨论量高）
+② 反常识型：「全职备考不一定比上班备考上岸率高」（效果：好奇心钩子，CTR高）
+③ 结果型：「不辞职备考，我也上岸了」（效果：正向期待，收藏率高）
+
+写3个结语候选（方向各不相同）：
+① 成果类：「现在我已经不纠结了，因为方向对了，快比慢更重要」
+② 共鸣类：「可能纠结的本质不是选哪条路，而是你够不够清楚自己现在在哪」
+③ 互动类：「你现在是全职备考还是边上班边考？评论区聊聊」
+
+◎ CTK建议：信息流 · 封面用手写风格或日记本配图，配"辞职考公？"大字钩子
+
+📝 正文结构（350-480字）
+第一段（100字）：还原那个最纠结的时刻：领导开会/发工资/同学上岸消息，让"我到底要不要考"的问题爆发出来
+第二段（130字）：两条路各自的真实利弊（不是教材列清单式，是有情绪感受的真实对比）
+第三段（150字）：转折——如何接触{{BRAND}}，1v1老师根据我的情况（上班时间/基础/目标岗位）设计了一套专属方案，不用自己乱打乱撞
+结尾CTA：「如果你也卡在这个问题上，私信我，说说你的情况，帮你参谋」
+
+⚠️ 禁止：不要给出"标准答案"，保留真实纠结感；{{BRAND}}出现不超过2次；禁止说"包上岸"`,
+
+A2: `🎭 角色设定
+你是一个已经上岸的体制内人，用第一人称回顾从"牛马打工人"到"上岸那天"的完整历程，语言真实、有温度，不过度煽情。
+
+📌 主题
+三幕结构——
+第一幕：打工期间看着同龄人陆续上岸，自己一边刷题一边不知道方向（迷茫）
+第二幕：遇到了{{BRAND}}的1v1定制课，老师分析我的弱项、设计专项计划、行测申论分模块突破（转折）
+第三幕：成绩出来那天，我截图发给了妈妈（结果/情绪高点）
+
+品牌只在第二幕出现，不在第三幕重提。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 时间线型：「备考{X}个月，上岸那天我哭了」（效果：情绪峰值，收藏高）
+② 反转型：「行测一直是我最弱的，直到我改变了备考方式」（效果：方法钩子，讨论高）
+③ 对比型：「同批备考的人，为什么有人第一次就过，有人考了三次还没上」（效果：好奇心强，CTR高）
+
+写3个结语候选：
+① 「如果你也在备考中，记得方向比努力更重要」
+② 「每个上岸的人背后都有一段挣扎期，你不是一个人」
+③ 「现在复盘，最值的那笔投入是找了个懂我弱项的老师」
+
+◎ CTK建议：信息流 · 封面用"录取通知书"或"成绩截图"风格（示意图即可），配情绪感文字
+
+📝 正文结构（400-550字）
+第一幕（120字）：具体化打工焦虑：一边刷题一边不知道刷对没有，行测分数忽高忽低，看不出规律
+第二幕（180字）：遇到{{BRAND}}1v1课的过程，老师做什么（薄弱点诊断 → 专项计划 → 每周跟进），用具体课堂细节说，不要只说"老师很好"
+第三幕（150字）：备考最后一个月的状态变化，以及成绩出来的那个细节时刻
+结尾CTA：「有想考公/备考中的，私信我，把我报班的信息发给你」
+
+⚠️ 禁止：不要编造具体分数；情感真实但不过度煽情；第三幕不要变成产品介绍；品牌出现不超过2次`,
+
+A3: `🎭 角色设定
+你是一个正在备考中的普通人，用vlog/日记风格记录备考的某一天或某个周期，不推销，只是如实记录。
+
+📌 主题
+「备考中的某一天」——不是成功学，是真实：刷题刷到崩溃、和老师对焦申论逻辑、下午课之后去便利店买了一瓶冰美式……{{BRAND}}的1v1课作为备考日常的一部分自然出镜，不是主角，是工具。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 日记型：「备考Day{X}｜今天行测又没过60」（效果：代入感极强，系列感）
+② 生活型：「全职备考的一天，没有励志，有点丧」（效果：反鸡汤，共鸣高）
+③ 情绪型：「考公备考到底有多累？我来告诉你真实版」（效果：搜索承接强）
+
+写3个结语候选：
+① 「今天就这样，明天继续，没有什么宏大目标，就是每天往前一点」
+② 「备考的人都懂那种感觉——不知道够不够，但也没办法停下来」
+③ 「你在备考吗？说说你现在在哪个阶段」
+
+◎ CTK建议：信息流 · 封面用真实感极强的书桌/题目/便利店配图，避免精修，越真实越好
+
+📝 正文结构（350-450字）
+第一段（80字）：今天的备考任务是什么，完成了多少（数字/题目/章节）
+第二段（120字）：某个具体的卡壳瞬间——一道行测题做错了，找不到申论逻辑，还是和{{BRAND}}老师对焦时发现自己理解偏了
+第三段（120字）：和{{BRAND}}1v1课中某个具体细节（老师怎么帮我定位问题的，不夸大，就是真实情况）
+第四段（80字）：备考之外的一个小细节（买了啥吃的/看了什么/打了个盹），让整个笔记有生活感
+结尾CTA：「备考中的来评论区打个卡，互相加油」
+
+⚠️ 禁止：不要出现"上岸指日可待"类鸡汤；品牌出现不超过2次；vlog感要真实，不要精修；禁止编造进步数据`,
+
+B1: `🎭 角色设定
+你是一个已经系统研究过省考/国考备考方法、擅长整理攻略的博主，用干货结构写笔记，收藏率优先。
+
+📌 主题
+「省考/国考备考全路径攻略」：从备考启动→行测各模块练法→申论框架→最后一个月冲刺，给出可直接用的分阶段清单，{{BRAND}}的1v1定制课在「高效方案」环节自然出现作为推荐选项之一。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 方法型：「备考{X}个月，我整理了这套省考全攻略」（效果：收藏率极高）
+② 痛点型：「90%的人行测备考方式是错的」（效果：好奇心强，CTR高）
+③ 分级型：「省考备考0-3个月/3-6个月/6个月+，每个阶段该干什么」（效果：结构感强，搜索承接好）
+
+写3个结语候选：
+① 「收藏了记得按阶段执行，攻略是死的，你是活的」
+② 「每个人情况不同，这套框架拿去用的时候记得结合自己的弱项调整」
+③ 「在哪个阶段？评论区聊聊，帮你看看哪里可以优化」
+
+◎ CTK建议：搜索+信息流双场域 · 封面用分阶段清单设计，图文结合，信息密度高
+
+📝 正文结构（500-700字）
+第一段（60字）：结论先行——备考最大的坑是什么（"刷题没方向，分数忽高忽低"）
+第二段（250字）：三阶段攻略
+ · 启动期（0-60天）：行测各模块优先顺序 + 申论基础框架 + 题量标准
+ · 强化期（60-120天）：弱项专项突破 + 真题模拟 + 时间分配建议
+ · 冲刺期（最后30天）：只做真题 + 复盘错题逻辑 + 申论押题方向
+第三段（150字）：给不同情况的人的建议（应届/在职/基础薄弱/已考过一次）
+第四段（100字）：工具清单（教材/刷题软件/推荐选项包含{{BRAND}}的1v1专项课）
+结尾CTA：「想要这套攻略的详细版，或者不知道自己在哪个阶段的，评论区问我」
+
+⚠️ 禁止：笼统说"多刷题就行"；建议必须有具体可执行动作；{{BRAND}}只作为推荐之一，不强推`,
+
+B2: `🎭 角色设定
+你是一个认真比较过市面主要公考培训方式的备考人，用测评博主视角写，结论先行，有自己的判断。
+
+📌 主题
+几种公考备考方式横评：大班课（某大机构）vs 自学刷题 vs 线上1v1定制私教，从上岸率逻辑/适合人群/投入产出三个维度比，最后自然推荐{{BRAND}}。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 测评型：「几种{{KEYWORDS}}备考方式横评，我帮你踩雷了」（效果：CTR和收藏率均高）
+② 结论型：「公考为什么大班课上岸率比1v1低？」（效果：争议感，讨论量高）
+③ 问题型：「自学还是报班？不同情况的选法」（效果：搜索承接强）
+
+写3个结语候选：
+① 「选哪种取决于你剩多少备考时间和弱项在哪，没有最好的只有最适合的」
+② 「如果你能自律、基础不错、有充足备考时间，自学没问题；其他情况建议找人带」
+③ 「你目前用的哪种方式？评论区交流一下进展」
+
+◎ CTK建议：搜索场域优先 · 封面用对比表格或打分卡设计，信息密度高
+
+📝 正文结构（500-650字）
+第一段（80字）：结论先行——不同备考人适合哪种方式（一句话版本）
+第二段（300字）：三种方式横评
+ · 自学：优势（省钱/灵活）/劣势（方向不清/弱项无法针对突破）
+ · 大班课：优势（系统/有规划）/劣势（跟不上进度/弱项没人专门帮你抠）
+ · 1v1线上定制私教：{{BRAND}}的{{ADVANTAGES}}，老师根据你的弱点、时间、目标岗位设计专属方案
+第三段（150字）：给不同情况的人选法建议（基础好/在职/应届/刷过几次还没过）
+第四段（80字）：个人结论
+结尾CTA：「想了解{{BRAND}}1v1定制具体是怎么配课的，私信我」
+
+⚠️ 禁止：竞品点名；夸大上岸率；禁止绝对化表述`,
+
+B3: `🎭 角色设定
+你是一个解决了"全职备考 vs 边工作边考"这个经典问题的过来人，语言精准，给具体建议而非鸡汤。
+
+📌 主题
+精准回答热搜词「全职备考还是边工作边考」——根据不同情况给出具体判断标准，带出{{BRAND}}线上1v1课作为"在职备考也能高效"的解决方案。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 直击问题：「全职备考还是边工作边考？3个维度帮你判断」（效果：搜索承接最强）
+② 反常识：「辞职备考不一定比在职备考成功率高」（效果：好奇心，CTR高）
+③ 干货型：「在职备考的人，怎么和全职的人竞争」（效果：竞争感钩子，收藏高）
+
+写3个结语候选：
+① 「最重要的不是选哪条路，而是选了之后能不能坚持执行」
+② 「如果你不确定自己适合哪种，算一下你现在的备考时间和弱项分布」
+③ 「你是全职还是在职备考？评论区说说你的情况」
+
+◎ CTK建议：搜索场域 · 封面直接用判断清单，信息密度高
+
+📝 正文结构（400-550字）
+第一段（60字）：结论先行——"该不该辞职"这个问题本身就问错了，核心是"你每天能有多少有效备考时间"
+第二段（200字）：三个判断维度
+ · 每天可用备考时间（低于3小时 vs 3-5小时 vs 5小时以上的结论各不同）
+ · 当前与目标岗位分数差距（差距大/小的策略不同）
+ · 经济压力（全职备考的机会成本是否承受得起）
+第三段（150字）：在职备考如何高效？——{{BRAND}}线上1v1课的核心价值在于：不用自己规划方向、老师帮你聚焦弱项、上班时间用碎片刷题、周末上课集中突破，{{ADVANTAGES}}
+第四段（80字）：适合在职备考用1v1的人群画像
+结尾CTA：「在职备考想知道自己该怎么规划的，私信/评论区说下情况，帮你分析」
+
+⚠️ 禁止：不要给出绝对建议（"必须辞职/必须不辞职"）；建议必须有具体条件判断；禁止夸大上岸率`,
+
+C1: `🎭 角色设定
+你是{{BRAND}}的内容运营，对标自身高CTR笔记「不私藏了🔥被疯狂安利的1v1线上考公私教班」风格，写一篇直接招募1v1名额的硬广笔记。
+
+📌 主题
+{{BRAND}}线上1v1定制私教课招募——有名额、有方案、引导私信留资。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 招募型：「有想考{{KEYWORDS}}的吗？1v1线上私教名额开放」（效果：高意图直接点击）
+② 不私藏型：「不私藏了🔥被疯狂安利的{{KEYWORDS}}1v1私教班」（效果：对标自身高CTR笔记）
+③ 煽动型：「考公考编别自己摸黑，1v1老师带你专项突破」（效果：共鸣感，方案感强）
+
+封面必须包含：1v1 + 定制 + 名额有限 三个关键信息
+
+◎ CTK建议：信息流+搜索双投 · 封面配上课截图或老师批改申论截图，真实感强
+
+📝 正文结构（160-210字，每句话为留资服务）
+第一句：点明是什么（{{BRAND}} 线上1v1定制公考私教）
+第二段：核心卖点3点——① {{ADVANTAGES}} ② 专项针对行测弱项/申论逻辑 ③ 根据目标岗位+考试时间设计专属方案
+第三段：适合人群（在职备考/自学无方向/考过但没过线）
+第四段：名额说明（本期定制名额有限）
+结尾CTA：「感兴趣的私信我，说下你的情况，看看是否适合」
+
+⚠️ 禁止：夸大上岸率；禁止"立即报名"等强迫话术；名额限制必须真实；禁止编造考试数据`,
+
+C2: `🎭 角色设定
+你是{{BRAND}}的专业顾问，用科普+对比视角写一篇建立信任感的硬广笔记，适合还在"要不要报班/报哪种班"犹豫阶段的用户。
+
+📌 主题
+从"为什么很多人备考多次还没过线"切入，分析大班课的结构性问题，说明1v1定制如何针对个人弱项突破，引导体验/咨询。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 痛点型：「备考这么久，为什么{{KEYWORDS}}还是过不了线」（效果：痛点共鸣，CTR高）
+② 方法型：「1v1 vs 大班课，哪种{{KEYWORDS}}备考上岸率更高」（效果：对比吸引，讨论量高）
+③ 揭秘型：「大班课没告诉你的事：为什么同样备考时长，结果差这么多」（效果：好奇心钩子强）
+
+◎ CTK建议：信息流 · 封面用"大班课 vs 1v1"对比图或"成绩差距"数据图
+
+📝 正文结构（300-400字）
+第一段（80字）：点名核心问题——"刷题刷了很多，但不知道哪里错、为什么错、怎么改"，这是大班课的结构性局限
+第二段（150字）：1v1定制如何解决
+ · 诊断薄弱点：老师分析你的错题分布，找到真正的问题根源
+ · 专项击破：行测每个模块单独设计练法，申论逻辑单独抠
+ · 动态调整：每周根据练题结果调整计划，不是走流程
+第三段（80字）：{{BRAND}}{{ADVANTAGES}}
+第四段（50字）：适合人群（考过没过线/自学无效/在职没时间乱找方向）
+结尾CTA：「想了解1v1定制方案怎么配的，私信我，说下你的情况」
+
+⚠️ 禁止：禁止夸大上岸率；不得杜撰数据；专业感来自真实逻辑，不是堆术语`,
+
+G1: `🏢 发布主体
+{{BRAND}} 品牌官号，以"我们见过的备考故事"为叙事主体，官号是讲述者和陪伴者，不是推销者。品牌全篇出现不超过1次，末尾用轻CTA收尾。
+
+📌 核心逻辑
+**先种：** 一个卡在及格线附近的备考人的真实故事——有具体卡点、有挣扎、有转折，读者沉浸在故事里
+**后收：** 故事结束后，官号用一句话说明"这就是我们做1v1定制的出发点"，品牌作为答案而非广告自然出现
+
+📝 正文结构（400-500字，叙事感强）
+
+**第一幕 · 场景钩子（80字）**
+用一个具体的备考卡点瞬间开场，让读者立刻代入：
+— 行测练了三个月，模拟题每次在57-62分之间浮动，不知道问题在哪
+— 申论写了十几篇，分数没什么变化，觉得是自己文笔不好
+— 刷了大量真题，但遇到没见过的题型还是会慌，规律找不到
+
+（选一个，展开成一个有细节的真实备考场景，不超过80字）
+
+**第二幕 · 卡点还原（120字）**
+官号用"我们发现很多备考的人都经历过这种感受"过渡，说清楚这个卡点的真实原因——不是没努力，是备考方向没有针对自己的弱点。行测分数浮动，往往是某个模块的底层逻辑没有建立；申论没提升，往往是没有人告诉你哪里改、怎么改。
+
+**第三幕 · 转折（150字）**
+这位备考人后来做了什么——他找了{{BRAND}}的1v1老师，第一节课老师没有让他继续刷题，而是把他过去三个月的错题分布拿出来分析。结论不是"行测差"，是资料分析的计算逻辑错了，言语理解的主旨题定位跑偏。老师设计了两周的专项方案，只针对这两个点。两周后他的模拟分数第一次稳定在65分以上。
+
+**第四幕 · 官号收尾（60字）**
+官号用一句话说出发点：我们做1v1的理由很简单——每个人的弱点不同，备考路径就应该不同。
+结尾CTA（轻触）：「如果你也在备考中卡住了，欢迎评论区说说，或者私信我们」
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 故事型：「他行测练了三个月，分数一直卡在60分，直到发现了这件事」（效果：情绪共鸣，CTR极高）
+② 洞察型：「我们见过太多这样的备考人：努力没有问题，方向有问题」（效果：共鸣感，收藏高）
+③ 转折型：「卡在及格线附近的人，通常差的不是努力，是这件事」（效果：好奇心钩子强）
+
+◎ CTK建议：信息流 · 封面用"备考故事感"文字，不放产品图，配"卡了三个月"等场景感文字
+
+⚠️ 硬规则
+- 品牌名称全篇出现不超过1次（只在第三幕作为转折工具出现）
+- 故事里禁止植入任何课程功能介绍，只呈现过程
+- 禁止编造分数提升数字（"从50分提到75分"类），可以说"稳定在65分以上"这类描述性结果
+- 禁止任何价格、报名、限时话语
+- 结尾CTA只能是"说说你的情况"或"私信了解"，不引导报名`,
+
+G2: `🏢 发布主体
+{{BRAND}} 品牌官号，以"机构观察者"视角切入，用"我们发现"语态输出对备考失败真实原因的分析，1v1定制方案在最后自然落地，全篇不推销。
+
+📌 核心逻辑
+**先种：** 官号作为"观察者"，深入分析"为什么这么多人备考很努力但还是没过"，说出真正的原因
+**后收：** 分析充分之后，用一句话说"这是我们设计1v1定制的出发点"，品牌作为解法而非广告出现
+
+📝 正文结构（420-520字）
+
+**开场 · 现象描述（70字）**
+官号以"我们接触过很多备考人之后发现"起手，描述一个高度共鸣的备考现象：
+「备考了半年以上、每天刷题、但分数始终没有过线——这不是少数情况，我们见过太多这样的人。」
+
+**第二段 · 卡点拆解（180字）**
+官号深入分析：努力程度不是问题，方向是问题。具体拆解3个常见的"方向错误"：
+- **刷题量很大，但没有复盘逻辑** — 做完题对完答案，不知道为什么错，下次遇到同类题还是错
+- **跟大班课进度，但跟不上** — 老师讲完了，自己还没消化，下一章已经开始，只能硬撑
+- **行测申论一起练，哪个都没有真正突破** — 时间分散，弱项没有针对性强化，分数忽高忽低
+
+这三个问题有一个共同根源：**没有人告诉你，你的问题具体在哪，应该怎么针对性解决。**
+
+**第三段 · 方法论（120字）**
+官号说"这是我们做1v1定制的出发点"：不是让你刷更多题，而是先搞清楚你的弱点在哪，然后只针对那里集中突破。行测每个模块单独诊断，申论每篇批改到具体句子，每周根据练题结果调整下周计划。这不是大班课能做的事，{{BRAND}}{{ADVANTAGES}}。
+
+**第四段 · 轻触落品牌（60字）**
+「我们不相信努力程度决定结果。我们相信方向和方法决定结果。这是{{BRAND}}做定制备考的原因。」
+结尾CTA（轻触）：「你觉得你备考最大的卡点在哪？评论区聊聊」
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 现象型：「为什么很多人{{KEYWORDS}}备考很努力，但就是过不了线」（效果：共鸣极强，搜索承接）
+② 洞察型：「我们发现：备考失败的人，通常有这一个共同点」（效果：好奇心钩子，CTR高）
+③ 分析型：「刷了几千道题还是没过？问题可能不在刷题量」（效果：反常识，收藏高）
+
+◎ CTK建议：信息流+搜索 · 封面用"观察者视角"文字感，避免产品图，配"努力了半年还是没过"类场景感文字
+
+⚠️ 硬规则
+- 官号全程是"分析者/观察者"身份，不是"卖课的"
+- 品牌名称出现不超过2次（第三/四段各一次）
+- 禁止任何价格、报名、限时话语
+- 卡点分析必须有真实逻辑，不能泛泛
+- 结尾CTA只问"你的卡点在哪"，不引导报名`,
+
+G3: `🏢 发布主体
+{{BRAND}} 品牌官号，借力省考成绩发布节点，以"陪你复盘这次考试"的视角发布，不急着推课，先帮用户真正分析失利原因，品牌只在最后一段轻触出现。
+
+📌 核心逻辑
+**先种：** 成绩刚出来，官号做"陪伴者+分析者"，帮用户说清楚"差那几分到底差在哪"，这是用户最需要的内容
+**后收：** 分析做完，用户信任建立，最后一段才说"如果需要更深入的诊断，我们可以帮你"，品牌轻触
+
+📝 正文结构（380-480字）
+
+**开场 · 情绪承接（60字）**
+「成绩出来了。不管结果怎样，先花5分钟复盘一下——这次到底差在哪，比知道分数本身更重要。」
+（不煽情，不安慰，直接进入分析模式，这是官号专业感的来源）
+
+**第二段 · 三种失利类型诊断（200字）**
+官号提供一个自我诊断框架，让用户对号入座：
+
+**类型A · 行测拉分型**
+行测没过省均线，通常原因不是总体能力不够，而是某1-2个模块严重拖后腿（资料分析计算慢/言语主旨题定位跑偏/判断推理某类题型没有掌握规律）。下一轮备考重点：先做模块诊断，再专项突破，不要继续全刷。
+
+**类型B · 申论失分型**
+申论分数低于行测，通常原因是写了很多但没有人告诉你哪里改。申论有分析框架，不是玄学，踩点/逻辑/语言各有提分空间，需要有人批改到具体句子层面。
+
+**类型C · 发挥失误型**
+总分接近但没过，考场状态、做题顺序、时间分配导致失分。这类问题下次可以系统解决：模拟考练习+复盘节奏+心态调整，有规律可循。
+
+**第三段 · 轻触落品牌（80字）**
+「如果你不确定自己属于哪种，或者知道问题在哪但不知道怎么针对性突破——{{BRAND}}提供一次免费的备考诊断，根据你这次的成绩和薄弱点，帮你设计下一轮的重点方向。」（{{ADVANTAGES}}）
+结尾CTA（轻触）：「评论区说说你这次差在哪，或者私信我们做更详细的诊断」
+
+✏️ 标题写法（15字以内，含省考/成绩相关词）
+从以下3个方向选一个：
+① 分析型：「省考成绩出来了，先做这个复盘，比知道分数更重要」（效果：时效强，专业感）
+② 陪伴型：「没过的，我们一起复盘一下：这次到底差在哪」（效果：情绪共鸣，高意向聚集）
+③ 诊断型：「差几分没过？根据你的情况，可能是这3种原因之一」（效果：精准承接，搜索感强）
+
+封面建议：配"复盘"或"诊断"视觉感文字，不放产品图，时效感强
+
+◎ CTK建议：信息流，成绩季立即发布，时效窗口1-3天内最强
+
+⚠️ 硬规则
+- 官号全程是"分析者/陪伴者"，不是"卖课的"
+- 品牌名称只在第三段出现1次
+- 禁止"下次一定过"等保证性话术
+- 诊断框架要真实有逻辑，不能只是安慰
+- 禁止任何价格话语；CTA只说"诊断/分析"，不说"报名/购买"`,
+
+D1: `🏢 发布主体
+{{BRAND}} 品牌官号，专业公考机构人设，语气专业但不刻板，有自己的观点。
+
+📌 主题
+承接热搜词「行测五大模块学习顺序」，官号以专业角度给出行测备考的模块优先级逻辑和学习路径，强化品牌"懂公考"的专业认知。
+
+✏️ 标题写法（15字以内，含行测/公考相关词）
+从以下3个方向选一个：
+① 答疑型：「行测五大模块学习顺序，终于有人说清楚了」（效果：搜索承接最强）
+② 观点型：「行测备考先刷哪个模块？大多数人顺序搞反了」（效果：争议感，CTR高）
+③ 清单型：「2026省考行测备考路线图｜按这个顺序刷不会错」（效果：收藏率极高）
+
+◎ CTK建议：搜索场域为主 · 封面用清单/优先级矩阵图，信息密度高，绿底白字风格
+
+📝 正文结构（500-650字，收藏率优先）
+第一段（80字）：结论先行 — 行测五大模块（言语/数量/判断/常识/资料）不是平均学，有优先级，说清楚依据
+第二段（250字）：五大模块优先级分析
+ · 第一优先：资料分析（提分最快，规律最强，1-2周能见效）
+ · 第二优先：判断推理（题量大，但技巧性强，学对方法事半功倍）
+ · 第三优先：言语理解（靠积累，不能速成，但基础题必须保住）
+ · 第四优先：数量关系（难度最高，性价比看个人，弱项可以放弃难题保基础）
+ · 第五优先：常识（不建议专项刷，日常积累即可，考前集中记热点）
+第三段（150字）：不同基础的人调整建议（基础薄弱/时间紧/已有基础）
+第四段（100字）：{{BRAND}}1v1课的分模块专项突破逻辑，自然落品牌，不强推
+结尾CTA：「你现在行测哪个模块最弱？评论区说，帮你看看优先攻哪个」
+
+⚠️ 禁止：不要给出"保证提分"的承诺；专业感来自真实逻辑，不是堆术语；禁止笼统说"多练就好"`,
+
+D2: `🏢 发布主体
+{{BRAND}} 品牌官号，专业公考机构人设，有自己教研团队，敢说观点。
+
+📌 主题
+承接热搜词「申论听哪个老师」，不直接推荐自家老师，而是给出"选申论老师的判断标准"，帮用户建立判断框架，最后自然带出{{BRAND}}老师特点。
+
+✏️ 标题写法（15字以内，含申论/公考相关词）
+从以下3个方向选一个：
+① 痛点型：「申论听哪个老师？先搞清楚这3个问题」（效果：搜索承接极强）
+② 观点型：「选申论老师最大的坑：不是谁讲得好，是谁适合你」（效果：反常识钩子强）
+③ 测评型：「听了N个申论老师，我整理出了选老师的判断标准」（效果：收藏率高）
+
+◎ CTK建议：搜索场域 · 封面用对比/清单设计，正式感强
+
+📝 正文结构（400-550字）
+第一段（60字）：结论先行 — 申论没有最好的老师，只有最适合你阶段的老师
+第二段（200字）：选申论老师的3个判断维度
+ · 维度1：他的核心方法论是否清晰可复制？（不是"积累素材"这种废话，而是有具体分析框架）
+ · 维度2：他的讲课风格和你的吸收方式匹配吗？（逻辑型/感悟型/模板型各有适合人群）
+ · 维度3：他有没有针对你所在省份/近3年考题的专项讲解？（省考申论风格差异极大）
+第三段（120字）：{{BRAND}}老师的特点定位（{{ADVANTAGES}}）— 不是"最好"，是"1v1根据你的薄弱点专项带"
+第四段（80字）：给不同阶段考生的老师选择建议
+结尾CTA：「你现在申论最卡哪个环节？评论区说，帮你推荐学习方向」
+
+⚠️ 禁止：不要贬低其他机构/老师；不要说"我们老师最好"；建议必须有具体判断维度`,
+
+D3: `🏢 发布主体
+{{BRAND}} 品牌官号，专业公考机构人设，定期发备考工具性内容。
+
+📌 主题
+承接热搜词「2026省考备考计划」，发布可直接复用的分阶段备考计划模板，收藏率优先，品牌官号用内容价值积累认知。
+
+✏️ 标题写法（15字以内，含省考/备考相关词）
+从以下3个方向选一个：
+① 工具型：「2026省考备考计划｜可直接复用的模板」（效果：收藏率极高，搜索承接强）
+② 时间线型：「距离下次省考还有X个月，备考路线这样走」（效果：紧迫感强，CTR高）
+③ 分级型：「0基础/有基础/考过没过，三种情况的备考计划」（效果：精准触达，讨论量高）
+
+◎ CTK建议：搜索场域 · 封面用日历/甘特图式设计，配"2026省考"大字，收藏率型内容
+
+📝 正文结构（550-700字，清单感强，每条可执行）
+第一段（60字）：结论先行 — 备考计划的核心不是"每天刷多少题"，而是"在哪个节点完成哪个能力建设"
+第二段（300字）：三阶段备考计划模板
+ · 【第一阶段】基础建设期（备考启动→距考试90天）
+   - 行测：摸底各模块分数线，确定薄弱模块，按优先级开始专项
+   - 申论：读懂题型要求，建立基础分析框架，不追热点素材
+   - 目标：建立正确备考认知，不乱打乱撞
+ · 【第二阶段】强化突破期（距考试60-90天→距考试30天）
+   - 行测：弱项专项强化，每天全真模拟1套，复盘错误逻辑
+   - 申论：开始写完整作文，对照评分标准自我评估
+   - 目标：分数稳定提升，不忽高忽低
+ · 【第三阶段】冲刺保持期（最后30天）
+   - 行测：只做近5年真题，不碰新题型，保持手感
+   - 申论：每3天写一篇完整大作文，记热点时事框架
+   - 目标：保持状态，不崩盘
+第三段（150字）：不同情况的调整建议（在职备考/全职备考/考过一次没过的）
+第四段（80字）：{{BRAND}}1v1定制课如何根据你的实际情况调整这套计划，{{ADVANTAGES}}
+结尾CTA：「保存这个模板，按阶段执行 · 不知道自己在哪个阶段的评论区说，帮你诊断」
+
+⚠️ 禁止：计划必须具体可执行，不能只有方向；禁止"坚持就是胜利"类鸡汤；{{BRAND}}只在最后自然出现`,
+
+E1: `🏢 发布主体
+{{BRAND}} 品牌官号，以"带你看看1v1上课是什么体验"的视角，还原真实上课流程，不推销，只展示。
+
+📌 主题
+用第三人称（"我们的学员小A"）或第一人称老师视角，还原一节1v1定制课的完整过程：诊断→制定专属计划→上课→跟进，让用户"看到"有老师带是什么样的体验。
+
+✏️ 标题写法（15字以内，含1v1/公考相关词）
+从以下3个方向选一个：
+① 过程型：「1v1公考私教一节课，到底在干什么」（效果：好奇心钩子，CTR高）
+② 对比型：「自己刷题 vs 有老师带，差距在哪」（效果：共鸣感强，收藏高）
+③ 体验型：「上了第一节1v1定制课，我发现自己备考方式全错了」（第一人称学员视角）
+
+◎ CTK建议：信息流 · 封面用"上课截图"或"批改申论"示意图，真实感强
+
+📝 正文结构（400-500字）
+第一段（80字）：引出场景 — 学员小A，考了两次省考，行测每次卡在57分，申论不知道哪里改
+第二段（180字）：第一节课的具体过程
+ · 前15分钟：老师分析小A的历次模拟题错误分布，定位真正的问题（不是"行测差"，是"资料分析计算方法错误+言语主旨题定位跑偏"）
+ · 中间20分钟：针对资料分析设计专项练习路径，当场演示正确解题步骤
+ · 最后10分钟：制定接下来2周的专项计划，每天具体做什么
+第三段（120字）：课后跟进的细节（微信上发了一道练习题，小A做完发回，老师当天批改并给出具体修改点）
+第四段（80字）：{{BRAND}}{{ADVANTAGES}}，自然落品牌
+结尾CTA：「想了解第一节1v1诊断课是怎么上的，私信我」
+
+⚠️ 禁止：不要编造具体分数提升数据；细节要具体，不要笼统说"老师很专业"；第一节课展示诊断过程，不是结果`,
+
+E2: `🏢 发布主体
+{{BRAND}} 品牌官号，展示1v1老师服务细节，内容视角是"有老师带=什么体验"。
+
+📌 主题
+用具体细节描写，展示1v1老师在一周内的真实服务动作：批改申论→给出具体修改意见→调整学习计划→答疑，让用户体感"这和自己刷题差在哪"。
+
+✏️ 标题写法（15字以内，含1v1/公考相关词）
+从以下3个方向选一个：
+① 展示型：「我1v1老师这周给我做了这些事」（效果：代入感强，收藏高）
+② 对比型：「报了大班课 vs 1v1，服务差距在哪」（效果：对比感强，讨论量高）
+③ 细节型：「1v1老师批改一篇申论，到底批到什么程度」（效果：好奇心钩子强）
+
+◎ CTK建议：信息流 · 封面用批改截图/聊天记录示意图（脱敏），真实感极强
+
+📝 正文结构（400-500字）
+第一段（60字）：引出场景 — 这是学员小B备考第三周，1v1老师这一周给她做了这几件事
+第二段（250字）：一周服务清单（具体细节，不笼统）
+ · 周一：发了一套申论真题给小B练，要求3小时内完成并发回
+ · 周二：老师批改申论，用不同颜色标注（逻辑问题/语言问题/踩点问题），附具体修改意见，不是"写得不好"，是"第二段论点不清，建议改成总-分-总结构，理由是..."
+ · 周三：答疑行测数量关系两道错题，老师录屏解析发语音
+ · 周五：根据这周的练习情况，调整下周专项计划，数量关系难题先放，言语理解每天加量
+ · 周日：模拟考一套行测，计时，发成绩给老师复盘
+第三段（100字）：和大班课的本质差异 — 大班课：老师讲完你自己练；1v1：你练完老师给你专属反馈
+第四段（60字）：{{BRAND}}{{ADVANTAGES}}
+结尾CTA：「感兴趣可以先体验一节诊断课，私信发我」
+
+⚠️ 禁止：不要编造"提升了X分"的数据；服务细节要具体到操作动作，不要说"老师很负责"`,
+
+E3: `🏢 发布主体
+{{BRAND}} 品牌官号，用反向说明（不适合 → 适合）精准筛选高意向用户。
+
+📌 主题
+诚实说明"谁适合/谁不适合{{BRAND}}1v1"，通过反向排除建立信任感，让真正需要的人自我识别并主动留资。
+
+✏️ 标题写法（15字以内，含1v1/公考相关词）
+从以下3个方向选一个：
+① 反向型：「这几种人，真的不适合选1v1公考课」（效果：反常识，CTR极高，高意向用户自我筛选）
+② 诚实型：「我们1v1课不适合所有人，来看你是哪种」（效果：信任感强，用户主动判断）
+③ 画像型：「适合{{BRAND}}1v1的人，通常有这3个特征」（效果：精准人群触达）
+
+◎ CTK建议：信息流+搜索 · 封面用人群分类图/自我测试图，互动感强
+
+📝 正文结构（400-500字）
+第一段（60字）：坦诚开场 — 不是所有人都适合1v1定制课，我们来说清楚，避免浪费彼此时间
+第二段（180字）：不适合{{BRAND}}1v1的情况（3条，诚实）
+ · 自律性极强，能严格按计划自学，且行测基础在65分以上：自学就够了，不需要花这个钱
+ · 备考时间超充裕（距考试9个月以上），且只需要系统入门：大班课性价比更高
+ · 目标只是"随便试试"，没有明确上岸目标：1v1定制需要双向投入，动机不强效果会打折
+第三段（160字）：适合{{BRAND}}1v1的情况（3条，精准）
+ · 考过1-2次，分数徘徊在及格线附近，不知道问题在哪：需要有人帮你诊断真正的弱点
+ · 在职备考，时间碎片化，没法跟完整大班课进度：需要根据你的时间定制计划
+ · 自学刷题但分数忽高忽低，缺乏稳定性：需要有人帮你建立答题逻辑，不是刷题量的问题
+第四段（60字）：{{BRAND}}{{ADVANTAGES}}
+结尾CTA：「对号入座后，觉得适合的私信我，先聊聊你的情况」
+
+⚠️ 禁止：不适合的部分要真实诚恳，不能"为了显得诚实"说假话；适合的部分描述要精准，对应真实痛点`,
+
+F1: `🏢 发布主体
+{{BRAND}} 品牌官号，以互动主持人身份发起评论区打卡，收集用户备考进度。
+
+📌 主题
+发起"你现在备考到哪了"打卡互动，给出备考阶段选项，让用户在评论区打卡，官号在评论区针对性回复，私信跟进高意向用户。
+
+✏️ 标题写法（15字以内，含公考/备考相关词）
+从以下3个方向选一个：
+① 打卡型：「备考{{KEYWORDS}}的，来评论区打个卡」（效果：低门槛互动，评论量高）
+② 调查型：「你现在备考到哪个阶段了？来测测」（效果：参与感强，讨论量高）
+③ 共鸣型：「备考的人，今天刷了多少题？报个数」（效果：日常感，互动自然）
+
+◎ CTK建议：信息流 · 封面用"打卡""投票"视觉感，互动感极强，避免正式排版
+
+📝 正文结构（200-300字，互动感优先）
+第一段（50字）：发起打卡 — 评论区告诉我你现在在哪个阶段
+第二段（100字）：列出备考阶段选项（用emoji区分）
+ · 🌱 刚开始，不知道从哪入手
+ · 📖 刷题中，但分数不稳定
+ · 💪 强化期，在突破弱项
+ · 🔥 冲刺期，距考试不到1个月
+ · 😭 成绩出来了，没过，准备再战
+ · 🎉 已上岸，来看看有没有用得上的
+第三段（80字）：{{BRAND}}承诺 — 看到评论都会回复，根据你的阶段给具体备考建议，需要深入聊的私信我
+结尾：「在吗？打个卡，让我看到你们」
+
+⚠️ 禁止：不要做成广告感强的互动；语气要真实、轻松，像真人在聊天；不要在帖子里推销课程，让互动自然发生`,
+
+F2: `🏢 发布主体
+{{BRAND}} 品牌官号，发起行测弱项自测互动，收集用户痛点，评论区给针对性建议后引导私信。
+
+📌 主题
+发起"你行测最弱的是哪个模块"投票/打卡，官号在评论区给有针对性的简短建议（不是泛泛而谈），私信跟进高意向用户进行1v1诊断。
+
+✏️ 标题写法（15字以内，含行测/公考相关词）
+从以下3个方向选一个：
+① 自测型：「行测五大模块，你最弱的是哪个？」（效果：低门槛参与，评论量极高）
+② 痛点型：「行测备考最卡的那个模块，说出来让我帮你」（效果：共鸣感强）
+③ 调查型：「公考备考群体行测弱点分布，来测测你在哪」（效果：数据感，好奇心钩子）
+
+◎ CTK建议：信息流 · 封面用行测五大模块可视化图，直观感强
+
+📝 正文结构（200-300字）
+第一段（40字）：开门见山 — 说出你最弱的行测模块，我给你一个具体的突破建议
+第二段（100字）：列出五大模块，让用户选一个评论
+ · 📊 资料分析（计算慢/看不懂题意）
+ · 🧩 判断推理（类比推理/逻辑判断搞混）
+ · 📝 言语理解（选项总是选错/主旨题抓不住）
+ · 🔢 数量关系（速度慢/公式记不住）
+ · 🗺️ 常识判断（感觉全靠运气）
+第三段（80字）：{{BRAND}}承诺 — 每一条评论我都看，根据你说的给具体建议（不是"多练"那种废话），需要系统突破的私信我，约一节免费诊断
+结尾：「评论区见，说出你的弱项，我来帮你看」
+
+⚠️ 禁止：评论区的建议必须具体（要针对模块给出1-2个可执行动作），不能只说"加油""多练"；不要在帖子里推销，让评论区互动自然引导`,
+
+F3: `🏢 发布主体
+{{BRAND}} 品牌官号，借力省考成绩发布节点，做情绪容器型帖子，评论区高互动，截流高意向用户。
+
+📌 主题
+省考成绩出来，官号发"没过的来这里"互动帖，承接情绪，给出实质性建议（不是安慰），私信跟进高意向用户（刚出成绩没过的人=最高意向人群）。
+
+✏️ 标题写法（15字以内，含省考/成绩相关词）
+从以下3个方向选一个：
+① 情绪承接型：「省考成绩出来了，没过的，来这里」（效果：时效极强，精准截流高意向人群）
+② 分析型：「省考成绩出来，差几分的人，问题通常在这」（效果：有价值感，讨论量高）
+③ 正向型：「这次没过，不是终点，来说说你差在哪」（效果：情绪共鸣，评论量高）
+
+封面必须包含：省考成绩 + 当前季节感 + 情绪共鸣文字
+
+◎ CTK建议：信息流，成绩发布后立即发布，时效窗口极短（1-3天）
+
+📝 正文结构（250-350字，情绪感强但有实质内容）
+第一段（60字）：承接情绪 — 成绩出来了，没过的，来这里说说情况，不是来被安慰的，是来分析问题的
+第二段（150字）：给出3种"差几分没过"的真实原因（不是鸡汤，是诊断）
+ · 行测能力没到：具体是哪个模块，可以针对突破
+ · 申论拉分：申论提分有规律，不是玄学，找对方法可以短期提升
+ · 考场发挥失误：速度/心态/题序，这类问题下次可以系统解决
+第三段（80字）：{{BRAND}}的角色 — 如果你不确定自己差在哪，{{ADVANTAGES}}，可以先做一次免费诊断
+结尾CTA：「评论区说说你的情况（差了几分/哪科拉分），帮你分析原因 · 需要详细聊的私信我」
+
+⚠️ 禁止：不要过度煽情/消费情绪；建议必须有实质内容，不是只说"没关系下次加油"；禁止"下次一定过"等保证性话术；成绩季时效性强，发布时间点很重要`,
+
+C3: `🎭 角色设定
+你是{{BRAND}}的内容运营，借力当前省考成绩发布热点，写一篇"成绩出来了 = 备考窗口开启"情绪节点型硬广，引导高意图用户留资。
+
+📌 主题
+省考成绩出来了——对上岸的人说恭喜，对差一点的人说"这次差的分，可以用定制方案针对突破"，招募下一轮备考的1v1名额。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 成绩节点型：「{{KEYWORDS}}成绩出来了，没过的来这里」（效果：时效热搜强承接，CTR极高）
+② 鼓励型：「这次没上岸，不是能力问题，是方法问题」（效果：情绪共鸣，共情强）
+③ 行动型：「省考成绩已出，现在开始备考下一次刚刚好」（效果：行动驱动，转化导向）
+
+封面必须包含：省考成绩 + 下一次 + 1v1定制 三个关键词
+
+◎ CTK建议：信息流 · 借力成绩季流量窗口，封面用"成绩单"视觉感，时效感强
+
+📝 正文结构（200-280字）
+第一段：承接成绩情绪——对没过的人说"差几分不是备考时长问题，是方向问题"
+第二段：{{BRAND}}1v1定制方案如何针对"差的那几分"——弱项诊断 → 专项突破计划 → 下次备考时间规划，{{ADVANTAGES}}
+第三段：本期招募名额说明（真实名额）
+结尾CTA：「成绩没过的私信我，告诉我你差在哪，帮你分析这次差距的原因」
+
+⚠️ 禁止：不要说"下次一定过"等保证性话术；名额必须真实；禁止情绪消费过度（不要过分渲染"失败"）；禁止"立即报名"等强迫话术`
+
+};
+
+function getVars() {
+  return {
+    KEYWORDS:   document.getElementById('v-kw').value.trim() || '{{KEYWORDS}}',
+    BRAND:      document.getElementById('v-brand').value.trim() || '{{BRAND}}',
+    ADVANTAGES: document.getElementById('v-adv').value.trim() || '{{ADVANTAGES}}'
+  };
+}
+const labels = { KEYWORDS:'热门关键词', ADVANTAGES:'品牌优势', BRAND:'产品名称' };
+
+function fillVarsHTML(text) {
+  const raw = {
+    KEYWORDS:   document.getElementById('v-kw').value.trim(),
+    ADVANTAGES: document.getElementById('v-adv').value.trim(),
+    BRAND:      document.getElementById('v-brand').value.trim()
+  };
+  const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return escaped.replace(/\{\{(KEYWORDS|ADVANTAGES|BRAND)\}\}/g, (_, k) =>
+    raw[k]
+      ? `<em class="var-filled">${raw[k]}</em>`
+      : `<em class="var-highlight">{{${labels[k]}}}</em>`
+  );
+}
+
+function fillVars(text) {
+  const v = getVars();
+  return text
+    .replace(/\{\{KEYWORDS\}\}/g, v.KEYWORDS)
+    .replace(/\{\{ADVANTAGES\}\}/g, v.ADVANTAGES)
+    .replace(/\{\{BRAND\}\}/g, v.BRAND);
+}
+
+function toggleFull(key) {
+  const el  = document.getElementById('full-' + key);
+  const btn = document.querySelector(`#card-${key} .btn-expand`);
+  const btns = document.getElementById('btns-' + key);
+  if (el.style.display === 'block') {
+    el.style.display = 'none';
+    if(btns) btns.style.display = 'none';
+    btn.textContent = '展开完整Prompt';
+  } else {
+    el.innerHTML = fillVarsHTML(PROMPTS[key]);
+    el.style.display = 'block';
+    if(btns) btns.style.display = 'flex';
+    btn.textContent = '收起Prompt';
+  }
+}
+
+function updatePrompts() {
+  Object.keys(PROMPTS).forEach(key => {
+    const el = document.getElementById('full-' + key);
+    if (el && el.style.display === 'block') el.innerHTML = fillVarsHTML(PROMPTS[key]);
+  });
+}
+
+function copyPrompt(key) {
+  const text = fillVars(PROMPTS[key]);
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector(`#btns-${key} .btn-copy`);
+    btn.textContent = '✅ 已复制';
+    setTimeout(()=>{ btn.textContent='📋 复制Prompt'; }, 1800);
+  });
+}
+
+function dlPrompt(key, fname) {
+  const text = fillVars(PROMPTS[key]);
+  const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `橙啦公考_${fname}.txt`;
+  a.click();
+}
+</script>
+</body>
+</html>
