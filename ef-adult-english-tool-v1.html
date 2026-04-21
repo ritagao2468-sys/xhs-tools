@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EF成人英语 · 内容洞察 & 笔记Prompt灵感</title>
+<style>
+:root {
+  --green:  #2D6A4F;
+  --green2: #52B788;
+  --green3: #95D5B2;
+  --green4: #D8F3E8;
+  --bg:     #F5F7F5;
+  --white:  #fff;
+  --border: #E0EAE4;
+  --gray:   #6B7C74;
+  --dark:   #1A2E24;
+  --orange: #E8821A;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--dark); font-size: 14px; }
+
+/* ─── Header ─── */
+.header { background: var(--green); padding: 28px 0 22px; }
+.header-inner { max-width: 860px; margin: 0 auto; padding: 0 16px; display: flex; align-items: flex-start; justify-content: space-between; }
+.header-left h1 { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.3; }
+.header-left .sub { font-size: 13px; color: var(--green3); margin-top: 6px; }
+.badge-internal { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 4px 10px; font-size: 11px; white-space: nowrap; margin-top: 4px; }
+
+/* ─── Period Bar ─── */
+.period-bar { background: #1B4332; padding: 8px 0; }
+.period-bar-inner { max-width: 860px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.period-tag { background: var(--green2); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; }
+.period-bar-inner p { color: var(--green3); font-size: 12px; }
+
+/* ─── Container ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+
+/* ─── Section Title ─── */
+.section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.section-num { background: var(--green); color: #fff; border-radius: 50%; width: 26px; height: 26px; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.section-title h2 { font-size: 16px; font-weight: 700; color: var(--dark); }
+
+/* ─── Cards Grid ─── */
+.cards-grid { display: grid; gap: 12px; }
+.cards-2 { grid-template-columns: 1fr 1fr; }
+.cards-4 { grid-template-columns: repeat(4, 1fr); }
+@media(max-width:640px){.cards-2,.cards-4{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.cards-2,.cards-4{grid-template-columns:1fr;}}
+
+.card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.card h3 { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+.card .meta { font-size: 12px; color: var(--gray); line-height: 1.6; }
+.card .tag { display: inline-block; background: var(--green4); color: var(--green); border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 600; margin-bottom: 6px; }
+.card .count { font-size: 20px; font-weight: 700; color: var(--green); line-height: 1.2; }
+.card .count-label { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+/* ─── Section Sep ─── */
+.section-sep { height: 1px; background: var(--border); margin: 28px 0; }
+
+/* ─── 02 Crowd ─── */
+.crowd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media(max-width:580px){.crowd-grid{grid-template-columns:1fr;}}
+.crowd-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.crowd-card .crowd-type { font-size: 11px; font-weight: 700; color: var(--white); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
+.crowd-type.core   { background: var(--green); }
+.crowd-type.high   { background: var(--green2); }
+.crowd-type.extend { background: #E8821A; }
+.crowd-card h3 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.4; }
+.crowd-row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 12px; line-height: 1.5; }
+.crowd-label { flex-shrink: 0; width: 52px; white-space: nowrap; color: var(--gray); }
+.crowd-val { color: var(--dark); }
+.crowd-card a { display: inline-block; margin-top: 10px; font-size: 11px; color: var(--green2); text-decoration: none; border: 1px solid var(--green3); border-radius: 4px; padding: 3px 8px; }
+.crowd-card a:hover { background: var(--green4); }
+.crowd-source-note { font-size: 11px; color: var(--gray); margin-top: 12px; }
+
+/* ─── 03 Keywords ─── */
+.kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:580px){.kw-grid{grid-template-columns:1fr;}}
+
+.kw-list { list-style: none; }
+.kw-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.kw-list li:last-child { border-bottom: none; }
+.kw-rank { color: var(--gray); font-size: 11px; width: 18px; flex-shrink: 0; text-align: right; }
+.kw-rise { background: #FFF0E0; color: var(--orange); border: 1px solid #FFDCB0; border-radius: 4px; padding: 1px 5px; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+.kw-word { flex: 1; color: var(--dark); }
+.kw-vol { font-size: 11px; color: var(--gray); }
+
+.cat-list { list-style: none; }
+.cat-list li { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.cat-list li:last-child { border-bottom: none; }
+.cat-bar-wrap { flex: 1; background: var(--green4); border-radius: 3px; height: 6px; overflow: hidden; }
+.cat-bar { background: var(--green2); height: 100%; border-radius: 3px; }
+.cat-name { font-size: 12px; color: var(--dark); width: 90px; flex-shrink: 0; }
+.cat-pct  { font-size: 12px; color: var(--green); font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
+
+/* ─── 04 Prompt ─── */
+.prompt-group-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--green4); }
+.prompt-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+@media(max-width:640px){.prompt-cards{grid-template-columns:1fr;}}
+
+.prompt-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.prompt-card .p-label { font-size: 10px; font-weight: 700; color: var(--white); background: var(--green); border-radius: 4px; padding: 2px 7px; display: inline-block; margin-bottom: 8px; }
+.prompt-card.b .p-label { background: var(--green2); }
+.prompt-card.c .p-label { background: var(--orange); }
+.prompt-card h4 { font-size: 12px; font-weight: 700; color: var(--dark); margin-bottom: 6px; line-height: 1.4; }
+.prompt-card .p-desc { font-size: 11px; color: var(--gray); line-height: 1.5; margin-bottom: 10px; }
+.btn-expand { background: var(--green4); color: var(--green); border: none; border-radius: 6px; padding: 5px 10px; font-size: 11px; cursor: pointer; font-weight: 600; transition: background .15s; }
+.btn-expand:hover { background: var(--green3); }
+.prompt-full { display: none; margin-top: 10px; font-size: 11.5px; line-height: 1.7; color: var(--dark); white-space: pre-wrap; border-top: 1px solid var(--border); padding-top: 10px; }
+.btn-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.btn-copy, .btn-dl { background: var(--white); border: 1px solid var(--border); border-radius: 5px; padding: 4px 9px; font-size: 11px; cursor: pointer; color: var(--green); font-weight: 600; }
+.btn-copy:hover, .btn-dl:hover { background: var(--green4); }
+
+/* ─── Var inputs ─── */
+.var-section { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+.var-section h3 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+.var-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+@media(max-width:580px){.var-grid{grid-template-columns:1fr;}}
+.var-field label { display: block; font-size: 11px; color: var(--gray); margin-bottom: 4px; font-weight: 600; }
+.var-field input { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 12px; color: var(--dark); background: var(--bg); }
+.var-field input:focus { outline: none; border-color: var(--green2); background: var(--white); }
+
+/* ─── Highlight ─── */
+em.var-highlight { background:#FFF3CD; color:#B45309; font-weight:700; border-radius:4px; padding:0 3px; font-style:normal; }
+em.var-filled    { background:#D8F3E8; color:#2D6A4F; font-weight:700; border-radius:4px; padding:0 3px; font-style:normal; }
+
+/* ─── Float btn ─── */
+.float-btn { position: fixed; bottom: 28px; right: 24px; background: var(--green); color: #fff; border: none; border-radius: 50px; padding: 10px 18px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(45,106,79,0.35); z-index: 99; }
+.float-btn:hover { background: #1B4332; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>EF成人英语 · 内容洞察 &amp; 笔记Prompt灵感</h1>
+      <div class="sub">适用于聚光图文笔记 · EF英孚成人英语定制版</div>
+    </div>
+    <div class="badge-internal">仅限内部使用</div>
+  </div>
+</div>
+
+<div class="period-bar">
+  <div class="period-bar-inner">
+    <span class="period-tag">成人英语赛道</span>
+    <p>行业笔记近60天 · 热搜词近30天 · 灵犀热点近7天 · 如需更新请联系运营同学</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ░░ 01 数据来源 ░░ -->
+  <div class="section-title">
+    <div class="section-num">01</div>
+    <h2>数据来源</h2>
+  </div>
+  <div class="cards-grid cards-4">
+    <div class="card">
+      <div class="tag">行业优质笔记</div>
+      <div class="count">50条</div>
+      <div class="count-label">成人英语赛道高消耗高CTR</div>
+      <div class="meta" style="margin-top:8px">近60天消耗&gt;200 · CTR&gt;3%<br>已过滤少儿/高考/考研相关</div>
+    </div>
+    <div class="card">
+      <div class="tag">品牌自身笔记</div>
+      <div class="count">30条</div>
+      <div class="count-label">EF英孚 / EF成人英语</div>
+      <div class="meta" style="margin-top:8px">近60天消耗&gt;500 · CTR&gt;3%<br>自身投放跑通内容已识别</div>
+    </div>
+    <div class="card">
+      <div class="tag">社区热搜词</div>
+      <div class="count">500+词</div>
+      <div class="count-label">多维度分类打标</div>
+      <div class="meta" style="margin-top:8px">识别搜索意图 · 覆盖口语/商务/职场/自学等细分方向</div>
+    </div>
+    <div class="card">
+      <div class="tag">灵犀社区热点</div>
+      <div class="count">38篇</div>
+      <div class="count-label">成人英语/商务英语/英语口语</div>
+      <div class="meta" style="margin-top:8px">近7天高互动社区笔记 · 真实内容趋势参考</div>
+    </div>
+  </div>
+
+  <div class="section-sep"></div>
+
+  <!-- ░░ 02 核心人群图谱 ░░ -->
+  <div class="section-title">
+    <div class="section-num">02</div>
+    <h2>核心人群图谱</h2>
+  </div>
+  <div class="crowd-grid">
+
+    <div class="crowd-card">
+      <span class="crowd-type core">核心人群</span>
+      <h3>成人英语兴趣人群</h3>
+      <div class="crowd-row"><span class="crowd-label">人群特征</span><span class="crowd-val">对成人英语存在明确兴趣，有阅读/搜索/留资等内容消费行为</span></div>
+      <div class="crowd-row"><span class="crowd-label">覆盖意图</span><span class="crowd-val">零基础学英语、职场英语、商务英语</span></div>
+      <div class="crowd-row"><span class="crowd-label">内容方向</span><span class="crowd-val">打工人英语焦虑 · 职场全英沟通需求 · EF口碑种草</span></div>
+      <a href="https://idea.devops.xiaohongshu.com/idea/creativity/crowd/detail?groupId=18167878" target="_blank">🔗 查看灵犀画像</a>
+    </div>
+
+    <div class="crowd-card">
+      <span class="crowd-type high">高价值人群</span>
+      <h3>语言培训·成人英语决策人群</h3>
+      <div class="crowd-row"><span class="crowd-label">人群特征</span><span class="crowd-val">处于语言培训购买决策阶段，关注机构对比与课程质量</span></div>
+      <div class="crowd-row"><span class="crowd-label">决策关注</span><span class="crowd-val">价格/效果/教学法/1对1 vs 大班课</span></div>
+      <div class="crowd-row"><span class="crowd-label">内容方向</span><span class="crowd-val">TTT教学法种草 · 12堂课见效数据 · 机构横评</span></div>
+      <a href="https://idea.devops.xiaohongshu.com/idea/creativity/crowd/detail?groupId=18286962" target="_blank">🔗 查看灵犀画像</a>
+    </div>
+
+    <div class="crowd-card">
+      <span class="crowd-type extend">潜在破圈人群</span>
+      <h3>外企工作者 / 外企向往者</h3>
+      <div class="crowd-row"><span class="crowd-label">人群特征</span><span class="crowd-val">在外企工作或对外企工作感兴趣，全英环境强需求</span></div>
+      <div class="crowd-row"><span class="crowd-label">核心痛点</span><span class="crowd-val">会议说不出口 · 邮件写不好 · 升职受英语卡</span></div>
+      <div class="crowd-row"><span class="crowd-label">内容方向</span><span class="crowd-val">商务英语34话题场景化 · 外企打工人通勤vlog</span></div>
+      <a href="https://idea.devops.xiaohongshu.com/idea/creativity/crowd/detail?groupId=17953097" target="_blank">🔗 查看灵犀画像</a>
+    </div>
+
+  </div>
+  <p class="crowd-source-note">人群数据来源：灵犀人群市场 · 算法模型识别 · 共匹配3个相关人群包</p>
+
+  <div class="section-sep"></div>
+
+  <!-- ░░ 03 飙升词汇 & 热门词汇 ░░ -->
+  <div class="section-title">
+    <div class="section-num">03</div>
+    <h2>飙升词汇 &amp; 热门词汇</h2>
+  </div>
+  <div class="kw-grid">
+    <!-- 左：飙升词 -->
+    <div class="card" style="padding:16px">
+      <h3 style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:12px">🔥 飙升关键词 · TOP 8</h3>
+      <ul class="kw-list">
+        <li><span class="kw-rank">1</span><span class="kw-rise">↑飙升</span><span class="kw-word">ai英语口语陪练</span><span class="kw-vol">新兴热搜</span></li>
+        <li><span class="kw-rank">2</span><span class="kw-rise">↑飙升</span><span class="kw-word">豆包练英语口语</span><span class="kw-vol">AI工具蔓延</span></li>
+        <li><span class="kw-rank">3</span><span class="kw-rise">↑飙升</span><span class="kw-word">英语口语搭子</span><span class="kw-vol">社交陪练需求</span></li>
+        <li><span class="kw-rank">4</span><span class="kw-rise">↑飙升</span><span class="kw-word">ef成人英语</span><span class="kw-vol">品牌词快速增长</span></li>
+        <li><span class="kw-rank">5</span><span class="kw-rise">↑飙升</span><span class="kw-word">英孚成人英语怎么样</span><span class="kw-vol">口碑/评价需求</span></li>
+        <li><span class="kw-rank">6</span><span class="kw-rise">↑飙升</span><span class="kw-word">外贸英语口语日常交流用语</span><span class="kw-vol">外贸场景细分</span></li>
+        <li><span class="kw-rank">7</span><span class="kw-rise">↑飙升</span><span class="kw-word">英语口语复试自我介绍</span><span class="kw-vol">春招季应届需求</span></li>
+        <li><span class="kw-rank">8</span><span class="kw-rise">↑飙升</span><span class="kw-word">成人英语口语怎么学最快</span><span class="kw-vol">效率需求</span></li>
+      </ul>
+    </div>
+    <!-- 右：搜索意图分类 -->
+    <div class="card" style="padding:16px">
+      <h3 style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:12px">📊 搜索意图分类分布</h3>
+      <ul class="cat-list">
+        <li>
+          <span class="cat-name">口语练习/提升</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:38%"></div></div>
+          <span class="cat-pct">38%</span>
+        </li>
+        <li>
+          <span class="cat-name">商务/职场英语</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:24%"></div></div>
+          <span class="cat-pct">24%</span>
+        </li>
+        <li>
+          <span class="cat-name">机构/课程对比</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:14%"></div></div>
+          <span class="cat-pct">14%</span>
+        </li>
+        <li>
+          <span class="cat-name">自学方法/工具</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:12%"></div></div>
+          <span class="cat-pct">12%</span>
+        </li>
+        <li>
+          <span class="cat-name">出国/旅游英语</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:7%"></div></div>
+          <span class="cat-pct">7%</span>
+        </li>
+        <li>
+          <span class="cat-name">品牌评价/口碑</span>
+          <div class="cat-bar-wrap"><div class="cat-bar" style="width:5%"></div></div>
+          <span class="cat-pct">5%</span>
+        </li>
+      </ul>
+      <div style="margin-top:12px; font-size:11px; color:var(--gray)">
+        热门词 Top3：英语口语练习（37.6万）· 商务英语（5.9万）· 成人英语培训班（7.3K）
+      </div>
+    </div>
+  </div>
+
+  <div class="section-sep"></div>
+
+  <!-- ░░ 04 笔记创作 Prompt ░░ -->
+  <div class="section-title">
+    <div class="section-num">04</div>
+    <h2>笔记创作 Prompt</h2>
+  </div>
+
+  <!-- 变量填写区 -->
+  <div class="var-section">
+    <h3>✏️ 填入你的参数，Prompt 自动定制</h3>
+    <div class="var-grid">
+      <div class="var-field">
+        <label>热门关键词 {{KEYWORDS}}</label>
+        <input type="text" id="v-kw" placeholder="如：英语口语 / 商务英语 / 职场英语" oninput="updatePrompts()">
+      </div>
+      <div class="var-field">
+        <label>品牌/产品名称 {{BRAND}}</label>
+        <input type="text" id="v-brand" value="EF英孚" oninput="updatePrompts()">
+      </div>
+      <div class="var-field">
+        <label>品牌优势 {{ADVANTAGES}}</label>
+        <input type="text" id="v-adv" value="1对1在线私教·EF Efekta教学法·12堂课见效·职场商务英语" oninput="updatePrompts()">
+      </div>
+    </div>
+  </div>
+
+  <!-- A 组 -->
+  <div class="prompt-group-title">🌱 A组 — 先种后收（内容种草，品牌自然渗透）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-A1">
+      <span class="p-label">A1 · 生活/场景钩子型</span>
+      <h4>职场/出行场景引发共鸣，暗线带出口语蜕变</h4>
+      <div class="p-desc">钩子：具体生活/职场高压场景 → 情绪共鸣 → 自然带出 EF 的角色扮演课，品牌出现≤2次</div>
+      <button class="btn-expand" onclick="toggleFull('A1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-A1"></div>
+      <div class="btn-row" style="display:none" id="btns-A1">
+        <button class="btn-copy" onclick="copyPrompt('A1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('A1','A1-场景钩子型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-A2">
+      <span class="p-label">A2 · 价格/资源汇总型</span>
+      <h4>帮用户搞懂成人英语的价格体系，像闺蜜推荐</h4>
+      <div class="p-desc">核心卖点：帮用户看懂"1388/月的1对1到底值不值"，结尾引导私信/体验课</div>
+      <button class="btn-expand" onclick="toggleFull('A2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-A2"></div>
+      <div class="btn-row" style="display:none" id="btns-A2">
+        <button class="btn-copy" onclick="copyPrompt('A2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('A2','A2-价格汇总型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-A3">
+      <span class="p-label">A3 · 外企邮件/书面场景型</span>
+      <h4>邮件写不好这个卡点，比口语更真实、更具体</h4>
+      <div class="p-desc">针对外企向往者：不主动提"学英语"，而是说"解决了一个职场卡点"，EF出现极晚极轻</div>
+      <button class="btn-expand" onclick="toggleFull('A3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-A3"></div>
+      <div class="btn-row" style="display:none" id="btns-A3">
+        <button class="btn-copy" onclick="copyPrompt('A3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('A3','A3-真实经历型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- B 组 -->
+  <div class="prompt-group-title">📝 B组 — 软文笔记（攻略感强，收藏率优先）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card b" id="card-B1">
+      <span class="p-label">B1 · 攻略拆解型</span>
+      <h4>如何从零开始系统练成人英语口语的完整攻略</h4>
+      <div class="p-desc">结构感强，给出可直接用的话术/清单，收藏率优先，适配信息流冷启动</div>
+      <button class="btn-expand" onclick="toggleFull('B1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-B1"></div>
+      <div class="btn-row" style="display:none" id="btns-B1">
+        <button class="btn-copy" onclick="copyPrompt('B1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('B1','B1-攻略拆解型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card b" id="card-B2">
+      <span class="p-label">B2 · 机构测评型</span>
+      <h4>几家成人英语口语机构横评，最后自然推荐EF</h4>
+      <div class="p-desc">结论先行，竞品用"某平台""某机构"代称，突出EF Efekta教学法和1对1优势</div>
+      <button class="btn-expand" onclick="toggleFull('B2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-B2"></div>
+      <div class="btn-row" style="display:none" id="btns-B2">
+        <button class="btn-copy" onclick="copyPrompt('B2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('B2','B2-机构测评型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card b" id="card-B3">
+      <span class="p-label">B3 · 搜索承接型</span>
+      <h4>直接命中「成人英语口语怎么学最快」搜索意图</h4>
+      <div class="p-desc">标题直接命中热搜词，内容精准回答搜索意图，适配搜索场域高意图人群</div>
+      <button class="btn-expand" onclick="toggleFull('B3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-B3"></div>
+      <div class="btn-row" style="display:none" id="btns-B3">
+        <button class="btn-copy" onclick="copyPrompt('B3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('B3','B3-搜索承接型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- G 组 -->
+  <div class="prompt-group-title">🌿 G组 — 品牌官号·先种后收（官号视角，内容价值在前，品牌轻触在后）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-G1">
+      <span class="p-label" style="background:#2D6A4F">G1 · 学员故事型</span>
+      <h4>以"一个学员的经历"为主体，EF只作配角出现一次</h4>
+      <div class="p-desc">官号视角讲述真实学员故事，品牌≤1次出现，末尾轻CTA——适合信息流，互动量和收藏兼顾</div>
+      <button class="btn-expand" onclick="toggleFull('G1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-G1"></div>
+      <div class="btn-row" style="display:none" id="btns-G1">
+        <button class="btn-copy" onclick="copyPrompt('G1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('G1','G1-学员故事型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-G2">
+      <span class="p-label" style="background:#2D6A4F">G2 · 场景观察型</span>
+      <h4>"我们注意到一个现象" — 官号以洞察视角切入，品牌是结论</h4>
+      <div class="p-desc">职场英语真实痛点场景观察，用"我们发现"视角输出，EF方案在最后自然落地，不推销</div>
+      <button class="btn-expand" onclick="toggleFull('G2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-G2"></div>
+      <div class="btn-row" style="display:none" id="btns-G2">
+        <button class="btn-copy" onclick="copyPrompt('G2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('G2','G2-场景观察型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-G3">
+      <span class="p-label" style="background:#2D6A4F">G3 · 数据钩子型</span>
+      <h4>以"75%学员12堂课见效"数据开场，先解构原因再落品牌</h4>
+      <div class="p-desc">数据是钩子，不是结论——先说"为什么多数人学英语没效果"，最后用数据说明EF解法，不强推课程</div>
+      <button class="btn-expand" onclick="toggleFull('G3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-G3"></div>
+      <div class="btn-row" style="display:none" id="btns-G3">
+        <button class="btn-copy" onclick="copyPrompt('G3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('G3','G3-数据钩子型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- D 组 -->
+  <div class="prompt-group-title">🏢 D组 — 品牌官号·干货型（搜索场域，收藏率优先）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-D1">
+      <span class="p-label" style="background:#1A5276">D1 · 英语学习误区型</span>
+      <h4>官号揭示"成人学英语没效果"的真实原因</h4>
+      <div class="p-desc">承接热搜「成人学英语」，以专业机构视角输出方法论，Efekta教学法自然落地，认知积累型</div>
+      <button class="btn-expand" onclick="toggleFull('D1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-D1"></div>
+      <div class="btn-row" style="display:none" id="btns-D1">
+        <button class="btn-copy" onclick="copyPrompt('D1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('D1','D1-误区干货型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-D2">
+      <span class="p-label" style="background:#1A5276">D2 · 商务英语场景攻略型</span>
+      <h4>官号发布"职场英语最怕的5个真实场景"攻略</h4>
+      <div class="p-desc">承接热搜「商务英语」「英语口语」，覆盖会议/邮件/汇报/谈判等职场场景，收藏率优先，品牌认知沉淀</div>
+      <button class="btn-expand" onclick="toggleFull('D2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-D2"></div>
+      <div class="btn-row" style="display:none" id="btns-D2">
+        <button class="btn-copy" onclick="copyPrompt('D2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('D2','D2-商务场景型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-D3">
+      <span class="p-label" style="background:#1A5276">D3 · 选课标准干货型</span>
+      <h4>官号给出"成人英语选课的3个判断维度"</h4>
+      <div class="p-desc">反向建立信任：不直接推荐自家，给选课判断框架，EF优势自然映射进每个维度，信任感极强</div>
+      <button class="btn-expand" onclick="toggleFull('D3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-D3"></div>
+      <div class="btn-row" style="display:none" id="btns-D3">
+        <button class="btn-copy" onclick="copyPrompt('D3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('D3','D3-选课标准型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- E 组 -->
+  <div class="prompt-group-title">🎬 E组 — 品牌官号·产品展示型（信任感建立，信息流优先）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-E1">
+      <span class="p-label" style="background:#6E2F8E">E1 · 1v1上课过程展示型</span>
+      <h4>还原一节EF 1v1私教课的真实上课体验</h4>
+      <div class="p-desc">让用户"看到"Efekta TTT教学如何运转：测→教→再测，具体细节建立信任，不说"效果好"只呈现过程</div>
+      <button class="btn-expand" onclick="toggleFull('E1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-E1"></div>
+      <div class="btn-row" style="display:none" id="btns-E1">
+        <button class="btn-copy" onclick="copyPrompt('E1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('E1','E1-上课展示型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-E2">
+      <span class="p-label" style="background:#6E2F8E">E2 · 学员画像匹配型</span>
+      <h4>"哪种人适合EF 1v1" — 反向排除精准筛选</h4>
+      <div class="p-desc">诚实说明不适合人群（有大量时间自学+基础扎实），让真正需要的人自我识别并主动留资</div>
+      <button class="btn-expand" onclick="toggleFull('E2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-E2"></div>
+      <div class="btn-row" style="display:none" id="btns-E2">
+        <button class="btn-copy" onclick="copyPrompt('E2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('E2','E2-学员画像型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-E3">
+      <span class="p-label" style="background:#6E2F8E">E3 · 教学法拆解型</span>
+      <h4>深度展示EF Efekta/TTT教学法的运转逻辑</h4>
+      <div class="p-desc">科普视角：用"为什么死记硬背没用"切入，拆解TTT三步法如何解决这个问题，专业感建立信任</div>
+      <button class="btn-expand" onclick="toggleFull('E3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-E3"></div>
+      <div class="btn-row" style="display:none" id="btns-E3">
+        <button class="btn-copy" onclick="copyPrompt('E3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('E3','E3-教学法拆解型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- F 组 -->
+  <div class="prompt-group-title">💬 F组 — 品牌官号·UGC激活型（评论区截流，账号活跃度）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card" id="card-F1">
+      <span class="p-label" style="background:#B7470A">F1 · 英语水平自测型</span>
+      <h4>"你的英语现在是什么水平？" — 评论区打卡</h4>
+      <div class="p-desc">发起英语级别自测互动，EF通用英语16级别体系自然带出，评论区截流高意向用户</div>
+      <button class="btn-expand" onclick="toggleFull('F1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-F1"></div>
+      <div class="btn-row" style="display:none" id="btns-F1">
+        <button class="btn-copy" onclick="copyPrompt('F1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('F1','F1-水平自测型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-F2">
+      <span class="p-label" style="background:#B7470A">F2 · 职场英语痛点收集型</span>
+      <h4>"你最怕哪种职场英语场景？" — 评论区收集痛点</h4>
+      <div class="p-desc">发起职场英语困难场景投票，官号在评论区给具体建议，私信引导到免费体验课</div>
+      <button class="btn-expand" onclick="toggleFull('F2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-F2"></div>
+      <div class="btn-row" style="display:none" id="btns-F2">
+        <button class="btn-copy" onclick="copyPrompt('F2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('F2','F2-痛点收集型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="card-F3">
+      <span class="p-label" style="background:#B7470A">F3 · 学习进度打卡型</span>
+      <h4>"学英语多久了？说说你现在在哪个阶段"</h4>
+      <div class="p-desc">发起学习阶段打卡互动，承接"成人学英语"各阶段用户，评论区精准识别高意向人群后私信跟进</div>
+      <button class="btn-expand" onclick="toggleFull('F3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-F3"></div>
+      <div class="btn-row" style="display:none" id="btns-F3">
+        <button class="btn-copy" onclick="copyPrompt('F3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('F3','F3-进度打卡型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- C 组 -->
+  <div class="prompt-group-title">📣 C组 — 硬广笔记（转化导向，每句话为留资服务）</div>
+  <div class="prompt-cards">
+
+    <div class="prompt-card c" id="card-C1">
+      <span class="p-label">C1 · 价格/报价引导型</span>
+      <h4>价格数字必须在标题，直接拉留资意图</h4>
+      <div class="p-desc">字数160-210字，封面必须有价格数字，适合"有想学成人英语吗？"类起手</div>
+      <button class="btn-expand" onclick="toggleFull('C1')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-C1"></div>
+      <div class="btn-row" style="display:none" id="btns-C1">
+        <button class="btn-copy" onclick="copyPrompt('C1')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('C1','C1-价格引导型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card c" id="card-C2">
+      <span class="p-label">C2 · 平台差异化/保障型</span>
+      <h4>突出EF Efekta教学法专业性，建立信任感</h4>
+      <div class="p-desc">从"为什么大多数人学英语没效果"切入，解释TTT教学步骤，末尾引导体验课</div>
+      <button class="btn-expand" onclick="toggleFull('C2')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-C2"></div>
+      <div class="btn-row" style="display:none" id="btns-C2">
+        <button class="btn-copy" onclick="copyPrompt('C2')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('C2','C2-专业保障型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+    <div class="prompt-card c" id="card-C3">
+      <span class="p-label">C3 · 限时活动/权益引导型</span>
+      <h4>优惠数字 + 名额有限，强留资导向</h4>
+      <div class="p-desc">优惠要有具体数字，"名额有限"要真实，禁止"立即报名"等强迫话术，引导私信</div>
+      <button class="btn-expand" onclick="toggleFull('C3')">展开完整Prompt</button>
+      <div class="prompt-full" id="full-C3"></div>
+      <div class="btn-row" style="display:none" id="btns-C3">
+        <button class="btn-copy" onclick="copyPrompt('C3')">📋 复制Prompt</button>
+        <button class="btn-dl" onclick="dlPrompt('C3','C3-限时权益型')">⬇ 下载txt</button>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /container -->
+
+<button class="float-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆ 回到顶部</button>
+
+<script>
+// ─── Prompt 数据 ───
+const PROMPTS = {
+
+A1: `🎭 角色设定
+你是一个在外企工作三年的打工人，英语一直是最大的职场瓶颈。用第一人称、口语化语气写小红书笔记。
+
+📌 主题
+在Teams/Zoom会议上突然被外国同事点名发言的那一刻，语言崩塌 → 下定决心改变 → 三个月后主动用英语主持会议的真实历程。品牌角色：改变的那个关键转折点，自然带出，出现≤2次。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 窘境型：「在外企开会被点名，我当场emo了」（效果：共鸣点强，讨论量高）
+② 成果型：「三个月后，我居然开始用英语开会了」（效果：正向期待，收藏率高）
+③ 对比型：「同样是打工人，她的英语和我差距在哪」（效果：好奇心强，CTR高）
+
+写3个结语候选（方向各不相同）：
+① 成果展示类：「现在再被外国同事点名，我已经不怕了」
+② 情感共鸣类：「可能很多人都有过那种说不出口的瞬间，你不是一个人」
+③ 提问互动类：「你有没有类似的职场英语窘境？评论区说说」
+
+◎ CTK建议：信息流 · 封面用真实感强的对话截图风格，配"在会议室说不出口那一刻"的场景感文字
+
+📝 正文结构（350-500字）
+第一幕（100字）：还原那个英语崩塌的瞬间，有细节，有对话，有窘迫感
+第二幕（150字）：转折——如何遇到{{BRAND}}，为什么选1对1而不是自学或大班课（{{ADVANTAGES}}）
+第三幕（200字）：EF Efekta课堂是什么感觉：老师先Test水平，再有针对性Teach，最后Task角色扮演——像真实会议场景练习，进步看得见
+结尾CTA：「感兴趣的来评论区/私信，把体验课信息发给你」
+
+⚠️ 禁止：杜撰具体数字；禁止说"立竿见影""包会"；{{BRAND}}出现不超过2次`,
+
+A2: `🎭 角色设定
+你是一个已经比较过5家成人英语机构、最终选了EF的职场人，用闺蜜分享的口吻写。语气温暖但有信息密度。
+
+📌 主题
+帮用户看懂"成人英语机构价格为什么差这么多"——从大班课、AI陪练、到1对1外教课的价格区间和学习效果，最后落到{{BRAND}}的性价比判断上。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 价格揭秘型：「成人英语口语机构价格表，我替你比了」（效果：收藏率高）
+② 问题切入型：「为什么我不推荐用AI练英语口语」（效果：争议感强，讨论量高）
+③ 结论先行型：「同样是学商务英语，贵的真的值吗？」（效果：搜索承接强）
+
+写3个结语候选：
+① 「希望这份对比对你有用，选机构别踩我踩过的坑」
+② 「其实比价格更重要的是——你适合哪种学习方式」
+③ 「不知道怎么选的，评论区说下你的情况，帮你分析」
+
+◎ CTK建议：搜索场域 · 封面用价格对比表格风格，直接呈现数字
+
+📝 正文结构（400-550字）
+第一段（80字）：结论先行——哪类人适合自学、哪类人必须上课
+第二段（150字）：价格梯队：AI工具（免费-百元）→ 大班课（几百/月）→ 1对1（千元级）→ 各自适合什么人
+第三段（150字）：{{BRAND}}{{ADVANTAGES}}——为什么1对1+EF Efekta教学法能让75%的学生12堂课见到进步（用数据说话）
+第四段（120字）：帮用户做选择题：「如果你是外企打工人/要升职/要出国」→ 给出具体建议
+结尾CTA：「想了解{{BRAND}}具体课程安排的，私信我发体验课信息」
+
+⚠️ 禁止：具体竞品点名；禁止说"绝对最好"；价格数字用区间而非精确值`,
+
+A3: `🎭 角色设定
+你是一个在外企工作的职场人，不是"学英语博主"，是一个解决了具体职场问题的普通人。用第一人称、日记口吻写，不提"我在学英语"，只说"我解决了一个一直卡着我的问题"。
+
+📌 主题
+针对外企向往者/外企打工人的核心痛点：英文邮件写不好，是比口语更日常、更暴露真实水平的卡点。
+三幕结构——
+第一幕：一封英文邮件让我在领导面前出了糗（具体场景，不夸张）
+第二幕：决定认真面对这件事，如何接触{{BRAND}}的商务英语模块（EF 34个商务话题，涵盖邮件/会议/谈判），品牌只在这里出现1次
+第三幕：现在的变化——不是"英语变好了"，是"发邮件不再拖延、不再让ChatGPT全部重写了"，用具体细节说
+
+核心逻辑：外企向往者不认为自己需要"学英语"，他们需要"解决职场卡点"。EF是工具，不是目的。
+
+✏️ 标题写法（15字以内，不强行带{{KEYWORDS}}，自然融入外企场景）
+从以下3个方向选一个：
+① 窘境型：「我发了一封英文邮件，被转发给了整个团队」（效果：外企人强共鸣，讨论量高）
+② 反思型：「在外企工作三年，英语一直是我不敢提的事」（效果：情感钩子，收藏率高）
+③ 结果型：「现在发英文邮件，我不再需要ChatGPT帮我重写了」（效果：真实感强，正向期待）
+
+写3个结语候选：
+① 「可能职场英语这件事，从来不是能不能学好，而是有没有认真对待过」
+② 「如果你也有过那种发完邮件就开始后悔的感觉，评论区说说」
+③ 「不一定要学到"流利"，先解决卡你最久的那个点就够了」
+
+◎ CTK建议：信息流 · 封面用"外企打工人真实日记"风格，可用邮件界面截图作为视觉钩子，配场景感文字，避免精修感
+
+📝 正文结构（400-500字）
+第一幕（120字）：还原邮件窘境的具体细节——写了两小时、让ChatGPT全部推翻、或者被老外同事礼貌纠正，有具体对话或截图感描述
+第二幕（130字）：决定系统解决这个问题的过程——为什么选{{BRAND}}的商务英语方向（34个话题覆盖邮件/会议/谈判场景，{{ADVANTAGES}}），EF Efekta的Task环节直接练真实邮件写法
+第三幕（180字）：现在的状态——不说"英语变好了"，说具体变化：发邮件不再拖、不再全部依赖工具、在meeting上能接话了，给出一个可量化的进步节点
+结尾CTA：「有类似情况的，私信我，把我用的那套商务英语课程信息发给你」
+
+⚠️ 禁止：不要出现"学英语"作为主题词；品牌出现不超过1次；不要夸大成"英语完全好了"，只说解决了一个具体卡点；禁止ChatGPT负面影射（只是用作对比，不是批判）`,
+
+B1: `🎭 角色设定
+你是一个系统学过成人英语、擅长整理方法论的职场博主，用干货攻略风格写。
+
+📌 主题
+「成人零基础/口语哑巴」系统提升英语口语的全路径：从选择学法→练习素材→克服开口障碍→进入真实对话场景，{{BRAND}}的{{ADVANTAGES}}作为推荐选项之一自然出现。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 方法论型：「打工人练{{KEYWORDS}}，3步绕开90%的弯路」（效果：收藏率高）
+② 痛点型：「英语口语提升最快的方式，没有之一」（效果：高CTR，对标行业Top笔记）
+③ 清单型：「成人英语口语从哑巴到流利，我用了这套方法」（效果：结构感强，搜索承接好）
+
+写3个结语候选：
+① 「方法说完了，剩下的就是坚持，没有捷径但有近路」
+② 「每个阶段卡住了欢迎来评论区提问」
+③ 「收藏了记得去用，不然只是给收藏夹添砖加瓦」
+
+◎ CTK建议：搜索+信息流双场域 · 封面用分步骤清单设计，图文结合
+
+📝 正文结构（500-700字）
+第一段（60字）：结论先行——成人口语提升最大的坑是什么（"学了很多但不敢开口"）
+第二段（200字）：三个阶段详解
+ · 阶段一（突破开口恐惧）：具体练法 + 工具推荐
+ · 阶段二（建立语感）：推荐素材来源 + 练习频率
+ · 阶段三（进入真实对话场景）：为什么要找真人练，{{BRAND}}的角色扮演课如何补这个缺口（TTT任务式教学）
+第三段（150字）：给不同阶段的人的分级建议（0基础/有基础但不敢开口/职场需求者）
+第四段（100字）：推荐工具/资源清单（包含{{BRAND}}作为1对1选项）
+结尾CTA：「想知道哪个阶段适合上1对1的，评论区问我」
+
+⚠️ 禁止：笼统说"多练就好"；建议必须有具体可执行动作；{{BRAND}}只作为推荐之一`,
+
+B2: `🎭 角色设定
+你是一个认真比较过市面上主要成人英语口语机构的职场人，用测评博主视角写。结论先行，有自己的判断。
+
+📌 主题
+横评几家成人英语机构：大班课机构（用"某机构"代称）vs AI陪练工具 vs {{BRAND}}1对1，从教学方法/适合人群/进步速度三个维度比较，最后自然推荐{{BRAND}}。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 测评型：「几家{{KEYWORDS}}机构横评，我帮你踩雷了」（效果：CTR和收藏率均高）
+② 结论型：「学商务英语，我为什么不推荐大班课」（效果：争议感强，讨论量高）
+③ 问题型：「{{KEYWORDS}}机构怎么选？避开这几个坑」（效果：搜索承接强）
+
+写3个结语候选：
+① 「选哪家取决于你的目标，如果你想快速用英语解决职场问题，{{BRAND}}是我目前见过最对路的」
+② 「其实选机构没有最好的，只有最适合你当前阶段的」
+③ 「你在学哪家的？评论区交流一下，说不定有更好的推荐」
+
+◎ CTK建议：搜索场域优先 · 封面用对比表格或打分卡设计，信息密度高
+
+📝 正文结构（500-650字）
+第一段（80字）：结论先行——不同类型人适合哪种学法（一句话版本）
+第二段（300字）：三家横评（用表格或分项比较）
+ · 某大班课机构：价格低/人多/进度快但口语练习少
+ · AI陪练工具：灵活/便宜/但缺乏真实反馈和纠错
+ · {{BRAND}}：{{ADVANTAGES}}，EF Efekta教学法（Test-Teach-Task）让每堂课都在真实场景练习，132个通用话题+34个商务话题覆盖
+第三段（150字）：给不同需求人群的选法建议（出国/升职/外企日常）
+第四段（80字）：个人结论
+结尾CTA：「想了解{{BRAND}}体验课的，私信我」
+
+⚠️ 禁止：竞品点名；夸大效果；价格一定要用区间，不要精确数字`,
+
+B3: `🎭 角色设定
+你是一个已经解决了"成人英语口语怎么学最快"这个问题的职场人，用经验分享者视角写。语言精准，结构清晰。
+
+📌 主题
+精准回答搜索词「成人英语口语怎么学最快」——给出最有效率的学习路径，结合{{BRAND}}的1对1教学体验，展示为什么"自己练"慢但"有人带练"快。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 直击搜索词：「成人英语口语怎么学最快？我亲测了3种方法」（效果：搜索承接最强）
+② 反常识型：「越努力背单词，口语进步越慢」（效果：好奇心强，信息流CTR高）
+③ 数字钩子型：「12堂课见到口语进步，真的可能吗？」（效果：引用EF数据，真实感强）
+
+写3个结语候选：
+① 「口语学习没有最快，只有最适合你的方式」
+② 「如果你也在找最有效的方法，希望这篇对你有用」
+③ 「你现在用的是哪种方法？评论区聊聊进展」
+
+◎ CTK建议：搜索场域 · 封面直接用"最快提升口语的X步"作为标题，信息密度高
+
+📝 正文结构（400-550字）
+第一段（60字）：结论先行——口语最快进步的核心不是背单词，是"在真实场景开口"
+第二段（200字）：三种方法对比
+ · 方法一（自学/刷视频）：优势/局限
+ · 方法二（大班课）：优势/局限（口语练习时间有限）
+ · 方法三（1对1真人课）：{{BRAND}}的TTT结构，每节课都是真实场景角色扮演，老师即时反馈，{{ADVANTAGES}}
+第三段（150字）：适合1对1的人群画像（打工人/有明确职场目标/想快速见效）
+第四段（80字）：EF实际效果数据：75%学生12堂课内见到口语进步
+结尾CTA：「想试试1对1的，私信/评论区说下你的英语目标，帮你推荐合适的课程」
+
+⚠️ 禁止：数据必须用75%这个真实数据，不得编造；禁止绝对化表述`,
+
+C1: `🎭 角色设定
+你是{{BRAND}}的内容运营，写一篇以价格为核心吸引点的硬广笔记，直接转化高意图用户。
+
+📌 主题
+用价格数字作为第一吸引点——{{BRAND}}1对1在线私人会话课的报名信息，含课程结构和优惠，引导用户私信留资。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 价格直给型：「有想学{{KEYWORDS}}吗？1对1报名这里」（效果：高意图直接点击）
+② 招募型：「拯救哑巴英语！有人要来学{{KEYWORDS}}吗」（效果：对标行业Top广告语）
+③ 问句型：「你的英语口语，值得被一对一认真对待」（效果：情感钩子，拉高好感度）
+
+封面必须包含：价格区间 + 核心卖点（1对1/EF Efekta/12堂课见效）
+
+◎ CTK建议：信息流+搜索双投 · 封面文字：价格数字醒目，配课堂截图或外教互动场景
+
+📝 正文结构（160-210字，每句话都为留资服务）
+第一句：点明是什么课（{{BRAND}} 1对1在线私人会话课）
+第二段：核心卖点3点——① EF Efekta教学法（Test-Teach-Task，角色扮演真实场景）② 通用132话题+商务34话题 ③ 75%学生12堂课见到进步
+第三段：适合人群（打工人/外企/想升职/出国）
+第四段：限时说明（如有优惠活动则带上）
+结尾CTA：「感兴趣的私信我，发你具体课表和价格」
+
+⚠️ 禁止：夸大效果；禁止"立即报名"等强迫话术；禁止编造课程数据`,
+
+C2: `🎭 角色设定
+你是{{BRAND}}的专业顾问，用科普+专业视角写一篇建立信任感的硬广笔记，适合还在对比、还没决定的用户。
+
+📌 主题
+从"为什么大多数成人英语学了多年没效果"的痛点出发 → 解释EF Efekta教学法（TTT三步骤）→ 说明为什么这套方法比传统大班课/自学更有效 → 引导体验课。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 痛点型：「学了这么久{{KEYWORDS}}，为什么还是说不出口」（效果：痛点共鸣，CTR高）
+② 方法论型：「EF Efekta教学法，为什么75%学生12堂课见效」（效果：数据吸引，信任感强）
+③ 问题型：「你的英语口语没进步，可能是方法根本不对」（效果：建立优越感，讨论量高）
+
+◎ CTK建议：信息流 · 封面用"TTT教学步骤图"或"课堂互动截图"，建立专业感
+
+📝 正文结构（300-400字）
+第一段（80字）：点名痛点——"学了很多年英语，一开口还是哑巴"，分析根本原因（缺乏真实场景对话练习）
+第二段（150字）：科普EF Efekta教学法三步骤
+ · Test：老师先热身测试，匹配本节课难度
+ · Teach：有针对性地教核心语言点
+ · Task：角色扮演完成真实任务（会议/谈判/日常交流）
+第三段（80字）：{{BRAND}}优势：{{ADVANTAGES}}，课程覆盖16个级别+132个话题/34个商务话题
+第四段（50字）：效果数据支撑（75%学生12堂课见到口语进步）
+结尾CTA：「想体验一节课看看的，私信我」
+
+⚠️ 禁止：数据必须用真实数字；不得杜撰教学法说明；专业感来自真实解释，不是堆术语`,
+
+C3: `🎭 角色设定
+你是{{BRAND}}的内容运营，写一篇以限时优惠/权益为钩子的硬广笔记，引导高意图用户留资。
+
+📌 主题
+{{BRAND}}春季班/限时课程优惠信息，用具体数字说明优惠力度，适合处于"已经想学但在等机会"阶段的用户。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 优惠直给型：「{{BRAND}}春季班，{{KEYWORDS}}课名额开放」（效果：直接点击）
+② 招募型：「EF英语春季班👨‍🎓预招开始，有想学{{KEYWORDS}}的吗」（效果：对标自身投放高CTR笔记）
+③ 权益型：「学{{KEYWORDS}}送这些，{{BRAND}}春季权益别错过」（效果：权益感知强）
+
+封面必须包含：限时时间 + 具体优惠数字 + 核心卖点
+
+◎ CTK建议：信息流 · 封面突出优惠截止日期和数字，配倒计时感设计
+
+📝 正文结构（200-280字，每句话为留资服务）
+第一段：点名是什么活动（{{BRAND}}春季限时/新学员优惠）
+第二段：优惠内容（X折/X元体验/赠X堂课），必须有具体数字
+第三段：课程亮点（{{ADVANTAGES}}）+ 适合人群
+第四段：名额说明（"本期名额有限，先到先得"——必须真实，不要虚构）
+结尾CTA：「感兴趣的私信我，把详细课表和价格发给你，过了这期价格会涨」
+
+⚠️ 禁止：编造优惠数字；禁止"立即报名""现在报名"等强迫话术；名额限制必须真实；优惠截止日期如无，则不写`,
+
+G1: `🏢 发布主体
+{{BRAND}} 品牌官号，以"学员经历"为叙事主体，官号是讲述者和陪伴者，不是推销者。整篇笔记品牌出现不超过1次，末尾用轻CTA收尾。
+
+📌 核心逻辑
+**先种：** 一个真实的学员故事——有具体场景、有卡点、有转折，读者沉浸在故事里
+**后收：** 故事结束后，官号用一句话说明"这就是我们做这件事的原因"，品牌作为答案而非广告自然出现
+
+📝 正文结构（400-500字，叙事感强）
+
+**第一幕 · 场景钩子（80字）**
+用一个具体的职场/生活英语瞬间开场，让读者立刻代入：
+— 会议室里，她想说"我有个不同的看法"，但英语卡在嘴边出不来，只能点头
+— 收到外国同事邮件，回复了三稿，还是觉得语气不对，最后删掉没发
+— 视频会议里对方语速很快，她听懂了七八成，但没法接话，只好说"sorry, could you repeat that"
+
+（选一个，展开成一个有细节的小场景，不超过80字）
+
+**第二幕 · 卡点还原（120字）**
+官号用"我们发现很多人都有过这种感受"过渡，说清楚这个卡点的真实原因——不是英语差，是学英语的方式和使用场景完全割裂：学的是语法和单词，练的是做题，从没有在真实压力下开过口
+
+**第三幕 · 转折（150字）**
+这位学员后来怎么做的——她来上了{{BRAND}}的1v1课，第一节老师没有教语法，而是让她模拟一个真实的会议发言场景，说完之后老师只纠正了两个影响表达清晰度的习惯，其他的让她继续说。三节课之后她第一次在真实会议里插话说出了一句完整的英文，同事以为她去哪里培训了
+
+**第四幕 · 官号收尾（80字）**
+官号用一句话说明自己做这件事的出发点：我们相信成人学英语没效果，不是天赋问题，是从来没有在真实场景里开过口。{{BRAND}}做的事情就是让每节课都是一次真实的语言任务。
+（不加价格，不加报名链接，最多加一句）
+结尾CTA（轻触）：「如果你也有过类似的卡顿时刻，评论区说说，或者私信我们」
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 故事开场型：「她在会议室里沉默了30秒，那之后决定改变」（效果：情绪共鸣，CTR极高）
+② 洞察型：「我们见过太多这样的人：英语不差，就是说不出口」（效果：共鸣感强，收藏高）
+③ 转折型：「学了N年英语，她第一次在外国同事面前开口，是这样发生的」（效果：好奇心钩子）
+
+◎ CTK建议：信息流 · 封面用情境感文字（不要产品图），配"在会议室说不出口那一刻"的场景感
+
+⚠️ 硬规则
+- 品牌名称全篇出现不超过1次（只在第三幕/第四幕的交接处）
+- 禁止在故事里植入任何课程功能介绍
+- 不说"75%""12堂课"等数据，这条Prompt不用数据说话
+- 禁止任何价格、报名、限时等转化语言
+- 结尾CTA只能是"说说你的经历"或"私信了解"，不能是"点击购买"类`,
+
+G2: `🏢 发布主体
+{{BRAND}} 品牌官号，以"机构观察者"视角切入，用"我们发现"语态输出对职场英语某个真实痛点场景的洞察，EF方案在最后自然落地，全篇不推销，内容价值在前。
+
+📌 核心逻辑
+**先种：** 官号作为"观察者"，描述一个广泛存在的职场英语卡点现象，说清楚为什么这个问题难解决
+**后收：** 在内容价值铺垫充分之后，用一句话说"我们设计课程时就是为了解决这个问题"，品牌作为解法而非广告出现
+
+📝 正文结构（400-500字）
+
+**开场 · 现象描述（80字）**
+官号以"我们和很多学员聊过之后发现"起手，描述一个高度共鸣的职场英语场景：
+— 邮件会写，但语气把握不准，发出去总觉得不对
+— 听懂了会议内容，但就是接不上话，等反应过来想说的时机已经过了
+— 能用英语表达意思，但对方的表情让你觉得"我说的好像有点奇怪"
+
+（选一个，具体化）
+
+**第二段 · 卡点拆解（150字）**
+官号用"洞察者"视角说清楚这个现象背后的真实原因——不是词汇量不够，不是语法没学好，而是：
+- 学习的输入场景（课堂/背单词）和使用的输出场景（真实职场对话）之间，从来没有被真正连接过
+- 大脑在"知道这个表达"和"在压力下快速调用它"之间，有一道真实存在的墙
+- 这道墙不是靠刷题能突破的，是靠反复在接近真实的场景里开口
+
+**第三段 · 方法论（100字）**
+官号说"这是我们在设计课程时花了很多时间研究的问题"——EF Efekta的TTT逻辑：每节课先测试你在真实场景里能说什么（Test），再针对卡点教（Teach），最后用一个任务让你真的把它用出来（Task）。不是在教你英语，是在帮你建立"在真实压力下开口"的能力
+
+**第四段 · 轻触落品牌（80字）**
+「这不是{{BRAND}}独创的方法，是语言习得研究几十年的结论——语言不是靠记住学会的，是靠用会的。我们只是把它做进了每一节课。」
+结尾CTA（轻触）：「如果你也有过这种"懂但说不出"的感受，欢迎评论区聊聊」
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 现象型：「为什么学了这么久{{KEYWORDS}}，开口还是会卡？」（效果：搜索承接强，共鸣高）
+② 洞察型：「我们发现：成人英语说不出口，99%不是词汇量的问题」（效果：反常识，CTR高）
+③ 场景型：「听懂了，但接不上话——这个卡点，我们研究了很久」（效果：精准共鸣，收藏高）
+
+◎ CTK建议：信息流+搜索 · 封面用洞察感文字（"懂但说不出"这种），避免产品图
+
+⚠️ 硬规则
+- 官号视角全程是"观察者/研究者"，不是"卖课的"
+- 品牌名称出现不超过2次（第三/四段各一次）
+- 禁止任何价格、报名、限时话语
+- 方法论部分要有真实逻辑，不能只堆概念
+- 结尾CTA只问"你有没有这种感受"，不引导报名`,
+
+G3: `🏢 发布主体
+{{BRAND}} 品牌官号，以"75%的学员在12堂课内感受到口语进步"这个数据为叙事钩子，但数据不是结论——先深入解构"为什么大多数人学英语没效果"，最后用数据说明EF的解法，全程不强推课程。
+
+📌 核心逻辑
+**先种：** 用数据制造好奇心，再用内容"兑现"好奇心——说清楚这个数据背后的原因是什么，让读者觉得"学到了东西"
+**后收：** 数据+方法论=对EF的自然认可，品牌作为"懂这件事的人"出现，末尾轻CTA
+
+📝 正文结构（450-550字）
+
+**开场 · 数据钩子（60字）**
+「我们统计过一个数据：{{BRAND}}有75%的学员，在12堂课之内，感受到了口语上的明显进步。」
+停在这里，不急着解释，先抛出反问：「但我们更想说的，不是这个数字——而是它背后的原因。」
+
+**第二段 · 反常识拆解（180字）**
+很多人的直觉是"12堂课能进步，说明课程质量好/老师好"。但这个解释太模糊了。
+真正的原因是：这75%的学员，做了一件其他人没做的事——**在接近真实压力的场景里开口，而不是背课文**
+然后说清楚：为什么"开口"这件事这么难发生？
+- 大多数英语课的设计，让学员一直在"接收"——听老师讲、看例句、做练习题——输出的时间极少
+- 真实对话有压力、有即时反馈、有不确定性，这些恰恰是激活语言能力的必要条件
+- 没有在压力下开口，大脑永远不会把"知道"转化成"会用"
+
+**第三段 · EF的解法（150字）**
+「这是EF Efekta教学法的核心出发点。」
+每节课的设计分三步：先测试学员在真实场景下能说什么（Test）→ 针对卡点教（Teach）→ 用一个真实任务让学员立刻用出来（Task）。132个话题场景和34个商务主题，每一个都有配套的Task，不是让你背，是让你在类似真实场景里说出来。
+
+**第四段 · 数据回收（80字）**
+「所以那75%不是运气，是因为他们每节课都在做一件别人在其他地方做不到的事：在接近真实的场景里开口，被纠正，再开口。」{{BRAND}}只是把这件事变得系统和可持续。
+结尾CTA（轻触）：「你上一次用英语在有压力的场合开口，是什么时候？」
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 数据型：「75%的学员12堂课见效，背后的原因不是你想的那样」（效果：数据钩子+反常识，CTR极高）
+② 反问型：「为什么有人学英语越来越快，和你用的方法有关系吗」（效果：好奇心强，收藏高）
+③ 拆解型：「我们统计了这个数字，然后发现一个更重要的事」（效果：悬念感，CTR高）
+
+◎ CTK建议：信息流 · 封面用数字"75%"大字钩子，配"12堂课"，视觉反差感强
+
+⚠️ 硬规则
+- 数据是钩子，不是广告语——整篇重心在"解构原因"，不在"夸数据"
+- 品牌出现不超过2次（第三、四段各一次）
+- 禁止任何价格、报名、限时话语
+- 75%这个数据确认是EF官方可对外引用的数据后使用
+- 结尾CTA只问开放式问题，不引导报名`,
+
+D1: `🏢 发布主体
+{{BRAND}} 品牌官号，专业成人英语机构人设，语气专业不刻板，敢说观点。
+
+📌 主题
+承接热搜词「成人学英语」，揭示"绝大多数成人学英语没效果的真实原因"，以专业机构视角输出方法论，EF Efekta教学法作为解决方案自然落地。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 痛点型：「成人学英语没效果？大多数人都踩了这个坑」（效果：共鸣极强，CTR高）
+② 方法型：「为什么你学了这么久英语还是说不出口」（效果：搜索承接强，收藏高）
+③ 反常识型：「成人学英语，最大的浪费不是钱是这件事」（效果：好奇心钩子，CTR高）
+
+◎ CTK建议：搜索+信息流 · 封面用清单/原因拆解风格，配"学了N年还是哑巴英语？"文字
+
+📝 正文结构（500-600字，收藏率优先）
+第一段（60字）：结论先行 — 成人学英语没效果，90%的原因是用了错误的学习方式，而不是"没天赋"或"没坚持"
+第二段（250字）：3个最常见的错误方式（具体，有逻辑）
+ · 错误1：死记单词和语法 — 大脑记住了规则，但无法在真实场景快速调用；正确做法是在情境中反复使用，让语言变成本能反应
+ · 错误2：大班课跟着老师走，从不主动开口 — 听懂≠会说，输出才能建立真实语言能力
+ · 错误3：学习场景和使用场景完全割裂 — 课上学"邮件写法"，课下没有写一封真实邮件，学了也忘
+第三段（150字）：EF Efekta/TTT教学法如何解决这三个问题
+ · Test（测试现有能力）→ Teach（针对性教）→ Task（真实场景任务完成），每个知识点都在真实对话中被激活
+ · {{BRAND}}课堂：132个话题场景，32个商务主题，每节课都是真实任务，不是背课文
+第四段（80字）：{{ADVANTAGES}} — 自然落品牌，不强推
+结尾CTA：「你觉得自己英语没效果，是哪种原因？评论区说说，帮你分析」
+
+⚠️ 禁止：禁止说"学了就会说"；方法论必须有逻辑，不是堆术语；{{BRAND}}只在第三段出现，不要多次提`,
+
+D2: `🏢 发布主体
+{{BRAND}} 品牌官号，专业英语机构人设，聚焦职场商务英语场景输出实用干货。
+
+📌 主题
+承接热搜词「商务英语」「英语口语」，发布"职场英语最怕的5个真实场景"攻略，给出每个场景的具体应对策略，收藏率优先，强化"EF懂职场英语"的专业认知。
+
+✏️ 标题写法（15字以内，含商务英语/职场英语相关词）
+从以下3个方向选一个：
+① 场景型：「外企人最怕的5个英语场景，我给你逐一拆解」（效果：收藏率极高，搜索承接强）
+② 痛点型：「会议室里说不出口的那种英语，其实有规律」（效果：共鸣感强，CTR高）
+③ 工具型：「商务英语必备：这5种场景的万用句式」（效果：工具感，收藏率高）
+
+◎ CTK建议：搜索场域 · 封面用职场/会议室视觉感，配场景列表，专业感强
+
+📝 正文结构（550-700字，干货感强，每条可执行）
+第一段（60字）：结论先行 — 商务英语不是背单词，是"在特定场景快速说出合适的话"，有规律可循
+第二段（350字）：5个职场英语高频场景 + 应对策略
+ · 场景1：英文邮件回复 — 主题行/开头/结尾各有固定结构，关键在语气的精准把握
+ · 场景2：多人会议发言 — 如何插话、表达意见、礼貌质疑，具体句式示例
+ · 场景3：对外汇报/presentation — 结构化表达的3段式框架，开场吸引注意力的方法
+ · 场景4：一对一谈判/协商 — 如何用英语表达"我们需要重新考虑"而不显得强硬
+ · 场景5：社交/闲聊破冰 — 小话题拓展到正式话题的衔接技巧
+第三段（150字）：{{BRAND}}商务英语课如何系统覆盖这些场景（34个商务主题+12个细分场景，每节课一个真实任务，用Efekta教学法在情境中反复练习），{{ADVANTAGES}}
+结尾CTA：「你最怕哪个场景？评论区说，帮你出一套应对方案」
+
+⚠️ 禁止：场景拆解必须有具体可执行建议，不能只列场景名称；禁止编造具体句式（可以给结构框架但不要伪造"标准商务英语"）`,
+
+D3: `🏢 发布主体
+{{BRAND}} 品牌官号，用"给选课判断标准"的方式建立信任，EF优势自然映射进每个维度。
+
+📌 主题
+"选成人英语课不踩坑的3个判断维度" — 不直接推荐自家，给用户选课框架，让用户自己对照后发现EF符合标准，信任感来自用户自主判断。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 避坑型：「选{{KEYWORDS}}课之前，先问这3个问题」（效果：搜索承接强，收藏率高）
+② 测评型：「我替你踩过这些坑，选成人英语课的判断标准」（效果：信任感强，CTR高）
+③ 框架型：「成人英语选课方法论：3个维度判断值不值」（效果：框架感，收藏率高）
+
+◎ CTK建议：搜索场域 · 封面用清单/评分卡风格，专业感强
+
+📝 正文结构（450-550字）
+第一段（60字）：结论先行 — 成人英语选课没有"最好"，只有"最适合你目标和场景"的，用3个维度判断
+第二段（250字）：3个判断维度
+ · 维度1：教学法是否以"开口说"为核心？ — 如果一节课你开口不超过20分钟，效率不够高。EF Efekta/TTT的核心是让学员在真实情境中完成任务，每节课都要开口
+ · 维度2：课程体系是否和你的目标匹配？ — 通用英语和商务英语是两套体系，目标是职场/出行/日常要分开选。EF通用英语16级别+132话题覆盖日常，商务英语34话题+12细分主题覆盖职场
+ · 维度3：学习节奏能否适配你的时间？ — 1v1课程可以根据你的时间安排，大班课要求固定时间跟课，两者适合不同生活节奏
+第三段（120字）：对照这3个维度，{{BRAND}}的定位是什么（{{ADVANTAGES}}），适合哪种人
+第四段（60字）：诚实说明不适合的人群
+结尾CTA：「对照完觉得符合你的，私信我，聊聊你的具体情况」
+
+⚠️ 禁止：不要贬低竞品；维度要真实有逻辑，不要为了迎合EF而设计维度；诚实说不适合人群`,
+
+E1: `🏢 发布主体
+{{BRAND}} 品牌官号，以"带你看看1v1上课是什么体验"的视角，还原真实课堂过程。
+
+📌 主题
+用第三人称（"我们的学员小A"）视角，还原一节EF 1v1私教课的完整过程：Test水平→Teach针对性教→Task完成真实对话任务，让用户"看到"EF Efekta是怎么运转的。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 过程型：「EF 1v1英语课一节到底在学什么」（效果：好奇心钩子，CTR高）
+② 对比型：「自己刷单词 vs EF 1v1上课，这节课我明白差在哪了」（效果：共鸣强，收藏高）
+③ 体验型：「上了第一节EF诊断课，我发现我英语学习方式全错了」（效果：代入感极强）
+
+◎ CTK建议：信息流 · 封面用"课堂截图"或"外教1v1对话"示意图，真实感强
+
+📝 正文结构（400-500字）
+第一段（80字）：引出场景 — 学员小A，在外企工作2年，英语能看懂文件但开口就卡，之前参加过大班课，跟不上老师进度就放弃了
+第二段（200字）：第一节课的TTT过程
+ · Test阶段（15分钟）：老师先做能力测试，不是卷子，是一段真实对话——"描述一下你最近一次用英语工作的场景"，从对话中判断小A的问题：词汇量足够但句子结构混乱，口语节奏卡顿点在动词时态
+ · Teach阶段（20分钟）：针对这个问题，老师用3个商务场景例句重新演示，让小A跟说、模仿，纠正节奏而不是语法规则
+ · Task阶段（15分钟）：模拟一个真实场景——"你是项目负责人，向外国同事汇报进展"，小A完整说完一段，老师实时反馈
+第三段（100字）：课后的感受——"第一次不是在背语法，是在用英语"，{{BRAND}}{{ADVANTAGES}}
+结尾CTA：「想了解第一节诊断课是怎么上的，私信我」
+
+⚠️ 禁止：不要编造"提升了多少分"；TTT过程要具体到动作，不要说"老师很专业"；Task要有真实场景感`,
+
+E2: `🏢 发布主体
+{{BRAND}} 品牌官号，诚实说明"谁适合/谁不适合EF 1v1"，用反向排除建立信任感。
+
+📌 主题
+"哪种人适合EF 1v1成人英语课" — 先说不适合的人群（诚实、有说服力），再精准描述适合的人群，让高意向用户自我识别并主动留资。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 反向型：「这几种人，真的不适合选EF 1v1英语课」（效果：反常识，CTR极高）
+② 诚实型：「我们1v1英语课不适合所有人，来看你是哪种」（效果：信任感极强）
+③ 画像型：「适合{{BRAND}} 1v1的人，通常有这3个特征」（效果：精准人群触达）
+
+◎ CTK建议：信息流+搜索 · 封面用"适合你吗？"互动感文字，配人群分类图
+
+📝 正文结构（400-500字）
+第一段（60字）：坦诚开场 — 不是所有人都适合1v1定制课，避免浪费彼此时间，来说清楚
+第二段（180字）：不适合EF 1v1的情况（3条，真实诚恳）
+ · 自律性极强、有大量时间自学、目标只是维持基础英语：自学软件+泛听泛读足够，不需要花这个钱
+ · 备考类英语需求（四六级/雅思/托福）：有专门的应试课程性价比更高，EF不以备考为核心
+ · 只是想体验一下，没有具体目标：1v1需要双向投入，没有明确目标效果会打折
+第三段（160字）：适合EF 1v1的情况（3条，精准对应真实痛点）
+ · 职场有真实英语压力（开会/汇报/谈判），但大班课进度跟不上自己的节奏：1v1根据你的时间和场景定制
+ · 学了很多年英语，能看懂但开不了口：需要有人帮你建立"输出"习惯，死记硬背已经不够了
+ · 时间碎片化（工作忙），需要高效利用有限学习时间：1v1每节课针对你的弱点，不浪费在已掌握的内容上
+第四段（60字）：{{BRAND}}{{ADVANTAGES}}，75%的学员12堂课内感受到口语进步
+结尾CTA：「对号入座，适合的私信我，先聊聊你的具体情况和目标」
+
+⚠️ 禁止：不适合的部分要真实，不能"为了显诚实"而虚构；适合的部分必须对应真实用户痛点；禁止"保证"类表述`,
+
+E3: `🏢 发布主体
+{{BRAND}} 品牌官号，深度科普EF Efekta/TTT教学法，用"为什么传统英语学习没效果"建立方法论认知，信任感来自逻辑说服而非堆功能。
+
+📌 主题
+拆解"EF Efekta教学法的运转逻辑" — 从"为什么死记硬背没用"切入，用科普视角解释Test→Teach→Task三步如何解决传统学习方式的根本问题，专业感建立信任。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 方法型：「为什么有人学英语越来越快？因为学习方式不同」（效果：好奇心强，CTR高）
+② 科普型：「EF Efekta教学法：让英语从"知道"变成"会用"的逻辑」（效果：专业感，搜索承接）
+③ 对比型：「同样学英语，为什么有人3个月可以流利对话？」（效果：对比感，收藏高）
+
+◎ CTK建议：信息流+搜索 · 封面用"TTT三步法"流程图风格，专业感强
+
+📝 正文结构（450-550字）
+第一段（80字）：从问题切入 — 很多人学了多年英语，背了很多单词和语法，但一开口还是卡壳。问题不在努力程度，在于大脑存储知识的方式和使用语言的方式是两个系统
+第二段（200字）：EF Efekta三步法的逻辑拆解
+ · Step 1：Test（测试现有能力）
+   大脑在"知道什么"和"能用什么"之间有一道墙，Test的目的是找到这道墙在哪，不是考你背了多少，是看你在真实对话中会卡在哪
+ · Step 2：Teach（针对性教）
+   不是从头教，是针对Test发现的具体问题教，时态用错了就集中攻时态，职场词汇不够就补职场词汇，不浪费时间在你已经掌握的部分
+ · Step 3：Task（完成真实任务）
+   用一个接近真实使用场景的任务让你立刻把刚学的东西"用出来"，从"知道"变成"肌肉记忆"，这才是真正的学会
+第三段（120字）：{{BRAND}}课堂如何把Efekta落地 — 每节1v1课都走完一轮TTT，132个话题场景+34个商务主题，每个话题都有Task任务，不是背课文，{{ADVANTAGES}}
+第四段（80字）：75%的学员在12堂课内感受到口语进步，原因不是"老师好"，是学习方式对了
+结尾CTA：「想体验一节Efekta课堂是什么感觉的，私信我」
+
+⚠️ 禁止：拆解必须有逻辑，不能只是堆概念；禁止说"革命性""颠覆性"等夸大词；75%这个数据是EF官方数据，使用时确认可对外引用`,
+
+F1: `🏢 发布主体
+{{BRAND}} 品牌官号，以互动主持人身份发起英语水平自测打卡，EF 16级别体系自然带出。
+
+📌 主题
+"你的英语现在是什么水平？" — 发起评论区自测打卡，给出参考级别描述，让用户对号入座评论，官号在评论区给对应阶段学习建议，私信跟进高意向用户。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 自测型：「你的英语水平到底在哪个段位？来测一下」（效果：低门槛互动，评论量高）
+② 打卡型：「说英语的你，现在能完成哪些事？来评论区打卡」（效果：参与感强）
+③ 分级型：「成人英语6个段位，你在哪一个」（效果：好奇心钩子，CTR高）
+
+◎ CTK建议：信息流 · 封面用"英语段位测试"视觉感，互动感强，避免正式排版
+
+📝 正文结构（200-300字，互动感优先）
+第一段（50字）：发起打卡 — 评论区告诉我你现在能用英语做到哪一步
+第二段（120字）：列出参考级别（基于EF 16级别体系，转化成用户能理解的能力描述，不直接说"EF几级"）
+ · 🌱 入门：能看懂简单句，说话需要大量停顿和想词
+ · 📖 基础：能理解日常对话，说话有停顿但能表达意思
+ · 💬 进阶：能参与一般对话，但遇到复杂话题会卡
+ · 🏢 商务：能应对职场英语，但正式场合会不自信
+ · 🌟 流利：能自如交流，母语者也能轻松理解你
+ · 🎯 接近母语：思维可以直接用英语，极少需要"翻译"
+第三段（60字）：{{BRAND}}承诺 — 看到评论都会回，根据你的阶段给具体进阶建议，需要定制方案的私信我
+结尾：「你在哪个段位？评论区打个卡」
+
+⚠️ 禁止：级别描述不要夸大（不要让入门级觉得自己很差劲）；不要把EF官方级别名称直接用，要转化成用户能理解的能力描述；互动感要真实`,
+
+F2: `🏢 发布主体
+{{BRAND}} 品牌官号，发起职场英语困难场景投票，收集真实痛点，评论区给具体建议后私信跟进。
+
+📌 主题
+"你最怕哪种职场英语场景？" — 给出常见困难场景列表，让用户在评论区选一个，官号在评论区针对性给具体建议（不是泛泛而谈），私信引导到1v1体验课。
+
+✏️ 标题写法（15字以内，含商务英语/英语口语相关词）
+从以下3个方向选一个：
+① 痛点型：「最怕哪种英语场景？你最怕那个我懂」（效果：共鸣感，评论量高）
+② 调查型：「职场人英语困难场景调查｜你选哪个」（效果：参与感强）
+③ 互动型：「说出你最怕的英语场景，我给你具体的应对方法」（效果：价值感强，私信引导）
+
+◎ CTK建议：信息流 · 封面用"职场英语困难场景"列表图，专业感+互动感并存
+
+📝 正文结构（200-300字）
+第一段（40字）：开门见山 — 说出你最怕的场景，我给你一个真正可用的应对策略
+第二段（120字）：列出6个职场英语高频困难场景，让用户选一个评论
+ · 📧 回复外国同事的邮件（不知道语气对不对）
+ · 🎤 英文会议上想发言但插不进去
+ · 📊 向外方汇报项目进展（逻辑说不清）
+ · 🤝 和外国客户谈判/讨论条款
+ · 💬 视频会议中听不清/跟不上语速
+ · 🍕 饭局/社交场合的英语闲聊
+第三段（80字）：{{BRAND}}承诺 — 每一条评论都看，给具体可执行的建议（不是"多练"那种），需要系统解决的私信我，约一节免费体验课
+结尾：「评论区见，说出你的场景」
+
+⚠️ 禁止：评论区建议必须具体（针对每个场景给1-2个可操作动作），不能只说"多练"；不要在帖子里推销，让互动自然引导私信`,
+
+F3: `🏢 发布主体
+{{BRAND}} 品牌官号，发起英语学习进度打卡，承接不同阶段的成人英语学习者，评论区精准识别高意向用户后私信跟进。
+
+📌 主题
+"学英语多久了？说说你现在在哪个阶段" — 发起学习进度打卡，给出学习阶段选项，官号在评论区针对不同阶段给一句具体建议，私信跟进"卡住了""反复放弃"等高意向表达。
+
+✏️ 标题写法（15字以内，含{{KEYWORDS}}相关词）
+从以下3个方向选一个：
+① 打卡型：「学英语的人，来评论区打个卡，说说你在哪个阶段」（效果：低门槛互动，评论量高）
+② 自测型：「你的英语学习进度到哪了？这几个阶段你在哪」（效果：自测感，参与度高）
+③ 共鸣型：「学了好几年英语，还在原地踏步的人，我太懂你了」（效果：情绪共鸣，高意向用户聚集）
+
+◎ CTK建议：信息流 · 封面用"英语学习进度条"视觉感，轻松感强，避免说教感
+
+📝 正文结构（200-300字，互动感优先）
+第一段（50字）：发起打卡 — 说说你学英语到哪个阶段了，我来帮你看下一步该怎么走
+第二段（120字）：列出学习进度阶段选项（用emoji区分，用户自选）
+ · 🌱 刚开始，不知道从哪学起
+ · 📖 断断续续学了一段时间，还没找到节奏
+ · 😤 努力学但效果不明显，快放弃了
+ · 💬 能理解但开口就卡，口语出不来
+ · 🏢 日常能用，但职场英语还差一口气
+ · 🎯 已经比较流利，在精进某个专项（如商务英语）
+第三段（80字）：{{BRAND}}承诺 — 看到评论都会回，给你对应阶段的具体下一步建议，需要定制方案的私信我，{{ADVANTAGES}}
+结尾：「在吗？说出你的阶段，让我看到你们」
+
+⚠️ 禁止：不要做成广告感强的互动帖；语气要真实轻松，不说教；不要在帖子里推销；私信引导要自然，来自评论区互动`
+
+};
+
+// ─── 变量 ───
+function getVars() {
+  return {
+    KEYWORDS: document.getElementById('v-kw').value.trim() || '{{KEYWORDS}}',
+    BRAND:    document.getElementById('v-brand').value.trim() || '{{BRAND}}',
+    ADVANTAGES: document.getElementById('v-adv').value.trim() || '{{ADVANTAGES}}'
+  };
+}
+const labels = { KEYWORDS:'热门关键词', ADVANTAGES:'品牌优势', BRAND:'产品名称' };
+
+function fillVarsHTML(text) {
+  const raw = {
+    KEYWORDS:   document.getElementById('v-kw').value.trim(),
+    ADVANTAGES: document.getElementById('v-adv').value.trim(),
+    BRAND:      document.getElementById('v-brand').value.trim()
+  };
+  const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return escaped.replace(/\{\{(KEYWORDS|ADVANTAGES|BRAND)\}\}/g, (_, k) =>
+    raw[k]
+      ? `<em class="var-filled">${raw[k]}</em>`
+      : `<em class="var-highlight">{{${labels[k]}}}</em>`
+  );
+}
+
+function fillVars(text) {
+  const v = getVars();
+  return text
+    .replace(/\{\{KEYWORDS\}\}/g, v.KEYWORDS)
+    .replace(/\{\{ADVANTAGES\}\}/g, v.ADVANTAGES)
+    .replace(/\{\{BRAND\}\}/g, v.BRAND);
+}
+
+function toggleFull(key) {
+  const el  = document.getElementById('full-' + key);
+  const btn = document.querySelector(`#card-${key} .btn-expand`);
+  const btns = document.getElementById('btns-' + key);
+  if (el.style.display === 'block') {
+    el.style.display = 'none';
+    if(btns) btns.style.display = 'none';
+    btn.textContent = '展开完整Prompt';
+  } else {
+    el.innerHTML = fillVarsHTML(PROMPTS[key]);
+    el.style.display = 'block';
+    if(btns) btns.style.display = 'flex';
+    btn.textContent = '收起Prompt';
+  }
+}
+
+function updatePrompts() {
+  Object.keys(PROMPTS).forEach(key => {
+    const el = document.getElementById('full-' + key);
+    if (el && el.style.display === 'block') el.innerHTML = fillVarsHTML(PROMPTS[key]);
+  });
+}
+
+function copyPrompt(key) {
+  const text = fillVars(PROMPTS[key]);
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector(`#btns-${key} .btn-copy`);
+    btn.textContent = '✅ 已复制';
+    setTimeout(()=>{ btn.textContent='📋 复制Prompt'; }, 1800);
+  });
+}
+
+function dlPrompt(key, fname) {
+  const text = fillVars(PROMPTS[key]);
+  const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `EF成人英语_${fname}.txt`;
+  a.click();
+}
+</script>
+
+</body>
+</html>
