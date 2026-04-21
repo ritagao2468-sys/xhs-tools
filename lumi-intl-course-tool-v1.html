@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国际课程 · 内容洞察 & 笔记Prompt灵感 · 路觅Lumi</title>
+<style>
+  :root {
+    --primary-dark:  #1a3a6e;
+    --primary-mid:   #2563EB;
+    --primary-light: #EFF6FF;
+    --primary-bg:    #F4F7FF;
+    --accent:        #0EA5E9;
+    --orange:        #E65100;
+    --orange-light:  #FFF3E0;
+    --yellow:        #FFD600;
+    --white:         #ffffff;
+    --ink:           #1A1A1A;
+    --ink2:          #4a4a4a;
+    --ink3:          #888;
+    --line:          #e0e0e0;
+    --shadow:        0 2px 10px rgba(0,0,0,0.07);
+    --shadow-lg:     0 4px 20px rgba(0,0,0,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    background: var(--primary-bg);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page { max-width: 1120px; margin: 0 auto; padding: 20px 28px 60px; }
+  .section { margin-bottom: 32px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid var(--primary-dark);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section-num {
+    font-size: 11px;
+    color: var(--white);
+    font-weight: 800;
+    letter-spacing: .1em;
+    background: var(--primary-dark);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .section-title { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+  .section-sub { font-size: 12px; color: var(--ink3); margin-left: auto; }
+
+  /* Topbar */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #0f2a52 100%);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+  }
+  .brand { font-size: 22px; font-weight: 900; letter-spacing: -.03em; color: var(--white); line-height: 1.3; }
+  .brand .brand-highlight { color: var(--yellow); }
+  .brand-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 5px; font-weight: 500; }
+  .meta { font-size: 11px; color: rgba(255,255,255,0.75); text-align: right; line-height: 2; }
+  .meta strong { color: rgba(255,255,255,0.95); font-weight: 700; }
+  .meta .badge-internal {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: .04em;
+  }
+
+  /* Track banner */
+  .track-banner {
+    background: var(--primary-mid);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: .01em;
+  }
+  .track-banner strong { font-weight: 900; }
+
+  /* Source cards */
+  .source-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .source-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .source-name { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+  .source-method { font-size: 12px; color: var(--ink2); }
+
+  /* Selling points */
+  .selling-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  @media (max-width: 900px) {
+    .selling-grid { grid-template-columns: repeat(2,1fr); }
+    .var-input-grid { grid-template-columns: 1fr; }
+  }
+  .selling-card {
+    background: var(--white);
+    border: 1.5px solid var(--primary-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--primary-mid);
+  }
+  .selling-num { font-size: 10px; font-weight: 800; color: var(--primary-mid); margin-bottom: 4px; letter-spacing: .05em; }
+  .selling-title { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 3px; }
+  .selling-desc { font-size: 11px; color: var(--ink2); line-height: 1.5; }
+
+  /* Persona cards */
+  .persona-grid { display: flex; flex-direction: column; gap: 12px; }
+  .persona-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .persona-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary-mid);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .persona-name { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+  .persona-rows { display: flex; flex-direction: column; gap: 5px; }
+  .persona-row { display: flex; gap: 8px; font-size: 12.5px; }
+  .persona-key {
+    min-width: 60px;
+    font-weight: 700;
+    color: var(--ink2);
+    flex-shrink: 0;
+  }
+  .persona-val { color: var(--ink); }
+
+  /* Keyword grid */
+  .kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .rising-kws { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+  .rising-kw {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    padding: 7px 12px;
+  }
+  .rising-kw-text { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+  .rising-badge {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--orange);
+    background: var(--orange-light);
+    border: 1px solid #FFB74D;
+    border-radius: 4px;
+    padding: 2px 7px;
+    letter-spacing: .02em;
+  }
+
+  .cat-grid { display: flex; flex-direction: column; gap: 8px; }
+  .cat-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .cat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .cat-name { font-size: 12.5px; font-weight: 700; color: var(--ink); }
+  .cat-pct { font-size: 12px; font-weight: 800; color: var(--primary-mid); }
+  .cat-bar-wrap { background: #e8eeff; border-radius: 2px; height: 4px; margin-bottom: 5px; }
+  .cat-bar { background: var(--primary-mid); border-radius: 2px; height: 100%; }
+  .cat-cnt { font-size: 10.5px; color: var(--ink3); margin-bottom: 4px; }
+  .cat-kws { display: flex; flex-wrap: wrap; gap: 4px; }
+  .cat-kw {
+    font-size: 10.5px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-weight: 600;
+  }
+
+  .insight-box {
+    display: flex;
+    gap: 8px;
+    background: var(--primary-light);
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--primary-dark);
+  }
+  .insight-icon { font-size: 16px; flex-shrink: 0; }
+
+  .dl-btn {
+    width: 100%;
+    margin-top: 8px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 6px;
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .dl-btn:hover { background: var(--primary-mid); color: #fff; }
+
+  /* Prompt area */
+  .var-input-area {
+    background: var(--primary-light);
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .var-input-title { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 3px; }
+  .var-input-subtitle { font-size: 11.5px; color: var(--ink2); margin-bottom: 12px; }
+  .var-input-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .var-input-group { display: flex; flex-direction: column; gap: 6px; }
+  .var-input-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink2);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 22px;
+  }
+  .var-label-badge {
+    font-size: 10px;
+    background: var(--primary-dark);
+    color: #fff;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-family: monospace;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .var-input-field {
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    background: var(--white);
+    outline: none;
+    transition: border-color .2s;
+    width: 100%;
+  }
+  .var-input-field:focus { border-color: var(--primary-dark); }
+  .var-update-hint {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-mid);
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .var-update-hint.visible { opacity: 1; }
+
+  /* Suite tabs */
+  .suite-tab-wrapper { margin-bottom: 14px; }
+  .suite-tabs { display: flex; gap: 8px; }
+  .suite-tab {
+    flex: 1;
+    background: var(--white);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .15s;
+  }
+  .suite-tab.active { border-color: var(--primary-mid); background: var(--primary-light); }
+  .tab-main { display: block; font-size: 13px; font-weight: 800; color: var(--primary-dark); }
+  .tab-scene { display: block; font-size: 11px; color: var(--ink3); margin-top: 2px; }
+  .suite-tab.active .tab-main { color: var(--primary-mid); }
+
+  /* Suite content */
+  .suite-content { display: none; }
+  .suite-content.active { display: block; }
+  .prompt-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  @media (max-width: 860px) { .prompt-grid { grid-template-columns: 1fr; } }
+  .prompt-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .prompt-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary-mid);
+    background: var(--primary-light);
+    border-radius: 4px;
+    padding: 2px 8px;
+    letter-spacing: .04em;
+    width: fit-content;
+  }
+  .prompt-title { font-size: 14px; font-weight: 800; color: var(--ink); }
+  .prompt-body {
+    font-size: 12px;
+    color: var(--ink2);
+    white-space: pre-wrap;
+    line-height: 1.7;
+    background: #f8faff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 12px;
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+  .prompt-body.expanded { max-height: 1200px; }
+  .prompt-body .var-replaced { color: var(--primary-mid); font-weight: 700; }
+  .prompt-body .var-empty { color: #b5c8e8; font-style: italic; }
+
+  .prompt-toggle {
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: var(--primary-mid);
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0;
+    text-align: left;
+    font-family: inherit;
+  }
+  .prompt-actions { display: flex; gap: 8px; margin-top: auto; }
+  .btn-copy, .btn-dl {
+    font-size: 11px;
+    padding: 7px 14px;
+    border: 1.5px solid var(--line);
+    background: var(--white);
+    cursor: pointer;
+    border-radius: 6px;
+    color: var(--ink2);
+    font-weight: 700;
+    transition: all .15s;
+    letter-spacing: .02em;
+  }
+  .btn-copy:hover { background: var(--primary-dark); border-color: var(--primary-dark); color: #fff; }
+  .btn-dl:hover { background: var(--primary-light); border-color: var(--primary-mid); color: var(--primary-dark); }
+
+  /* Layout */
+  .main-layout {
+    display: block;
+  }
+  .left-col { width: 100%; }
+  .right-col { width: 100%; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div>
+      <div class="brand">国际课程 · <span class="brand-highlight">内容洞察 &amp; 笔记Prompt灵感</span></div>
+      <div class="brand-sub">适用于聚光图文笔记 · AP / SAT / 1v1辅导</div>
+    </div>
+    <div class="meta">
+      <span class="badge-internal">仅限内部使用</span><br>
+      数据来源：小红书RedBI · 小红书Insight · 小红书灵犀平台<br>
+      数据周期：2026-03 ~ 2026-04 · 推断数据，仅供参考
+    </div>
+  </div>
+
+  <!-- 客户标识条 -->
+  <div class="track-banner">
+    当前客户：<strong>路觅（Lumi）</strong> · 国际课程 AP/SAT 1v1辅导 · 目标人群：高中生及家长
+  </div>
+
+  <div class="main-layout">
+  <div class="left-col">
+
+  <!-- 00 · 产品卖点 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">00</span>
+      <span class="section-title">路觅核心卖点</span>
+      <span class="section-sub">内容创作的差异化支撑点</span>
+    </div>
+    <div class="selling-grid">
+      <div class="selling-card">
+        <div class="selling-num">卖点 01</div>
+        <div class="selling-title">导师优质</div>
+        <div class="selling-desc">名校背景、教学经验丰富，双语/英语均可授课</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 02</div>
+        <div class="selling-title">稳分合约保障</div>
+        <div class="selling-desc">独特稳分产品，合约保障，未达目标退款</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 03</div>
+        <div class="selling-title">AI课程报告</div>
+        <div class="selling-desc">每节课后自动生成课堂反馈，学习情况实时可见</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 04</div>
+        <div class="selling-title">专属班主任</div>
+        <div class="selling-desc">全程跟进学习情况，定期与家长沟通反馈</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 05</div>
+        <div class="selling-title">独家模考系统</div>
+        <div class="selling-desc">AP、SAT独家模考，模拟真实线上考试环境</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 06</div>
+        <div class="selling-title">1v1高效率</div>
+        <div class="selling-desc">个性化1v1补习，时间比班课少，效率更高</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 07</div>
+        <div class="selling-title">性价比</div>
+        <div class="selling-desc">同等品质下价格合理，分期可选，降低决策门槛</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 · 数据来源 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">数据来源与分析方法</span>
+      <span class="section-sub">四源交叉验证 · 数据驱动内容方向</span>
+    </div>
+    <div class="source-grid">
+      <div class="source-card">
+        <div class="source-name">📊 自身投放优质笔记</div>
+        <div class="source-method">近60天消耗&gt;1000、CTR&gt;5% · 拆解标题/封面/正文框架</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">🔍 同行竞品优质笔记</div>
+        <div class="source-method">同赛道高消耗+高CTR · 识别差异化空白与内容天花板</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">🔥 平台热搜词数据</div>
+        <div class="source-method">Insight热词 · 近30天搜索量 · 5维度分类打标</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">💡 社区热门洞察</div>
+        <div class="source-method">灵犀飙升话题+人群图谱 · 定位社区共鸣内容切入点</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 · 人群图谱 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">核心人群图谱</span>
+      <span class="section-sub">国际课程赛道 · AP/SAT备考人群</span>
+    </div>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-label">人群 A · 主力</div>
+        <div class="persona-name">😰 成绩焦虑型高中生家长</div>
+        <div class="persona-rows">
+          <div class="persona-row"><span class="persona-key">身份</span><span class="persona-val">孩子在读高中（9-12年级），有出国留学规划</span></div>
+          <div class="persona-row"><span class="persona-key">核心痛点</span><span class="persona-val">AP/SAT成绩不理想，担心影响申请，不知道选哪家机构靠谱</span></div>
+          <div class="persona-row"><span class="persona-key">搜索行为</span><span class="persona-val">AP辅导机构推荐、SAT多少分能申请、AP备考攻略</span></div>
+          <div class="persona-row"><span class="persona-key">决策触发</span><span class="persona-val">孩子成绩下滑 / 看到同学已报班出分 / 申请季临近</span></div>
+          <div class="persona-row"><span class="persona-key">内容偏好</span><span class="persona-val">真实学员分数提升案例 + 导师背景展示 + 机构对比</span></div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-label">人群 B · 高价值</div>
+        <div class="persona-name">🎯 主动决策型学生</div>
+        <div class="persona-rows">
+          <div class="persona-row"><span class="persona-key">身份</span><span class="persona-val">已有明确目标（GPA+AP+SAT三线同时备考），自主搜索课程</span></div>
+          <div class="persona-row"><span class="persona-key">核心痛点</span><span class="persona-val">已对比多家机构，核心疑虑是"真的能出分吗"、"退款靠谱吗"</span></div>
+          <div class="persona-row"><span class="persona-key">搜索行为</span><span class="persona-val">AP辅导退款保障、SAT机构靠谱吗、AP满分案例</span></div>
+          <div class="persona-row"><span class="persona-key">决策触发</span><span class="persona-val">看到退款保障/合约机制 / 看到满分/高分学员案例</span></div>
+          <div class="persona-row"><span class="persona-key">内容偏好</span><span class="persona-val">合约保障说明 + 满分/高分案例 + AI学习报告截图展示</span></div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-label">人群 C · 潜在转化</div>
+        <div class="persona-name">🔍 价格敏感比价型</div>
+        <div class="persona-rows">
+          <div class="persona-row"><span class="persona-key">身份</span><span class="persona-val">已了解1v1辅导，在多家机构之间反复比较，迟迟未决策</span></div>
+          <div class="persona-row"><span class="persona-key">核心痛点</span><span class="persona-val">担心贵、担心效果、信息过载</span></div>
+          <div class="persona-row"><span class="persona-key">搜索行为</span><span class="persona-val">AP辅导哪家性价比高、1v1辅导贵吗、AP辅导班价格</span></div>
+          <div class="persona-row"><span class="persona-key">决策触发</span><span class="persona-val">看到性价比说明 / 免费试听机会 / 分期付款选项</span></div>
+          <div class="persona-row"><span class="persona-key">内容偏好</span><span class="persona-val">价格透明化 + 效率对比（1v1 vs 班课）+ 退款保障</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 · 热搜词洞察 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">热搜词洞察</span>
+      <span class="section-sub">推断数据 · 2026-03~04 · 仅供参考</span>
+    </div>
+    <div class="kw-grid">
+
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--primary-dark);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;">🔥 飙升关键词 · TOP 6</div>
+        <div class="rising-kws">
+          <div class="rising-kw"><span class="rising-kw-text">AP辅导机构推荐</span><span class="rising-badge">↑ 飙升</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">SAT备考攻略</span><span class="rising-badge">↑ 飙升</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">AP5分经验分享</span><span class="rising-badge">↑ 飙升</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">国际课程1v1辅导</span><span class="rising-badge">↑ 飙升</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">AP辅导退款保障</span><span class="rising-badge">↑ 飙升</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">高中生出国留学规划</span><span class="rising-badge">↑ 飙升</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--primary-dark);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;">📊 搜索词分类分布</div>
+        <div class="cat-grid">
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">课程选择与机构推荐</span><span class="cat-pct">35%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:100%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">AP辅导机构</span><span class="cat-kw">SAT辅导哪家好</span><span class="cat-kw">国际课程推荐</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">机构评价与避雷</span><span class="cat-pct">25%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:71%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">AP辅导靠谱吗</span><span class="cat-kw">机构退款保障</span><span class="cat-kw">1v1辅导测评</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">备考攻略与资料</span><span class="cat-pct">20%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:57%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">AP备考攻略</span><span class="cat-kw">SAT刷题资料</span><span class="cat-kw">AP5分经验</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">成绩与申请规划</span><span class="cat-pct">12%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:34%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">AP成绩申请大学</span><span class="cat-kw">SAT多少分够用</span><span class="cat-kw">AP几门够</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">价格与性价比</span><span class="cat-pct">8%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:23%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">AP辅导价格</span><span class="cat-kw">1v1辅导贵吗</span><span class="cat-kw">国际课程性价比</span></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <span class="insight-icon">💡</span>
+          <div><strong>关键洞察：</strong>机构选评两类合计60%——用户核心动机是「选机构/验机构」，内容应优先服务决策需求，并突出退款保障和满分案例</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  </div><!-- end left-col -->
+  <div class="right-col">
+
+  <!-- 04 · 笔记Prompt -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">三组笔记创作Prompt · 小红书风格</span>
+      <span class="section-sub">A 先种后收 · B 软文笔记 · C 硬广笔记 · 各3个变体</span>
+    </div>
+
+    <div class="var-input-area">
+      <div class="var-input-title">✏️ 填写笔记中希望包含的内容关键词（非必须），Prompt将自动更新</div>
+      <div class="var-input-subtitle">填写后，下方所有Prompt中的变量将被实时替换，空时显示灰色占位</div>
+      <div class="var-input-grid">
+        <div class="var-input-group">
+          <label class="var-input-label" for="input-keywords">
+            热门关键词
+            <span class="var-label-badge">{{KEYWORDS}}</span>
+          </label>
+          <input class="var-input-field" id="input-keywords" type="text" placeholder='如「AP备考、SAT提分」'/>
+        </div>
+        <div class="var-input-group">
+          <label class="var-input-label" for="input-advantages">
+            产品/品牌优势
+            <span class="var-label-badge">{{ADVANTAGES}}</span>
+          </label>
+          <input class="var-input-field" id="input-advantages" type="text" placeholder='如「合约退款保障、AI课程报告、独家模考系统」'/>
+        </div>
+        <div class="var-input-group">
+          <label class="var-input-label" for="input-brand">
+            产品名称
+            <span class="var-label-badge">{{BRAND}}</span>
+          </label>
+          <input class="var-input-field" id="input-brand" type="text" placeholder='如「路觅Lumi」'/>
+        </div>
+      </div>
+      <div class="var-update-hint" id="update-hint">✓ 实时预览已更新</div>
+    </div>
+
+    <div class="suite-tab-wrapper">
+      <div class="suite-tabs">
+        <div class="suite-tab active" onclick="switchSuite('A')">
+          <span class="tab-main">A · 先种后收</span>
+          <span class="tab-scene">种草·轻引导</span>
+        </div>
+        <div class="suite-tab" onclick="switchSuite('B')">
+          <span class="tab-main">B · 软文笔记</span>
+          <span class="tab-scene">种草·打心智</span>
+        </div>
+        <div class="suite-tab" onclick="switchSuite('C')">
+          <span class="tab-main">C · 硬广笔记</span>
+          <span class="tab-scene">引导留资·私信</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="suite-content-wrap">
+
+      <!-- Suite A -->
+      <div class="suite-content active" id="suite-A">
+        <div class="prompt-grid">
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-1 · 先种后收</div>
+            <div class="prompt-title">高分学员成长故事型</div>
+            <div class="prompt-body" id="prompt-A1" data-template="🎭 角色设定
+你是一位通过{{BRAND}}辅导，从AP成绩不理想到最终出分的真实高中生，在小红书分享备考经历，语气真实、有温度，不像软文。
+
+📌 主题
+AP/SAT从X分到X分的真实备考历程 —— 帮同样焦虑的同学看到一条清晰的路
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+写3个候选，选最顺口的：
+① 😭 {{KEYWORDS}}从3分到5分｜我用了这3个月做了什么（结果对比型，CTR最高）
+② 🎯 {{KEYWORDS}}备考复盘｜真实经历告诉你能不能拿5分（真实感型）
+③ 💡 高中生{{KEYWORDS}}逆袭记录｜{{BRAND}}辅导3个月后（成长故事型）
+
+📝 正文结构（500-600字）
+
+【第一段 · 背景交代，80-100字】
+我是国际高中X年级，主攻{{KEYWORDS}}，备考前状态有多惨：😰
+- 自己刷题但不知道错在哪
+- 上过大班课但还是听不懂
+- 考试前两个月才开始紧张
+→ 结尾一句：后来找了{{BRAND}}的1v1辅导，今天来说说这段经历
+
+【第二段 · 备考过程（3个节点），200-250字】
+📍 第一个月：摸底+查漏
+  - 导师帮我做了诊断测试，找到我的核心薄弱点
+  - 不是泛泛讲知识点，是针对我的错误模式来的
+  - {{ADVANTAGES}}中的AI课程报告这里可以提一下：每节课结束收到报告，清楚知道这节课掌握了什么 📊
+
+📍 第二个月：强化突破
+  - 针对薄弱考点专项训练
+  - {{ADVANTAGES}}中的独家模考系统：模拟了3次完整考试，越来越适应考试节奏 ⏱️
+  - 发现自己真正的问题是时间分配，不是知识点不会
+
+📍 第三个月：冲刺定型
+  - 高频刷真题+错题复盘
+  - 最后两周模考分数已经稳定在目标分数段了 🎯
+
+【第三段 · 结果+心得，60-80字】
+最终考了X分，达到了目标 🎉
+说实话最大的收获不只是分数，是搞清楚了自己的问题在哪 💡 {{ADVANTAGES}}让整个过程有迹可循，而不是无头苍蝇。
+
+【结尾CTA】
+「你也在备考{{KEYWORDS}}？评论区聊聊你现在什么阶段👇」
+
+🖼️ 封面建议
+- 主花字：X分→X分（大数字对比）
+- 副花字：{{KEYWORDS}}备考 · X个月真实记录
+- 配色：深蓝底+白色主字+黄色强调数字
+- 版式：左右对比数字，底部时间线"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A1',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A1','A1-高分学员成长故事')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-2 · 先种后收</div>
+            <div class="prompt-title">导师背景揭秘型</div>
+            <div class="prompt-body" id="prompt-A2" data-template="🎭 角色设定
+你是{{BRAND}}的一位导师，在小红书用轻松、接地气的语气分享自己的背景和教学理念，不是官方简历的复述，是像朋友聊天一样的"导师自我介绍"。
+
+📌 主题
+{{BRAND}}导师真实背景揭秘 —— 帮家长/学生在选课前了解"你的老师到底是谁"
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 👨‍🏫 {{KEYWORDS}}老师是谁？｜{{BRAND}}导师背景大公开（揭秘型，CTR高）
+② 🎓 我是{{BRAND}}的{{KEYWORDS}}导师｜来说说我为什么教这个（故事型）
+③ 💬 选{{KEYWORDS}}辅导前｜先看看你的老师是什么背景（实用型）
+
+📝 正文结构（450-550字）
+
+【第一段 · 导师背景，80-100字】
+用第一人称，交代：毕业院校、专业方向、考试成绩（如AP满分经历）、教学年限 🎓
+强调：{{ADVANTAGES}}中"导师优质"的具体维度
+示例：我毕业于xxx大学，{{KEYWORDS}}当年考了满分，在国际高中教了X年书 ✅
+→ 点出自己最擅长什么考点/哪类学生
+
+【第二段 · 教学理念，100-120字】
+说清楚"我怎么教，和别的老师哪里不一样" 💡
+- 不是照本宣科，是分析你的错题模式找出根本原因
+- 双语授课，中英文哪个听得明白用哪个 🗣️
+- 每节课结束会有：{{ADVANTAGES}}（AI学习报告），让学生知道这节课真正学到了什么
+- 不搞题海战术，搞高质量复盘
+
+【第三段 · 给家长的话，60-80字】
+用温和的口吻说一句家长最在意的事 👨‍👩‍👧：
+"我知道很多家长担心孩子学了没有，看不到效果 😟 所以{{BRAND}}有{{ADVANTAGES}}：合约保障，每节课有报告，定期和家长反馈——让你们看得到进步，不是靠口说。"
+
+【第四段 · 课程预约入口，40-50字】
+「有想了解{{KEYWORDS}}辅导的同学，欢迎私信我咨询 📩 可以先约一次免费的备考诊断，聊聊你现在的情况」
+
+🖼️ 封面建议
+- 主花字：导师说（或"老师自我介绍"）
+- 副花字：{{KEYWORDS}} · {{BRAND}}导师揭秘
+- 配色：白底+深蓝文字+黄色星标 ⭐
+- 版式：头像占位框+资质标签清单"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A2',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A2','A2-导师背景揭秘')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-3 · 先种后收</div>
+            <div class="prompt-title">AI学习报告体验型</div>
+            <div class="prompt-body" id="prompt-A3" data-template="🎭 角色设定
+你是一位正在使用{{BRAND}}辅导的高中生，第一次收到AI课程报告时觉得很新奇，在小红书分享这个"没见过的功能"，语气好奇、活泼，带点惊喜感。
+
+📌 主题
+上完{{KEYWORDS}}辅导课竟然收到了一份AI报告？！ —— 展示{{BRAND}}的AI课程报告功能，用新奇感带动讨论
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 🤯 {{KEYWORDS}}辅导课结束收到了一份AI报告？？（惊喜型，好奇CTR高）
+② 📊 {{BRAND}}{{KEYWORDS}}课每节课后都有这个！好评（评测型）
+③ 💡 上完{{KEYWORDS}}辅导课老师帮你做了什么分析（悬念型）
+
+📝 正文结构（400-500字）
+
+【第一段 · 场景引入，50-70字】
+开门见山描述：刚上完这节{{KEYWORDS}}课，手机收到了一条提醒 📱
+→ 点开一看是一份AI生成的课堂报告，列出了：今天讲了什么、我答对了哪些、哪些知识点还需要巩固 🤔
+
+【第二段 · 报告内容展示，150-180字】
+具体描述报告里有什么（结合{{ADVANTAGES}}展开）：
+📊 今日课堂总结：知识点清单+掌握程度（用颜色或星级标注）
+⚠️ 需要巩固的点：具体列出来，不是泛泛说"要多练习"
+✅ 下节课建议：老师预告下次会重点练什么
+💬 课堂表现：回答了几道题、回答质量怎么样
+
+→ 加一句：以前上完课脑子一团浆糊不知道学了啥，现在有这个感觉清晰多了
+
+【第三段 · 对家长的意义，60-80字】
+我妈看到报告超级满意 😂 因为她终于能看到"孩子在学什么""学得怎么样"——不是我回来说"上课了上课了"，是有数据有细节 📋 {{BRAND}}这个功能我觉得真的很贴心，家长和学生都需要这种反馈感。
+
+【结尾CTA】
+「你们辅导课有这种课后报告吗？有的话评论区分享下！没有的可以来试试{{BRAND}} 😏📩」
+
+🖼️ 封面建议
+- 主花字：AI课程报告（大字）
+- 副花字：上完课收到了什么？
+- 配色：白底+蓝色界面感截图风格+科技感小图标
+- 版式：模拟手机通知+报告截图样式"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A3',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A3','A3-AI学习报告体验')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-4 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">学员成绩播报型（官方口吻）</div>
+            <div class="prompt-body" id="prompt-A4" data-template="🎭 角色设定
+你是{{BRAND}}官方小红书账号的运营人员，用品牌号发布一篇「学员成绩播报」，语气真诚、有温度，不是硬广感，更像朋友分享喜讯。展示真实学员出分案例，建立"这家机构真的出分"的心智。
+
+📌 主题
+{{BRAND}}学员{{KEYWORDS}}出分了！—— 用真实成绩案例建立品牌信任感，吸引同类型备考用户关注
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 🎉 又出分了！{{KEYWORDS}}备考X个月，学员从X分到X分（成绩型，CTR最高）
+② 📣 {{BRAND}}学员成绩来了｜{{KEYWORDS}}这次考了X分 🎊（播报型）
+③ ✅ 学员说"没想到真的能考到X分"｜{{KEYWORDS}}备考复盘（真实感型）
+
+📝 正文结构（400-500字）
+
+【第一段 · 引入学员故事，60-80字】
+以品牌号口吻引出这位学员，带入感强，不夸大：
+「今天来分享一位学员的{{KEYWORDS}}出分故事 🎉 TA来找我们的时候，成绩在X分左右，距离目标还有X分的差距——说实话，这个跨度我们当时也认为需要好好规划 🤔」
+
+【第二段 · 备考过程（品牌视角），150-180字】
+以"我们怎么帮TA"的视角叙述，自然植入{{ADVANTAGES}}：
+
+📋 诊断阶段：
+  · 做了完整的薄弱点诊断，发现核心问题在xxx（如：阅读理解速度/大题解题逻辑）
+  · 定制了X周备考计划，不是标准模板，是根据TA的情况来的
+
+📊 辅导阶段：
+  · 每节课结束，TA都会收到{{ADVANTAGES}}（AI课程报告），清楚看到这节课掌握了什么
+  · 导师发现TA在xxx考点反复出错，专项突破后明显改善 💪
+
+🎯 冲刺阶段：
+  · 用{{ADVANTAGES}}（独家模考系统）做了X次完整模考
+  · 最后两次模考分数已经稳定在目标分数段
+
+【第三段 · 学员反馈，60-80字】
+引用学员原话（用引号），真实感强：
+「TA考完发消息说："没想到真的考到了，感觉最后一个月每一天都有在进步，而不是瞎刷题。" 😭 这话让我们很感动。做这件事的意义，就是这一句。」
+
+【结尾CTA + 种草】
+「正在备考{{KEYWORDS}}的同学，欢迎来找我们聊聊你的情况 📩 先做个诊断，看看你现在的状态适合怎么规划」
+
+🖼️ 封面建议
+- 主花字：X分 → X分（大号对比数字）
+- 副花字：{{KEYWORDS}} · 学员真实出分记录
+- 品牌logo角标（右下）
+- 配色：深蓝底+白字+黄色数字强调
+- 版式：Before/After对比感，底部"{{BRAND}}"品牌标识
+
+✅ 发布前自查（品牌号特别注意）
+□ 没有出现「保X分」「100%」等违规承诺
+□ 成绩数字是真实学员案例，非编造
+□ CTA引导私信咨询，而非直接跳报名链接
+□ 全文不超过500字，适合小红书阅读节奏
+□ 语气是"朋友分享喜讯"，不是"官方新闻稿""></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A4',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A4','A4-学员成绩播报')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-5 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">备考干货知识科普型（官方口吻）</div>
+            <div class="prompt-body" id="prompt-A5" data-template="🎭 角色设定
+你是{{BRAND}}官方小红书账号，用品牌号发一篇纯干货的备考攻略，不推销，只分享有价值的备考信息。通过「输出有用的内容」来建立专业感和信任感，让用户觉得「这家机构懂行」。
+
+📌 主题
+{{BRAND}}出品 · {{KEYWORDS}}备考避坑指南 —— 用专业干货建立品牌「懂行」人设，积累精准备考人群关注
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 📌 {{KEYWORDS}}备考这X个坑｜{{BRAND}}导师整理（权威型，CTR稳定）
+② 💡 {{KEYWORDS}}出分之前，你得知道这几件事｜{{BRAND}}出品（干货型）
+③ 📋 {{BRAND}}导师说｜{{KEYWORDS}}备考最容易踩的错误（专业型）
+
+📝 正文结构（500-600字）
+
+【第一段 · 品牌背书引入，40-60字】
+用品牌号口吻开场，简短点出内容来源：
+「我们在{{BRAND}}辅导{{KEYWORDS}}的学员见多了，发现备考路上很多人都在踩同样的坑 😩 今天整理出来，帮大家提前避掉。」
+
+【第二段 · 3个高频踩坑（核心干货），250-300字】
+每个坑3-4句，❌→✅格式：
+
+❌ 坑一：只刷题不复盘
+很多学生备考节奏是：刷题→对答案→继续刷，但错了的题不知道「为什么错」
+✅ 正确做法：每做完一套题，建一份「错题归因表」——是知识点不会？还是时间不够？还是题意没看清？找到根本原因再有针对性地补 💡
+
+❌ 坑二：模考太少，正式考试"第一次见"
+很多同学平时都在练小题，但{{KEYWORDS}}的考试节奏、时间分配是需要专门适应的
+✅ 正确做法：距考试至少6周前开始做完整模考，{{ADVANTAGES}}（独家模考系统）可以模拟真实考试环境 🎯 越早适应，正式考试越不慌
+
+❌ 坑三：备考计划太理想化，执行不下去
+"每天X小时，X周搞定"——计划做得很好，一周后就放弃了 😭
+✅ 正确做法：计划要有缓冲，每周留1-2天做灵活调整；同时要有人监督执行，{{ADVANTAGES}}（班主任跟进）就是干这个的 📋
+
+【第三段 · 品牌收尾，50-70字】
+一句话带出品牌定位，不硬推：
+「以上这几点是我们在辅导{{KEYWORDS}}过程中总结出来的——如果你正在备考，可以先用这个框架自查一下你现在的状态 💪 有问题欢迎评论区聊，或者来找我们做个免费诊断 📩」
+
+🖼️ 封面建议
+- 主花字：X个备考坑（大字报感）
+- 副花字：{{KEYWORDS}} · {{BRAND}}导师整理
+- 品牌logo角标
+- 配色：白底+深蓝标题+橙红色警示数字
+- 版式：清单式，每条左侧有❌/✅标记
+
+✅ 发布前自查（品牌号特别注意）
+□ 干货内容是真实有价值的，不是"常识包装"
+□ {{BRAND}}只在首尾出现，中间内容纯干货
+□ {{ADVANTAGES}}中的产品特点是自然融入干货逻辑，不是硬插
+□ 没有竞品对比或负面暗示
+□ 结尾CTA是轻引导（免费诊断），不是直接报名"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A5',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A5','A5-备考干货科普')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-6 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">导师日常 Vlog 种草型（官方口吻）</div>
+            <div class="prompt-body" id="prompt-A6" data-template="🎭 角色设定
+你是{{BRAND}}官方小红书账号，用品牌号发一篇「导师日常视角」的内容，拍摄/记录一位导师的备课、上课、课后反馈全流程，语气生活化、接地气，让用户感受到「这家机构的老师是真实的人」，而不是机构名片。
+
+📌 主题
+{{BRAND}}导师的一天 —— 通过真实的工作日常，展示导师专业度和服务态度，降低用户对"辅导机构"的距离感
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 📸 {{BRAND}}导师的备课日常｜{{KEYWORDS}}这节课准备了什么（Vlog型，互动CTR高）
+② 👀 偷看{{BRAND}}导师上完{{KEYWORDS}}课后在做什么（悬念型）
+③ 💼 {{KEYWORDS}}导师的一天｜从备课到课后AI报告（全流程型）
+
+📝 正文结构（400-500字，图文笔记风格）
+
+【第一段 · 场景引入，50-60字】
+用品牌号口吻，带入导师视角：
+「今天跟拍了{{BRAND}}的一位{{KEYWORDS}}导师，从下午备课到晚上课后反馈，来看看上一节1v1辅导课背后，导师在做什么 📸」
+
+【第二段 · 三个场景，200-230字】
+
+🖥️ 15:00 备课中
+  · 导师在看这位学员上节课的{{ADVANTAGES}}（AI课程报告）
+  · 根据报告显示的薄弱点，这节课重点准备了xxx考点的针对性练习
+  · "不是照模板讲，是根据TA上节课的表现来定这节课的内容" 📋
+
+📱 17:30 上课中（截图/示意）
+  · 双语讲解，学员不懂的地方重复讲
+  · 准备了{{ADVANTAGES}}（独家模考系统）里的题型，让学员在真实考试模式下练习 ⏱️
+  · 课中随时调整节奏，发现学员状态不对马上换方式
+
+📊 19:00 课后处理
+  · 课结束了，导师在确认这节课的AI报告内容准确
+  · 给班主任发了本节课备注："这个学员的xxx还需要下周专项补"
+  · 顺手回复了家长的进度询问 📩
+
+【第三段 · 品牌收尾，60-80字】
+「这就是{{BRAND}}一节1v1辅导课背后的流程——{{ADVANTAGES}}（导师优质+AI报告+班主任跟进）不是口号，是每节课实际在发生的事 ✅ 如果你也想体验，欢迎来约一次免费试听课，感受一下这个节奏 📩」
+
+🖼️ 封面建议（图文笔记，建议9图或3图）
+- 封面：导师备课中的实拍截图（或示意图）
+- 第2-4图：三个场景各一张（备课/上课/课后）
+- 最后一图：品牌slogan + CTA
+- 整体风格：真实日常感，不过度精修，要有"在拍工作vlog"的质感
+
+✅ 发布前自查（品牌号特别注意）
+□ 全文以"品牌记录导师"为视角，不是机构自夸
+□ {{ADVANTAGES}}是通过"真实发生的事"来体现，不是直接列功能点
+□ 语气生活化，没有官方新闻稿感
+□ 图文配合（封面说明拍摄场景，正文对应图的内容）
+□ 结尾CTA是"免费试听"低门槛入口，不是直接报名"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A6',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A6','A6-导师日常Vlog')">⬇ 下载</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Suite B -->
+      <div class="suite-content" id="suite-B">
+        <div class="prompt-grid">
+
+          <div class="prompt-card">
+            <div class="prompt-tag">B-1 · 软文笔记</div>
+            <div class="prompt-title">AP/SAT备考时间线拆解型</div>
+            <div class="prompt-body" id="prompt-B1" data-template="🎭 角色设定
+你是一位已经通过AP/SAT考试、回来分享经验的学长/学姐，在小红书写"备考时间管理"系列，语气亲切有干货感，帮学弟学妹避坑。
+
+📌 主题
+{{KEYWORDS}}备考时间线全拆解 —— 帮高中生看清节奏，不踩时间坑
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① ⏰ {{KEYWORDS}}备考｜提前X个月开始的时间线复盘（时间型，CTR高）
+② 😰 {{KEYWORDS}}考前两个月才开始？还来得及吗！（焦虑共鸣型）
+③ 📋 {{KEYWORDS}}备考全流程｜我整理了这份时间线（干货型）
+
+📝 正文结构（500-600字）
+
+【第一段 · 共情钩子，60-80字】
+"我当时也超级焦虑"式开场，点出{{KEYWORDS}}备考的时间焦虑，加😰💦
+→ 结尾引出：那段时间找了{{BRAND}}做系统备考规划，才把节奏理顺了
+
+【第二段 · 三阶段时间线，200-250字】
+⏰ 考前3-4个月（诊断期）：
+  · 做一次摸底测试，找到核心薄弱点
+  · 不要贪多，先把X个高频考点搞透
+  · {{ADVANTAGES}}中的模考系统：从这个阶段开始做完整模考，建立考试感 🎯
+
+📚 考前1-2个月（冲刺期）：
+  · 针对薄弱点专项突破，每天X小时
+  · {{BRAND}}的{{ADVANTAGES}}（AI课程报告）帮我每节课清楚知道掌握了什么 📊
+  · 继续高频模考，把时间分配练到自动化
+
+🔥 考前2周（定型期）：
+  · 停止学新知识点，只做复盘和真题
+  · 调整作息，模拟正式考试时间段备考
+  · 心态管理：模考分数稳了就不要动了 💪
+
+【第三段 · 信息差提醒，60-80字】
+留学生{{KEYWORDS}}备考最难的不是不努力，是不知道节奏 👀
+{{ADVANTAGES}}里的班主任跟进+定期反馈，其实解决的就是这个问题——让你随时知道自己现在什么状态 💡
+
+【结尾CTA】
+「你现在距考试还有多久？评论区说说，我帮你判断现在的节奏合不合适👇」
+
+🖼️ 封面建议
+- 主花字：备考时间线
+- 副花字：{{KEYWORDS}} · X个月全流程
+- 配色：深蓝底+白色时间轴线+黄色节点标记
+- 版式：竖向时间轴，3个阶段清晰分层"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-B1',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-B1','B1-备考时间线拆解')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">B-2 · 软文笔记</div>
+            <div class="prompt-title">1v1 vs 班课效率对比型</div>
+            <div class="prompt-body" id="prompt-B2" data-template="🎭 角色设定
+你是一位同时体验过大班课和1v1辅导的高中生，在小红书写"两种课型真实对比"，客观呈现差异，自然引出1v1（{{BRAND}}）更适合某类需求的结论。
+
+📌 主题
+{{KEYWORDS}}大班课 vs 1v1辅导 —— 真实对比，帮你选对适合自己的方式
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 📊 {{KEYWORDS}}大班课vs1v1｜我都上过，来说真实感受（对比型，CTR高）
+② 🤔 上了X个月{{KEYWORDS}}大班课后我换了1v1｜为什么？（反转型）
+③ 💰 {{KEYWORDS}}辅导到底怎么选？班课和1v1对比说清楚（实用型）
+
+📝 正文结构（500-600字）
+
+【第一段 · 背景交代，60-80字】
+我{{KEYWORDS}}同时体验了大班课和1v1，今天来做个真实横向对比 🔍
+说清楚：什么情况下选班课，什么情况下选1v1，不说哪个绝对好
+
+【第二段 · 两两对比（3个维度），200-250字】
+用表格式对比，每个维度2-3句：
+
+📌 维度一：学习节奏
+  大班课：统一进度，跟不上的知识点没法反复讲 😅
+  1v1：按你的薄弱点来，卡住了可以反复讲同一个知识点 ✅
+
+📌 维度二：反馈机制
+  大班课：老师顾不上每个人，你不知道自己哪里没学透
+  {{BRAND}}的1v1：{{ADVANTAGES}}（AI课程报告）让你每节课后清楚知道掌握情况 📊 + 班主任定期跟进
+
+📌 维度三：效率和时间
+  大班课：课时长，但针对你个人的有效时间有限
+  1v1：{{ADVANTAGES}}（时间比班课少）——按需补，不浪费时间在已经会的知识点上 ⏱️
+
+【第三段 · 结论，80-100字】
+说清楚各自适合谁：
+大班课适合：预算有限、基础扎实、自律性强、需要氛围感的同学
+1v1适合：基础薄弱、时间紧张、需要个性化反馈、家长想看到数据化进步的同学 💡
+
+{{BRAND}}的优势在于{{ADVANTAGES}}——如果你符合上面1v1适合的情况，性价比其实比你想的高
+
+【结尾CTA】
+「你现在在用哪种方式备考{{KEYWORDS}}？评论区说说～💬 我来帮你判断适不适合」
+
+🖼️ 封面建议
+- 主花字：班课 vs 1v1
+- 副花字：{{KEYWORDS}} · 真实对比
+- 配色：白底+左蓝右橙双色对比版式
+- 版式：左右分栏，标题+对比项清单"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-B2',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-B2','B2-1v1vs班课效率对比')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">B-3 · 软文笔记</div>
+            <div class="prompt-title">退款保障机制解析型</div>
+            <div class="prompt-body" id="prompt-B3" data-template="🎭 角色设定
+你是一位选{{BRAND}}前专门研究了退款保障条款的学生家长，在小红书以"过来人"身份分享"怎么看机构退款保障是否靠谱"，自然引出{{BRAND}}的稳分合约作为正向案例。
+
+📌 主题
+{{KEYWORDS}}辅导机构退款保障 —— 怎么判断条款是真是假，帮家长看清楚
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 🔍 {{KEYWORDS}}辅导退款保障｜看条款的3个关键点（避坑型，CTR高）
+② 😤 被{{KEYWORDS}}辅导机构坑过退款的来！这篇帮你（痛点共鸣型）
+③ 📋 {{KEYWORDS}}辅导退款靠谱吗？我用这个标准判断的（方法论型）
+
+📝 正文结构（500-600字）
+
+【第一段 · 痛点共情，60-80字】
+很多家长反映{{KEYWORDS}}辅导交了钱效果不好但退款很难 😩
+不是所有"退款保障"都靠谱 —— 有些条款写得模糊，真出问题了发现退不了
+所以在选之前一定要问清楚这3点 🔍
+
+【第二段 · 3个判断标准，200-250字】
+✅ 标准一：退款触发条件是否明确
+  好的合约：明确写出"若考试成绩未达到X分，退还X%费用"
+  差的合约：模糊写"效果不理想可协商退款"—— 协商就是退不了 ⚠️
+
+✅ 标准二：合约有没有第三方见证或书面形式
+  口头承诺的退款保障基本不可信 📝 要有正式合同+盖章，出了问题才有据可查
+
+✅ 标准三：是否分段付款而非一次性全款
+  好机构：按学习阶段分期付款，每段评估效果再继续 💡
+  要警惕：上来就要你全款X千X万，后面想退就难了
+
+→ 结合{{ADVANTAGES}}（稳分产品/合约保障）自然引出{{BRAND}}作为正向案例（1-2句，不强推）
+
+【第三段 · {{BRAND}}合约说明，60-80字】
+我当时研究了{{BRAND}}的合约，让我心安的是：{{ADVANTAGES}} 📋
+不是"满意退款"的模糊承诺，是白纸黑字写明触发条件 ✅ 这种透明度让家长选得放心。
+
+【结尾CTA】
+「想了解{{KEYWORDS}}辅导退款保障具体怎么操作的，可以评论区问我或者私信 📩 我把我当时研究到的细节告诉你」
+
+🖼️ 封面建议
+- 主花字：退款保障能信吗？
+- 副花字：3个关键点帮你判断
+- 配色：白底+红色警示感标注+绿色✅对比
+- 版式：左侧❌踩坑右侧✅正确，清晰对比"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-B3',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-B3','B3-退款保障机制解析')">⬇ 下载</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Suite C -->
+      <div class="suite-content" id="suite-C">
+        <div class="prompt-grid">
+
+          <div class="prompt-card">
+            <div class="prompt-tag">C-1 · 硬广笔记</div>
+            <div class="prompt-title">限时试听引导留资型</div>
+            <div class="prompt-body" id="prompt-C1" data-template="🎭 角色设定
+你是{{BRAND}}的课程顾问，用专业又亲切的口吻写一篇硬广，核心目标是引导有意向的学生/家长私信/预约试听，不过分推销，保持真实感。
+
+📌 主题
+{{KEYWORDS}}免费诊断试听开放 —— 用低门槛体验入口吸引有需求的用户主动联系
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① ⏰ {{KEYWORDS}}备考诊断｜免费名额只剩最后X个（稀缺感，CTR最高）
+② 🎯 {{BRAND}}{{KEYWORDS}}试听开放！先诊断再上课（流程型）
+③ 💡 {{KEYWORDS}}备考不知道从哪开始？先来做个免费诊断（痛点型）
+
+📝 正文结构（400-500字）
+
+【第一段 · 节点触发，50-60字】
+现在是{{KEYWORDS}}备考的关键时间节点 ⏰
+很多同学还在"再等等再准备"——但好的导师资源和试听名额是有时间窗口的，等你"准备好了"可能就约不上了 🔥
+
+【第二段 · 试听内容说明，150-180字】
+免费诊断试听包含什么（结合{{ADVANTAGES}}展开）：
+✅ 诊断测试：导师根据你的情况设计15-20分钟摸底，找出你的核心薄弱点
+✅ 学习规划建议：根据你距考试的时间和当前水平，给出可执行的备考路线图
+✅ 课程体验：上一节完整的1v1辅导课，感受{{BRAND}}的教学风格
+✅ AI课程报告体验：课后收到你的第一份报告，看到数据化的学习反馈 📊
+
+→ 整个试听不超过X小时，不收费，不强制报名 💡
+
+【第三段 · {{BRAND}}核心优势，80-100字】
+{{BRAND}}专注{{KEYWORDS}}辅导，核心是{{ADVANTAGES}} 🎯
+我们不说"保证X分"，因为分数是你自己考出来的——我们做的是让备考更系统、让进步可见 📈
+导师都有名校背景+真实备考经历，双语授课，你听懂为止 ✅
+
+【CTA】
+「📩 私信发送"试听"，我来了解你的情况，安排合适的导师」
+「👇 评论区留下你备考的科目，我私信你排课」
+
+⚠️ 合规红线（不可出现）
+❌ "保X分" / "100%满分" / "考不过全退款"（不是合约里的具体条款就不能承诺）
+❌ 具体收费金额
+❌ 诱导性夸张数据
+
+🖼️ 封面建议
+- 主花字：免费试听开放
+- 副花字：{{KEYWORDS}} · 先诊断再上课
+- 配色：深蓝底+白字+黄色"免费"标签
+- 版式：大字+倒计时感设计，底部CTA"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-C1',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-C1','C1-限时试听留资')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">C-2 · 硬广笔记</div>
+            <div class="prompt-title">稳分合约透明化型</div>
+            <div class="prompt-body" id="prompt-C2" data-template="🎭 角色设定
+你是{{BRAND}}的课程顾问，这次写一篇"透明化合约说明"的硬广，用坦诚的口吻消除用户对退款保障的顾虑，适合正在犹豫的家长/学生。
+
+📌 主题
+{{BRAND}}稳分合约到底是什么 —— 主动说清楚条款，用透明感建立信任
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① 📋 {{KEYWORDS}}辅导报名前｜{{BRAND}}稳分合约全解读（透明型，信任CTR高）
+② 🤝 {{BRAND}}的退款保障到底靠不靠谱？我来说清楚（解答型）
+③ 👀 {{KEYWORDS}}辅导犹豫不决？先把合约搞明白再说（对话型）
+
+📝 正文结构（400-500字）
+
+【第一段 · 坦诚开场，40-60字】
+报名前有顾虑很正常 🤝
+我知道最多人问的是："没出分怎么办？""退款条件是什么？"——这篇来开诚布公说清楚，不怕你问。
+
+【第二段 · 合约内容3步，180-200字】
+🔵 稳分合约触发条件（最重要）：
+  · 报名前签订书面合约，明确约定目标分数 📝
+  · 若正式考试未达到合约约定分数 → 触发退款条款
+  · 退款比例/金额在合约中明确写明，不是"协商" ✅
+  → 强调：这是{{ADVANTAGES}}（稳分产品）的核心，不是口头承诺
+
+🔵 课程执行保障：
+  · {{ADVANTAGES}}（AI课程报告）：每节课后数据化反馈，家长可见 📊
+  · {{ADVANTAGES}}（班主任跟进）：定期和家长沟通进展，不消失不失联
+  · {{ADVANTAGES}}（独家模考系统）：模拟真实考试环境，考前充分准备
+
+🔵 适合/不适合说明（诚实部分）：
+  适合：有明确目标分数、愿意配合系统备考的同学 ✅
+  不适合：希望"付钱就能拿高分不需要努力"的同学 ❌ —— 这个我们做不到
+
+【第三段 · 答疑，60-80字】
+「有没有人真的触发过退款？」—— 有。合约写得清楚，执行起来也清楚 🤝
+我不会说"我们学生100%达标"，因为备考本来就有变量 💪 但合约保障是真实存在的。
+
+【CTA】
+「有任何问题欢迎直接评论区问我 💬 或者私信获取合约模板——有问必答，不催你报名」
+
+🖼️ 封面建议
+- 主花字：合约写清楚了
+- 副花字：{{BRAND}}稳分保障 · 透明说明
+- 配色：深蓝底+白字+绿色✅强调
+- 版式：3步骤流程感，合约文本感设计"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-C2',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-C2','C2-稳分合约透明化')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">C-3 · 硬广笔记</div>
+            <div class="prompt-title">真实学员口碑型</div>
+            <div class="prompt-body" id="prompt-C3" data-template="🎭 角色设定
+你是一位通过{{BRAND}}辅导，达到{{KEYWORDS}}目标分数的真实学员，回来写"不夸不黑"的平衡评价，好的说好，不足的说不足，这种真实感最有说服力。
+
+📌 主题
+{{BRAND}}真实学员评测 —— 用"有好有坏"的平衡评价建立高信任度
+
+✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）
+① ⭐ 用了{{BRAND}}X个月｜{{KEYWORDS}}真实体验，好坏都说（测评型，CTR高）
+② 🤔 {{KEYWORDS}}选了{{BRAND}}后｜没想到有这个优点，也有这个缺点（平衡型）
+③ 💡 {{BRAND}}{{KEYWORDS}}辅导｜真实学员视角，不吹不踩（客观型）
+
+📝 正文结构（400-500字）
+
+【第一段 · 背景+选择原因，80-100字】
+交代：在读X年级，目标是{{KEYWORDS}}考X分，选{{BRAND}}的原因是{{ADVANTAGES}} 💡
+用了X个月，来说说真实感受——好的说好，不足的也说 🤔
+
+【第二段 · 平衡评价，200-220字】👍 觉得好的地方（2点，要有细节）：
+1. 导师真的很负责 ✅ {{ADVANTAGES}}中"导师优质"的细节：上课不是照本宣科，是根据我这节课的回答调整讲法，发现我这个点没懂马上换方式再讲一遍
+2. AI课程报告真的好用 📊 {{ADVANTAGES}}：每节课后收到报告，清楚知道掌握了什么、哪里还要巩固，家长也看得到，不用靠我自己汇报
+
+👀 可以改进的地方（1点，客观）：
+模考系统有时候题型更新稍慢 😅 部分最新考试变化的题型反映不够快——不过核心考点覆盖是够的，这点稍微有点遗憾
+
+【第三段 · 结果+建议，80-100字】
+最终{{KEYWORDS}}考了X分，达到了我的目标 🎉
+说实话：{{ADVANTAGES}}（稳分合约）给了我很多备考的安全感，不是说合约万能，是它让我知道"万一没考好有兜底"——这种心态其实更有利于发挥 💪
+
+【结尾CTA】
+「同样在备考{{KEYWORDS}}的同学欢迎私信我聊聊 📩 或者评论区留下你的情况，我来帮你判断{{BRAND}}适不适合你」
+
+🖼️ 封面建议
+- 主花字：真实测评
+- 副花字：{{BRAND}} · 好坏都说
+- 配色：白底+蓝色边框+星级黄⭐
+- 版式：左侧👍好评+右侧👀待改进，中间分隔"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-C3',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-C3','C3-真实学员口碑')">⬇ 下载</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- end suite-content-wrap -->
+  </div><!-- end section 04 -->
+  </div><!-- end right-col -->
+  </div><!-- end main-layout -->
+
+</div><!-- end page -->
+
+<script>
+const PLACEHOLDERS = { keywords: '{{KEYWORDS}}', advantages: '{{ADVANTAGES}}', brand: '{{BRAND}}' };
+
+function getValues() {
+  return {
+    keywords:   document.getElementById('input-keywords').value.trim(),
+    advantages: document.getElementById('input-advantages').value.trim(),
+    brand:      document.getElementById('input-brand').value.trim()
+  };
+}
+
+function getReplacedText(template) {
+  const v = getValues();
+  let out = template;
+  out = out.replaceAll(PLACEHOLDERS.keywords,   v.keywords   || PLACEHOLDERS.keywords);
+  out = out.replaceAll(PLACEHOLDERS.advantages, v.advantages || PLACEHOLDERS.advantages);
+  out = out.replaceAll(PLACEHOLDERS.brand,      v.brand      || PLACEHOLDERS.brand);
+  return out;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderPromptBody(el) {
+  const template = el.dataset.template;
+  const v = getValues();
+  let html = escapeHtml(template);
+  [
+    { ph: PLACEHOLDERS.keywords,   val: v.keywords   },
+    { ph: PLACEHOLDERS.advantages, val: v.advantages },
+    { ph: PLACEHOLDERS.brand,      val: v.brand      }
+  ].forEach(({ ph, val }) => {
+    const esc = escapeHtml(ph);
+    html = html.replaceAll(esc, val
+      ? `<span class="var-replaced">${escapeHtml(val)}</span>`
+      : `<span class="var-empty">${esc}</span>`);
+  });
+  el.innerHTML = html;
+}
+
+function renderAllPrompts() {
+  document.querySelectorAll('.prompt-body[data-template]').forEach(renderPromptBody);
+}
+renderAllPrompts();
+
+let hintTimer;
+['input-keywords','input-advantages','input-brand'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    renderAllPrompts();
+    const hint = document.getElementById('update-hint');
+    hint.classList.add('visible');
+    clearTimeout(hintTimer);
+    hintTimer = setTimeout(() => hint.classList.remove('visible'), 2000);
+  });
+});
+
+function switchSuite(s) {
+  document.querySelectorAll('.suite-tab').forEach((t, i) => {
+    t.classList.toggle('active', ['A','B','C'][i] === s);
+  });
+  document.querySelectorAll('.suite-content').forEach(c => {
+    c.classList.toggle('active', c.id === 'suite-' + s);
+  });
+}
+
+function copyPrompt(id, btn) {
+  const el = document.getElementById(id);
+  const text = getReplacedText(el.dataset.template);
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ 已复制';
+    btn.style.background = 'var(--primary-dark)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--primary-dark)';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = ''; }, 1800);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    const orig = btn.textContent; btn.textContent = '✓ 已复制';
+    setTimeout(() => { btn.textContent = orig; }, 1800);
+  });
+}
+
+function dlPrompt(id, name) {
+  const el = document.getElementById(id);
+  const text = getReplacedText(el.dataset.template);
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `路觅Lumi_Prompt_${name}.txt`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+function togglePrompt(btn) {
+  const card = btn.closest('.prompt-card');
+  const body = card.querySelector('.prompt-body');
+  const expanded = body.classList.toggle('expanded');
+  btn.textContent = expanded ? '▲ 收起Prompt' : '▼ 展开完整Prompt';
+}
+</script>
+</body>
+</html>
