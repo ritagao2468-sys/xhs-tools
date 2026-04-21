@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山东事业编面试班 · 内容洞察 & 笔记Prompt灵感 · 橙啦公考</title>
+<style>
+  :root {
+    --primary-dark:  #b34a00;
+    --primary-mid:   #E65100;
+    --primary-light: #FFF3E0;
+    --primary-bg:    #FFF8F3;
+    --accent:        #FF6D00;
+    --orange:        #E65100;
+    --orange-light:  #FFECDB;
+    --yellow:        #FFD600;
+    --white:         #ffffff;
+    --ink:           #1A1A1A;
+    --ink2:          #4a4a4a;
+    --ink3:          #888;
+    --line:          #e0e0e0;
+    --shadow:        0 2px 10px rgba(0,0,0,0.07);
+    --shadow-lg:     0 4px 20px rgba(0,0,0,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    background: var(--primary-bg);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page { max-width: 1120px; margin: 0 auto; padding: 20px 28px 60px; }
+  .section { margin-bottom: 32px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid var(--primary-dark);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section-num {
+    font-size: 11px;
+    color: var(--white);
+    font-weight: 800;
+    letter-spacing: .1em;
+    background: var(--primary-dark);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .section-title { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+  .section-sub { font-size: 12px; color: var(--ink3); margin-left: auto; }
+
+  /* Topbar */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #7a2e00 100%);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+  }
+  .brand { font-size: 22px; font-weight: 900; letter-spacing: -.03em; color: var(--white); line-height: 1.3; }
+  .brand .brand-highlight { color: var(--yellow); }
+  .brand-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 5px; font-weight: 500; }
+  .meta { font-size: 11px; color: rgba(255,255,255,0.75); text-align: right; line-height: 2; }
+  .meta strong { color: rgba(255,255,255,0.95); font-weight: 700; }
+  .meta .badge-internal {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: .04em;
+  }
+
+  /* Track banner */
+  .track-banner {
+    background: var(--primary-mid);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: .01em;
+  }
+  .track-banner strong { font-weight: 900; }
+
+  /* Source cards */
+  .source-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .source-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .source-name { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+  .source-method { font-size: 12px; color: var(--ink2); }
+
+  /* Selling points */
+  .selling-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  @media (max-width: 900px) {
+    .selling-grid { grid-template-columns: repeat(2,1fr); }
+    .var-input-grid { grid-template-columns: 1fr; }
+  }
+  .selling-card {
+    background: var(--white);
+    border: 1.5px solid var(--primary-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--primary-mid);
+  }
+  .selling-num { font-size: 10px; font-weight: 800; color: var(--primary-mid); margin-bottom: 4px; letter-spacing: .05em; }
+  .selling-title { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 3px; }
+  .selling-desc { font-size: 11px; color: var(--ink2); line-height: 1.5; }
+
+  /* Persona cards */
+  .persona-grid { display: flex; flex-direction: column; gap: 12px; }
+  .persona-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .persona-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary-mid);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .persona-name { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+  .persona-rows { display: flex; flex-direction: column; gap: 5px; }
+  .persona-row { display: flex; gap: 8px; font-size: 12.5px; }
+  .persona-key {
+    min-width: 60px;
+    font-weight: 700;
+    color: var(--ink2);
+    flex-shrink: 0;
+  }
+  .persona-val { color: var(--ink); }
+
+  /* Keyword grid */
+  .kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .rising-kws { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+  .rising-kw {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    padding: 7px 12px;
+  }
+  .rising-kw-text { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+  .rising-badge {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--orange);
+    background: var(--orange-light);
+    border: 1px solid #FFB74D;
+    border-radius: 4px;
+    padding: 2px 7px;
+    letter-spacing: .02em;
+  }
+
+  .cat-grid { display: flex; flex-direction: column; gap: 8px; }
+  .cat-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .cat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .cat-name { font-size: 12.5px; font-weight: 700; color: var(--ink); }
+  .cat-pct { font-size: 12px; font-weight: 800; color: var(--primary-mid); }
+  .cat-bar-wrap { background: #e8eeff; border-radius: 2px; height: 4px; margin-bottom: 5px; }
+  .cat-bar { background: var(--primary-mid); border-radius: 2px; height: 100%; }
+  .cat-cnt { font-size: 10.5px; color: var(--ink3); margin-bottom: 4px; }
+  .cat-kws { display: flex; flex-wrap: wrap; gap: 4px; }
+  .cat-kw {
+    font-size: 10.5px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-weight: 600;
+  }
+
+  .insight-box {
+    display: flex;
+    gap: 8px;
+    background: var(--primary-light);
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--primary-dark);
+  }
+  .insight-icon { font-size: 16px; flex-shrink: 0; }
+
+  .dl-btn {
+    width: 100%;
+    margin-top: 8px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 6px;
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .dl-btn:hover { background: var(--primary-mid); color: #fff; }
+
+  /* Prompt area */
+  .var-input-area {
+    background: var(--primary-light);
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .var-input-title { font-size: 13px; font-weight: 700; color: var(--primary-dark); margin-bottom: 3px; }
+  .var-input-subtitle { font-size: 11.5px; color: var(--ink2); margin-bottom: 12px; }
+  .var-input-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .var-input-group { display: flex; flex-direction: column; gap: 6px; }
+  .var-input-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink2);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 22px;
+  }
+  .var-label-badge {
+    font-size: 10px;
+    background: var(--primary-dark);
+    color: #fff;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-family: monospace;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .var-input-field {
+    border: 1.5px solid var(--primary-mid);
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    background: var(--white);
+    outline: none;
+    transition: border-color .2s;
+    width: 100%;
+  }
+  .var-input-field:focus { border-color: var(--primary-dark); }
+  .var-update-hint {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-mid);
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .var-update-hint.visible { opacity: 1; }
+
+  /* Suite tabs */
+  .suite-tab-wrapper { margin-bottom: 14px; }
+  .suite-tabs { display: flex; gap: 8px; }
+  .suite-tab {
+    flex: 1;
+    background: var(--white);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .15s;
+  }
+  .suite-tab.active { border-color: var(--primary-mid); background: var(--primary-light); }
+  .tab-main { display: block; font-size: 13px; font-weight: 800; color: var(--primary-dark); }
+  .tab-scene { display: block; font-size: 11px; color: var(--ink3); margin-top: 2px; }
+  .suite-tab.active .tab-main { color: var(--primary-mid); }
+
+  /* Suite content */
+  .suite-content { display: none; }
+  .suite-content.active { display: block; }
+  .prompt-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  @media (max-width: 860px) { .prompt-grid { grid-template-columns: 1fr; } }
+  .prompt-card {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .prompt-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary-mid);
+    background: var(--primary-light);
+    border-radius: 4px;
+    padding: 2px 8px;
+    letter-spacing: .04em;
+    width: fit-content;
+  }
+  .prompt-title { font-size: 14px; font-weight: 800; color: var(--ink); }
+  .prompt-body {
+    font-size: 12px;
+    color: var(--ink2);
+    white-space: pre-wrap;
+    line-height: 1.7;
+    background: #f8faff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 12px;
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+  .prompt-body.expanded { max-height: 1200px; }
+  .prompt-body .var-replaced { color: var(--primary-mid); font-weight: 700; }
+  .prompt-body .var-empty { color: #b5c8e8; font-style: italic; }
+
+  .prompt-toggle {
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: var(--primary-mid);
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0;
+    text-align: left;
+    font-family: inherit;
+  }
+  .prompt-actions { display: flex; gap: 8px; margin-top: auto; }
+  .btn-copy, .btn-dl {
+    font-size: 11px;
+    padding: 7px 14px;
+    border: 1.5px solid var(--line);
+    background: var(--white);
+    cursor: pointer;
+    border-radius: 6px;
+    color: var(--ink2);
+    font-weight: 700;
+    transition: all .15s;
+    letter-spacing: .02em;
+  }
+  .btn-copy:hover { background: var(--primary-dark); border-color: var(--primary-dark); color: #fff; }
+  .btn-dl:hover { background: var(--primary-light); border-color: var(--primary-mid); color: var(--primary-dark); }
+
+  /* Layout */
+  .main-layout {
+    display: block;
+  }
+  .left-col { width: 100%; }
+  .right-col { width: 100%; }
+</style>
+<script id="prompt-templates">
+const PROMPT_TEMPLATES = {
+  "prompt-A1": "🎭 角色设定\n你是一位已经通过{{KEYWORDS}}、成功上岸的学员，在小红书分享备考经历，语气真实有温度，不像软文，更像朋友复盘。\n\n📌 主题\n{{KEYWORDS}}逆袭上岸复盘 —— 帮同样焦虑的备考者看到一条清晰的路\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n提供3个候选：\n① 😭 {{KEYWORDS}}我差点被逆袭｜复盘让我守住的那几件事\n② 🎯 {{KEYWORDS}}备考复盘｜真实经历告诉你能不能逆袭\n③ 💡 笔试上岸后｜{{BRAND}}帮我把{{KEYWORDS}}这关过了\n\n📝 正文结构（500-600字）\n【第一段 · 背景交代，80-100字】\n笔试上岸后的那种又高兴又紧张的状态，交代：排名情况、面试经验几乎为零、最怕被逆袭\n→ 结尾：后来找了{{BRAND}}做系统备考，今天来说说这段经历\n\n【第二段 · 备考过程（3个节点），200-250字】\n📍 第一周：摸底+定思路\n  - 问号哥亲自授课，分析我的答题模式找出核心问题\n  - {{ADVANTAGES}}中的岗位保护：我的答题思路是量身定制的，别人学不走\n  - 6-9人真小班，体制内老师点评，每次点评都很具体不是泛泛而谈\n📍 第二三周：强化突破\n  - 针对弱点高强度练习，封闭集训节奏很紧但效果看得见\n  - {{ADVANTAGES}}中的战绩背书：同期守擂学员成功率接近100%，给了我信心\n📍 考前冲刺\n  - 最后一轮模拟，老师说我的答题已经有了自己的特色，不会被别人照搬\n  - 四星级酒店住宿，睡得好，状态稳\n\n【第三段 · 结果+心得，60-80字】\n最终成功守住排名，上岸 🎉\n最大的收获不只是上岸，是找到了属于自己的答题风格——{{ADVANTAGES}}让我知道这套东西是我的，不是模板。\n\n【结尾CTA】\n「也在备考{{KEYWORDS}}的小伙伴，评论区聊聊你现在哪个阶段👇」\n\n🖼️ 封面建议\n- 主花字：守住了！\n- 副花字：{{KEYWORDS}}备考 · 不被逆袭\n- 配色：橙色底+白色主字+红色强调",
+  "prompt-A2": "🎭 角色设定\n你是{{BRAND}}的问号哥本人，在小红书用轻松接地气的语气分享自己的背景和教学理念，像朋友聊天一样的老师自我介绍。\n\n📌 主题\n{{BRAND}}主讲老师真实背景大公开 —— 帮备考者在选课前了解你的老师到底是谁\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 👨‍🏫 {{KEYWORDS}}老师是谁？｜{{BRAND}}问号哥背景大公开\n② 🎓 我是{{BRAND}}的问号哥｜来说说我为什么教{{KEYWORDS}}\n③ 💬 选{{KEYWORDS}}培训前｜先看看你的老师是什么背景\n\n📝 正文结构（450-550字）\n【第一段 · 老师背景，80-100字】\n用第一人称，交代：清华硕士、前部委公务员、国考面试92.7分、省考面试94分 🎓\n市面上大部分老师没参加过正式考试，我是少数敢晒成绩的——国考92.7，省考94\n\n【第二段 · 教学理念，100-120字】\n说清楚我怎么教，和别的老师哪里不一样 💡\n- 不是照本宣科，是分析你的答题模式找根本原因\n- 我自己参加过考试，知道考场上真正需要什么，讲的是实战不是理论\n- {{ADVANTAGES}}中的岗位保护：每个学员的答题风格我都帮你量身定制，别人学不走\n- 6-9人真小班，每个人都能被我看到，不是大班走流程\n\n【第三段 · 给备考者的话，60-80字】\n我知道很多人担心交了钱效果不好怎么办。所以{{BRAND}}有{{ADVANTAGES}}：大中小围0元学，上岸再付款。我得先证明我能帮到你，你再付钱——这才公平。\n\n【课程预约入口，40-50字】\n「有想了解{{KEYWORDS}}备考的同学，欢迎私信我咨询 📩 可以先约一次免费诊断，聊聊你现在的情况」\n\n🖼️ 封面建议\n- 主花字：问号哥说\n- 副花字：{{KEYWORDS}} · {{BRAND}}主讲揭秘\n- 配色：白底+深色文字+橙色星标 ⭐",
+  "prompt-A3": "🎭 角色设定\n你是一位正在参加{{BRAND}}封闭集训的学员，在小红书分享集训第X天的真实体验，语气好奇、活泼，带点惊喜感。\n\n📌 主题\n{{KEYWORDS}}封闭集训真实探营 —— 展示{{BRAND}}的四星级住宿+小班教学+体制内点评，用新奇感带动讨论\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 🤯 {{KEYWORDS}}封闭培训竟然住四星酒店？！\n② 📊 {{BRAND}}{{KEYWORDS}}集训第3天｜真实体验分享\n③ 💡 上完{{KEYWORDS}}培训课老师帮你做了什么分析\n\n📝 正文结构（400-500字）\n【第一段 · 场景引入，50-70字】\n刚到集训地点，发现是四星级酒店 📱\n住宿、餐饮、上课全在一起，不用操心后勤——可以100%专注备考 🤔\n\n【第二段 · 集训内容展示，150-180字】\n📊 问号哥亲自授课：不是录播不是助教，每天问号哥本人讲课，还会根据你上节课的回答调整这节课内容\n⚠️ 6-9人真小班点评：体制内老师逐一点评，不是大班走流程，点评具体到你这道题哪个词用得好哪个逻辑有跳跃\n✅ 岗位保护机制：每个人的答题思路量身定制，不会和其他同学撞模板\n以前上过大班课，回来还是一团浆糊，现在感觉清晰多了\n\n【第三段 · 整体感受，60-80字】\n封闭集训的好处就是：你不需要分心想其他事情 💪\n住在四星酒店，吃得好睡得好，每天只需要专注备考——{{ADVANTAGES}}让我觉得这段时间花得值，不是钱的问题，是心态的问题。\n\n【结尾CTA】\n「你们机构集训是这种模式吗？有的话评论区分享！没有的可以来试试{{BRAND}} 😏📩」\n\n🖼️ 封面建议\n- 主花字：四星酒店集训？！\n- 副花字：{{KEYWORDS}}封闭备考 · 真实探营\n- 配色：橙色底+白字",
+  "prompt-A4": "🎭 角色设定\n你是{{BRAND}}官方小红书账号的运营人员，用品牌号发布一篇学员上岸播报，语气真诚、有温度，不是硬广感，更像朋友分享喜讯。\n\n📌 主题\n{{BRAND}}学员{{KEYWORDS}}上岸了！—— 用真实成绩案例建立品牌信任感\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 🎉 又上岸了！{{KEYWORDS}}备考X个月，学员成功守住排名\n② 📣 {{BRAND}}学员成绩来了｜{{KEYWORDS}}这次守擂成功\n③ ✅ 学员说没想到真的守住了｜{{KEYWORDS}}备考复盘\n\n📝 正文结构（400-500字）\n【第一段 · 引入学员故事，60-80字】\n「今天来分享一位学员的{{KEYWORDS}}上岸故事 🎉 TA来找我们的时候，笔试第X名，面试经验几乎为零，最担心的就是被逆袭——说实话，这个情况我们见过很多，规划好确实能守住」\n\n【第二段 · 备考过程（品牌视角），150-180字】\n📋 诊断阶段：做了完整的答题风格诊断，发现核心问题（如：结构化表达不够/逻辑跳跃），定制X周备考计划，不是标准模板，是根据TA的情况来的\n📊 辅导阶段：每节课问号哥亲自讲，6-9人真小班，体制内老师逐一点评\n· {{ADVANTAGES}}（岗位保护）：TA的答题风格是独属于他的，别人学不走 💪\n🎯 冲刺阶段：最后一轮模拟，TA的答题已经稳定成型，有自己的特色\n\n【第三段 · 学员反馈，60-80字】\n「TA考完发消息说：没想到真的守住了，感觉最后几周每一天都有在进步，而不是瞎练。😭 这话让我们很感动。做这件事的意义，就是这一句。」\n\n【结尾CTA】\n「正在备考{{KEYWORDS}}的同学，欢迎来找我们聊聊你的情况 📩 先做个诊断，看看你现在的状态适合怎么规划」\n\n✅ 发布前自查\n□ 没有出现保X名、100%等违规承诺\n□ 成绩数字是真实学员案例，非编造\n□ CTA引导私信咨询，而非直接跳报名链接",
+  "prompt-B1": "🎭 角色设定\n你是一位已经通过{{KEYWORDS}}、对比过多家机构的学员，在小红书写选机构避坑系列，语气亲切有干货感。\n\n📌 主题\n{{KEYWORDS}}培训机构怎么选 —— 用3个关键维度帮精明的备考者做决策\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① ⏰ {{KEYWORDS}}选机构｜我对比了5家后总结的3个标准\n② 😰 {{KEYWORDS}}培训那么多家，到底哪家师资是真的？\n③ 📋 {{KEYWORDS}}机构选择指南｜避开这3个坑\n\n📝 正文结构（500-600字）\n【第一段 · 选择背景，60-80字】\n我当时对比了好几家{{KEYWORDS}}培训机构，发现大家都在说自己最好——但怎么分辨呢？\n后来我总结了3个判断维度，用这个标准选到了{{BRAND}}，今天分享给大家\n\n【第二段 · 选机构的3个关键维度，200-250字】\n✅ 维度一：主讲老师有没有真实参考经历和成绩\n很多机构的主讲老师只是培训过，没有真正参加过体制内考试——讲的是理论不是实战 📚\n正确做法：问清楚主讲老师的考试成绩，{{ADVANTAGES}}里的问号哥国考92.7省考94，市面上唯一敢晒分的 💡\n\n✅ 维度二：点评老师是不是真正的山东本地体制内人员\n很多机构用兼职助教充当点评老师，讲的内容可能连考场都没去过\n正确做法：{{ADVANTAGES}}中全部用山东本地体制内老师点评，6-9人真小班，实力远超其他机构主讲 🎯\n\n✅ 维度三：有没有岗位保护机制\n如果你的答题思路和其他学员一样，面试官一眼就看出来是模板\n正确做法：{{ADVANTAGES}}中的岗位保护，你的亮点别人学不会，上岸更安全 📋\n\n【第三段 · 信息差提醒，60-80字】\n选{{KEYWORDS}}机构最难的不是不努力，是不知道怎么判断哪家真的有实力 👀\n{{ADVANTAGES}}里的战绩（守擂成功率近100%）其实是最直接的证据——数据不说谎\n\n【结尾CTA】\n「你现在在对比哪些机构？评论区说说，我帮你分析哪个维度更重要👇」\n\n🖼️ 封面建议\n- 主花字：选机构3个维度\n- 副花字：{{KEYWORDS}} · 避坑指南",
+  "prompt-B2": "🎭 角色设定\n你是一位同时体验过大班课和{{BRAND}}小班课的学员，在小红书写两种课型真实对比，客观呈现差异。\n\n📌 主题\n{{KEYWORDS}}大班课 vs 6-9人真小班 —— 真实对比，帮你选对适合自己的方式\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 📊 {{KEYWORDS}}大班课vs小班｜我都上过，来说真实感受\n② 🤔 上了{{KEYWORDS}}大班课后我换了真小班｜为什么？\n③ 💰 {{KEYWORDS}}培训怎么选？班型对比说清楚\n\n📝 正文结构（500-600字）\n【第一段 · 背景交代，60-80字】\n我{{KEYWORDS}}同时体验了大班课和6-9人小班，今天来做个真实横向对比 🔍\n不说哪个绝对好，说清楚什么情况下选大班，什么情况下选小班\n\n【第二段 · 两两对比（3个维度），200-250字】\n📌 维度一：学习节奏\n  大班课：统一进度，跟不上的知识点没法反复讲 😅\n  {{BRAND}}小班：6-9人，卡住了可以反复讲同一个考点 ✅\n\n📌 维度二：点评质量\n  大班课：老师顾不上每个人，你不知道自己哪里没说好\n  {{BRAND}}：{{ADVANTAGES}}（体制内老师点评）让你每次点评后清楚知道哪个词用得好、哪个逻辑跳跃 📊 + 问号哥本人逐一分析\n\n📌 维度三：课程时长\n  大班课：课时长，但针对你个人的有效时间有限\n  {{BRAND}}：{{ADVANTAGES}}（6-9人真小班，学至考前）—— 不浪费时间在已经会的点上 ⏱️\n\n【第三段 · 结论，80-100字】\n大班课适合：预算有限、基础扎实、自律性强、需要氛围感的同学\n{{BRAND}}小班适合：基础薄弱、时间紧张、需要个性化反馈、想确保答题风格被保护的同学 💡\n{{BRAND}}的优势在于{{ADVANTAGES}}——如果你符合上面小班适合的情况，性价比其实比你想的高\n\n【结尾CTA】\n「你现在在用哪种方式备考{{KEYWORDS}}？评论区说说～📬」\n\n🖼️ 封面建议\n- 主花字：大班 vs 真小班\n- 副花字：{{KEYWORDS}} · 真实对比",
+  "prompt-B3": "🎭 角色设定\n你是一位选{{BRAND}}前专门研究了付款模式条款的学员家长，在小红书以过来人身份分享怎么判断培训机构付款保障是否靠谱。\n\n📌 主题\n{{KEYWORDS}}培训机构付款模式 —— 怎么判断靠不靠谱，帮家长看清楚\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 🔍 {{KEYWORDS}}培训付款｜看条款的3个关键点\n② 😤 被{{KEYWORDS}}培训机构坑过付款的来！这篇帮你\n③ 📋 {{KEYWORDS}}培训付款靠谱吗？我用这个标准判断的\n\n📝 正文结构（500-600字）\n【第一段 · 痛点共情，60-80字】\n很多备考者反映{{KEYWORDS}}培训交了钱效果不好但退款很难 😩\n不是所有退款保障都靠谱——有些条款写得模糊，真出问题了发现退不了\n所以在选之前一定要问清楚这3点 🔍\n\n【第二段 · 3个判断标准，200-250字】\n✅ 标准一：付款触发条件是否明确\n好的模式：上岸之后再付款，白纸黑字，不是口头承诺\n差的模式：模糊写效果不理想可协商退款——协商就是退不了 ⚠️\n\n✅ 标准二：是否分段/结果付款而非一次性全款\n好机构：结果付款或分段付款，每段评估效果再继续 💡\n要警惕：上来就要你全款X千X万，后面想退就难了\n\n✅ 标准三：老师有没有真实参考经历背书\n要有真实成绩：{{ADVANTAGES}}里的问号哥国考92.7省考94，数据才是背书\n结合{{ADVANTAGES}}（0元上岸再付款）自然引出{{BRAND}}作为正向案例\n\n【第三段 · {{BRAND}}方案说明，60-80字】\n我当时研究了{{BRAND}}的方案，让我心安的是：{{ADVANTAGES}} 📋\n大中小围0元学，上岸再付款——不是满意退款的模糊承诺，是结果决定是否付款 ✅\n\n【结尾CTA】\n「想了解{{KEYWORDS}}培训付款方式具体怎么操作的，可以评论区问我或者私信 📩」\n\n🖼️ 封面建议\n- 主花字：付款保障能信吗？\n- 副花字：3个关键点帮你判断",
+  "prompt-B4": "🎭 角色设定\n你是{{BRAND}}官方小红书账号，用品牌号发一篇战绩数据透明化的内容，用坦诚的口吻晒出真实数据，消除用户对机构吹牛的顾虑。\n\n📌 主题\n{{BRAND}}{{KEYWORDS}}战绩公开 —— 用真实数据建立信任，透明感让备考者选得放心\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 📊 {{BRAND}}{{KEYWORDS}}战绩公示｜守擂成功率近100%\n② 📣 {{KEYWORDS}}这一批学员上岸了吗？{{BRAND}}来公布\n③ ✅ 数据不说谎｜{{BRAND}}{{KEYWORDS}}历届成绩一次看完\n\n📝 正文结构（400-500字）\n【第一段 · 品牌开场，40-60字】\n「我们知道备考{{KEYWORDS}}的同学在选机构时最担心一件事：机构说的战绩到底是真的吗？今天来一次透明公示，数字摆出来，你来判断。」\n\n【第二段 · 战绩数据，150-180字】\n📊 25年山东省考面试（{{KEYWORDS}}方向）：\n  守擂成功率：100%（已上笔试榜的学员，面试后全员守住）\n  攻擂成功率：70%（从劣势位置逆袭上岸的比例）\n\n📊 26年山东省考面试（最新一届）：\n  守擂成功率：近100%\n  逆袭翻盘率：70%\n\n数据背后是{{ADVANTAGES}}（问号哥亲授+岗位保护+体制内点评）支撑，不是运气\n\n【第三段 · 诚实部分，60-80字】\n「我们不说保证你上岸，因为面试结果有变量。但我们能保证的是：你的备考是系统的，你的答题风格是属于你自己的——{{ADVANTAGES}}（岗位保护）让你不被别人抄走。战绩是结果，我们做的是让过程可控。」\n\n【CTA】\n「正在备考{{KEYWORDS}}的同学，欢迎私信聊聊你的情况 📩 先做个诊断，看看你现在的状态适合怎么规划」\n\n✅ 发布前自查\n□ 数据来自真实战绩，非编造\n□ 没有保证上岸等违规承诺\n□ 诚实部分增加可信度",
+  "prompt-C1": "🎭 角色设定\n你是{{BRAND}}的课程顾问，用专业又亲切的口吻写一篇硬广，核心目标是引导有意向的备考者私信/预约免费体验，不过分推销，保持真实感。\n\n📌 主题\n{{KEYWORDS}}免费体验开放 —— 用低门槛入口吸引有需求的用户主动联系\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① ⏰ {{KEYWORDS}}备考诊断｜免费名额只剩最后X个\n② 🎯 {{BRAND}}{{KEYWORDS}}体验开放！0元先体验再决定\n③ 💡 {{KEYWORDS}}备考不知道从哪开始？先来做个免费诊断\n\n📝 正文结构（400-500字）\n【第一段 · 节点触发，50-60字】\n现在是{{KEYWORDS}}备考的关键时间节点 ⏰\n很多同学还在再等等再准备——但好的名师资源和体验名额是有时间窗口的，等你准备好了可能就约不上了 🔥\n\n【第二段 · 体验内容说明，150-180字】\n免费体验包含什么（结合{{ADVANTAGES}}展开）：\n✅ 备考诊断：问号哥根据你的情况设计15-20分钟摸底，找出你的核心薄弱点\n✅ 学习规划建议：根据你距考试的时间和当前答题水平，给出可执行的备考路线图\n✅ 小班课体验：旁听一节6-9人真小班课，感受{{BRAND}}的教学节奏\n✅ 岗位保护说明：了解你的答题风格是如何被保护的，别人学不走\n整个体验不超过X小时，不收费，不强制报名 💡\n\n【第三段 · {{BRAND}}核心优势，80-100字】\n{{BRAND}}专注{{KEYWORDS}}培训，核心是{{ADVANTAGES}} 🎯\n我们不说保证X名，因为成绩是你自己考出来的——我们做的是让备考更系统、让进步可见 📈\n更重要的：{{ADVANTAGES}}（0元上岸再付款），你先上岸再交钱，我们得先证明能帮到你 ✅\n\n【CTA】\n「📩 私信发送「体验」，我来了解你的情况，安排合适的时间」\n「👇 评论区留下你备考的岗位，我私信你排课」\n\n⚠️ 合规红线\n❌ 保X名 / 100%上岸 / 考不过全退款\n❌ 具体收费金额\n\n🖼️ 封面建议\n- 主花字：免费体验开放\n- 副花字：{{KEYWORDS}} · 先诊断再备考",
+  "prompt-C2": "🎭 角色设定\n你是{{BRAND}}的课程顾问，这次写一篇透明化付款模式说明的硬广，用坦诚的口吻消除用户对先交钱的顾虑，适合正在犹豫的价格敏感型备考者。\n\n📌 主题\n{{BRAND}}0元上岸再付款到底是什么 —— 主动说清楚规则，用透明感建立信任\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 📋 {{KEYWORDS}}培训报名前｜{{BRAND}}付款模式全解读\n② 🤝 {{BRAND}}的0元付款到底靠不靠谱？我来说清楚\n③ 👀 {{KEYWORDS}}培训犹豫不决？先把付款方式搞明白再说\n\n📝 正文结构（400-500字）\n【第一段 · 坦诚开场，40-60字】\n报名前有顾虑很正常 🤝\n我知道最多人问的是：效果不好怎么办？能退款吗？——这篇来开诚布公说清楚，不怕你问。\n\n【第二段 · 付款模式3步，180-200字】\n🔵 {{BRAND}}核心模式（最重要）：\n  大中小围全部0元学，上岸之后再交钱 📝\n  不是满意退款的模糊承诺，是上岸结果决定是否付款\n  我们得先证明能帮你上岸，你再付钱 ✅\n\n🔵 课程执行保障：\n  {{ADVANTAGES}}（问号哥亲授）：每天问号哥本人上课，不是录播不是助教 📊\n  {{ADVANTAGES}}（岗位保护）：你的答题思路别人抄不走，面试更安全\n  {{ADVANTAGES}}（体制内点评）：6-9人真小班，山东本地体制内老师逐一点评 📩\n\n🔵 适合/不适合说明（诚实部分）：\n  适合：有明确备考目标、愿意配合系统训练的同学 ✅\n  不适合：希望付钱就能拿到模板直接套的同学 ❌\n\n【第三段 · 答疑，60-80字】\n「有没有人真的通过0元上岸再付款成功了？」—— 有。{{ADVANTAGES}}（战绩）：守擂成功率近100%，逆袭翻盘70% 🤝\n我不会说我们学员100%达标，因为备考本来就有变量 💪 但付款模式是真实的。\n\n【CTA】\n「有任何问题欢迎直接评论区问我 📬 或者私信获取详细说明——有问必答，不催你报名」\n\n🖼️ 封面建议\n- 主花字：付款模式写清楚了\n- 副花字：{{BRAND}}0元上岸再付款 · 透明说明",
+  "prompt-C3": "🎭 角色设定\n你是一位通过{{BRAND}}培训、达到{{KEYWORDS}}目标的真实学员，回来写不夸不黑的平衡评价，好的说好，不足的说不足，这种真实感最有说服力。\n\n📌 主题\n{{BRAND}}真实学员评测 —— 用有好有坏的平衡评价建立高信任度\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① ⭐ 用了{{BRAND}}X个月｜{{KEYWORDS}}真实体验，好坏都说\n② 🤔 {{KEYWORDS}}选了{{BRAND}}后｜没想到有这个优点，也有这个缺点\n③ 💡 {{BRAND}}{{KEYWORDS}}培训｜真实学员视角，不吹不踩\n\n📝 正文结构（400-500字）\n【第一段 · 背景+选择原因，80-100字】\n交代：备考什么岗位，排名情况，选{{BRAND}}的原因是{{ADVANTAGES}} 💡\n用了X个月，来说说真实感受——好的说好，不足的也说 🤔\n\n【第二段 · 平衡评价，200-220字】\n👍 觉得好的地方（2点，要有细节）：\n1. 问号哥真的亲自讲课 ✅ {{ADVANTAGES}}中师资顶配：不是照本宣科，是根据我这节课的回答调整讲法，发现我这个点没懂马上换方式再讲一遍——和大班课完全不一样\n2. 0元上岸再付款真的可以 💰 {{ADVANTAGES}}：整个培训期间没有付一分钱，上岸之后才结账——这个模式让我备考期间心态好很多\n\n👀 可以改进的地方（1点，客观）：\n封闭集训时间比较紧张 😅 节奏很密，对需要大量独立消化时间的学员来说可能有点快——不过老师会根据小班情况调整\n\n【第三段 · 结果+建议，80-100字】\n最终{{KEYWORDS}}成功上岸，守住了排名 🎉\n说实话：{{ADVANTAGES}}（0元上岸再付款）给了我很多备考的安全感，不是说模式万能，是它让我知道我们是一条船上的——这种心态其实更有利于发挥 💪\n\n【结尾CTA】\n「同样在备考{{KEYWORDS}}的同学欢迎私信我聊聊 📩 或者评论区留下你的情况，我来帮你判断{{BRAND}}适不适合你」\n\n🖼️ 封面建议\n- 主花字：真实测评\n- 副花字：{{BRAND}} · 好坏都说\n- 配色：白底+橙色边框+星级黄⭐",
+  "prompt-A5": "🎭 角色设定\n你是{{BRAND}}的品牌号，以「问号哥」名义输出一篇干货科普笔记，讲清楚{{KEYWORDS}}面试最常见的3个误区，行文像老师在认真教学，末尾自然引流，不硬推销。\n\n📌 主题\n{{KEYWORDS}}面试3个高频误区 —— 让备考者看完就觉得「学到了」，同时对{{BRAND}}建立专业认知\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① ⚠️ {{KEYWORDS}}面试这3个误区，90%的人都踩过（警示型，CTR最高）\n② 💡 问号哥说｜{{KEYWORDS}}面试为什么越练越差？（反常识型）\n③ 📋 {{KEYWORDS}}面试高分和落榜的差距，其实就在这3点（对比型）\n\n📝 正文结构（500-600字）\n\n【第一段 · 引入，50-70字】\n「作为一个参加过国考面试（92.7分）、省考面试（94分）、还带过很多{{KEYWORDS}}学员的老师，我发现大部分人备考时都在踩同样的坑——今天来说清楚，避开这3个误区，你的备考效率至少翻倍」\n\n【第二段 · 3个误区（核心干货），250-280字】\n❌ 误区一：背模板 ≠ 有思路\n很多人以为背了「万能开头」「结构化答题框架」就能拿高分——但面试官见过太多模板了，千篇一律是减分项\n✅ 正确做法：你需要的是属于自己的答题逻辑，模板只是脚手架，不是答案本身\n→ 这也是{{ADVANTAGES}}（岗位保护）的核心：每个学员的答题风格都是量身定制的，面试官一眼就能感受到「这是有真实思考的人」\n\n❌ 误区二：只练答题，不练节奏\n很多人苦练内容，但面试时因为紧张节奏全乱——开头说太快、重点说太慢、超时被打断\n✅ 正确做法：把节奏训练当成和内容同等重要的事情练，考前录音回听，反复校准\n→ {{ADVANTAGES}}（6-9人真小班）让体制内老师能精准反馈你的节奏问题，不是泛泛说「你说得不错」\n\n❌ 误区三：备考太晚，以为有时间\n笔试成绩出来才开始找机构——面试通常在2-4周内，时间根本不够系统备考\n✅ 正确做法：笔试结束即开始摸底，不等成绩出来\n→ {{ADVANTAGES}}（0元上岸再付款）：就算还没确认上岸，也可以先开始，没负担\n\n【第三段 · 总结+引流，60-80字】\n「这3个误区说起来简单，但真正改掉需要有人帮你发现问题——自己练是很难看见盲区的。\n如果你正在备考{{KEYWORDS}}，欢迎私信我 📩 做个15分钟摸底，找出你最容易踩的那个坑，免费」\n\n🖼️ 封面建议\n- 主花字：面试3大误区\n- 副花字：{{KEYWORDS}} · 问号哥说\n- 配色：橙色底+白色主字+红色❌标注\n- 版式：3条竖排清单，左侧❌/✅图标",
+  "prompt-A6": "🎭 角色设定\n你是{{BRAND}}的品牌号，用官方口吻深度解析「岗位保护」机制是什么、为什么重要、具体怎么做的——这是{{BRAND}}最差异化的卖点，需要让备考者真正理解，而不只是看到一个标签。\n\n📌 主题\n{{KEYWORDS}}备考为什么你的答题思路不能和别人一样 —— 深度种草岗位保护机制，建立独特认知壁垒\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 🛡️ {{KEYWORDS}}备考｜为什么你的答题不能和别人一样？（反常识型）\n② 🤔 {{BRAND}}的岗位保护到底是什么？{{KEYWORDS}}学员必看（解析型）\n③ 💡 {{KEYWORDS}}面试为什么有人守不住？答题「被抄走」了（痛点型）\n\n📝 正文结构（500-600字）\n\n【第一段 · 场景引入，60-80字】\n「你有没有想过这个场景：面试考场，你和另一个备考同一岗位的人，答同一道题——如果你们用的是同一套模板、同一个「万能结构」，面试官同时听到两个几乎一样的回答，会发生什么？\n没错：两个人都不会脱颖而出。」\n\n【第二段 · 问题根源，80-100字】\n市面上很多机构的教学逻辑是：给你一套标准答题框架，让所有学员都用——\n这在大班课里是最「效率」的做法，但在面试考场上是最危险的做法\n因为{{KEYWORDS}}面试本质上是一场「差异化竞争」：谁更像一个独立思考的人、谁更有自己的见解，谁就赢\n\n【第三段 · 岗位保护机制具体说明，150-180字】\n{{BRAND}}的岗位保护做的是这件事 🛡️：\n\n第一步：了解你的岗位竞争结构\n- 你的笔试排名、预计参加面试的人数、岗位对能力的核心要求是什么\n\n第二步：定制你的答题风格\n- 问号哥根据你的性格、表达习惯、背景经历，找出最适合你展示的角度\n- 不是「给你一套模板」，是「帮你找到你自己的语言」\n\n第三步：隔离学员内容\n- {{ADVANTAGES}}：同一岗位学员的答题思路我们不共享，你的亮点不被同期学员「学走」\n- 6-9人真小班的规模，让这件事真正可以执行——大班课物理上做不到\n\n【第四段 · 结论引流，60-80字】\n「大部分机构没有岗位保护，不是他们不想做，是他们的规模和模式做不到——大班课一百多个学员，怎么可能给每个人量身定制？\n如果你在备考{{KEYWORDS}}，想了解你的答题风格诊断结果，私信我 📩 第一步摸底是免费的」\n\n🖼️ 封面建议\n- 主花字：岗位保护是什么？\n- 副花字：{{KEYWORDS}} · {{BRAND}}独家机制\n- 配色：橙色底+白字+盾牌🛡️图标\n- 版式：三步骤流程图感设计",
+  "prompt-A7": "🎭 角色设定\n你是{{BRAND}}的品牌号，整理学员备考前最常问的5个问题，用Q&A形式发布，语气轻松有问有答，既是干货又是种草，末尾自然引导私信。\n\n📌 主题\n{{KEYWORDS}}备考高频Q&A —— 用学员真实问题做内容，降低陌生用户的决策门槛\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① ❓ {{KEYWORDS}}备考前｜学员最常问的5个问题（FAQ型，引导感强）\n② 💬 我们被{{KEYWORDS}}学员问烂了这5个问题｜一次说清楚（轻松型）\n③ 📋 {{KEYWORDS}}备考你最想知道的答案在这里（悬念型）\n\n📝 正文结构（500-600字）\n\n【引入，30-40字】\n「这几个问题被学员问了太多次了，今天一次性写出来，备考{{KEYWORDS}}的同学可以直接收藏👇」\n\n【Q&A正文，300-350字】\n\nQ1：笔试成绩还没出来，现在开始备考是不是太早了？\nA：不早。{{KEYWORDS}}面试一般在成绩公示后2-4周内进行，等成绩出来才开始基本上是仓促备考——而且{{ADVANTAGES}}（0元上岸再付款），你现在开始体验没有任何成本，上岸了再付，没上岸不用付。\n\nQ2：大班课和小班课差别大吗？哪个更适合我？\nA：核心差别是「你被老师看见的频率」——大班课每节课有效反馈可能不到5分钟，{{ADVANTAGES}}（6-9人真小班）每节课老师都能逐一点评你这道题哪里好哪里差。基础薄弱/时间紧的同学，真小班效率更高。\n\nQ3：你们说的「岗位保护」具体是怎么做的？\nA：简单说：同一岗位学员的答题思路不共享。你的答题角度是问号哥根据你的情况专门设计的，同期其他学员学不走你的亮点。大班课因为学员规模做不到这件事。\n\nQ4：问号哥是全程亲自授课吗，还是有助教？\nA：全程问号哥本人，没有助教替代——这是{{ADVANTAGES}}（师资顶配）里写得最清楚的一条。问号哥本人参加过国考（92.7分）、省考（94分），讲的是实战经验不是二手理论。\n\nQ5：如果学了效果不好怎么办？\nA：{{ADVANTAGES}}（0元上岸再付款）本身就是保障——我们得先帮你上岸，你再付钱。如果你觉得效果不理想，那付款条件就不触发。我们的动力和你的动力是一致的。\n\n【结尾CTA，40-50字】\n「还有其他问题欢迎评论区或者私信问我 📩 我们一般当天回复，不催你报名，先了解你的情况再说」\n\n🖼️ 封面建议\n- 主花字：备考5个问题\n- 副花字：{{KEYWORDS}} · Q&A全解答\n- 配色：白底+橙色问号图标+Q字母强调\n- 版式：5行Q&A清单，左侧Q/A标注",
+  "prompt-A8": "🎭 角色设定\n你是{{BRAND}}的品牌号，以「集训第X天」的视角发一篇内容，模拟运营人员跟拍集训现场的记录感——展示真实教学环境、问号哥授课状态、学员小班点评场景，沉浸感强，种草意图包裹在内容里。\n\n📌 主题\n{{KEYWORDS}}封闭集训现场记录 —— 用「跟拍」视角让外部用户感受集训真实氛围，降低陌生感\n\n✍️ 标题写法（18字以内，必须含{{KEYWORDS}}）\n① 📸 集训第3天｜{{KEYWORDS}}备考现场是什么样的？（沉浸型，CTR高）\n② 🎬 {{BRAND}}{{KEYWORDS}}集训跟拍｜今天发生了这些（Vlog型）\n③ 🏨 四星酒店里的{{KEYWORDS}}集训｜真实日记（生活感型）\n\n📝 正文结构（450-550字）\n\n【第一段 · 开场定场，50-70字】\n「集训第3天，来记录一下今天发生的事。\n地点：[城市]四星级酒店·{{BRAND}}专属备考区\n时间：早9点到晚9点，中间吃饭睡觉全在这里解决\n今天重点内容是结构化答题专项训练，问号哥说这个最容易踩坑」\n\n【第二段 · 上午场景，100-120字】\n📍 9:00 上午课开始\n问号哥拿出一道今年山东省考的真题，让大家先自己答一遍——6个人，6种答法，但他说3种有同一个问题：「逻辑结构清楚，但缺少你自己的判断，面试官不记得你」\n然后他针对每个人的答题风格分别给出调整方向，不是统一改，是每个人不一样的建议\n→ 这就是{{ADVANTAGES}}（岗位保护）的实际执行：同一个教室，6个人的答题思路要往6个不同方向走\n\n【第三段 · 下午场景，100-120字】\n📍 14:00 体制内老师点评环节\n今天点评老师是在山东省直机关工作的，参加过3次面试、2次担任考官——她说了一句话让我印象特别深：「我们作为考官，最怕的不是答得不够好，而是说完全忘了」\n点评非常具体：精确到某一句话的措辞、停顿时机、是否与前一句逻辑自洽\n→ {{ADVANTAGES}}（山东本地体制内老师点评）说的就是这种质量，不是泛泛说「讲得不错」\n\n【第四段 · 晚间收尾，60-80字】\n📍 20:30 晚自习\n酒店四楼备考自习区，今天大家在回听自己白天答题的录音——问号哥说这是他最推荐的复盘方式，「你听自己答题就会知道哪里节奏断了」\n住宿、餐饮都在这里，不用分心任何其他事情，专注感其实很不一样\n\n【结尾CTA，40-50字】\n「对这种集训模式感兴趣的同学欢迎私信来了解 📩 也可以先来旁听一次体验课，感受一下氛围」\n\n🖼️ 封面建议\n- 主花字：集训第3天\n- 副花字：{{KEYWORDS}} · 现场跟拍记录\n- 配色：暖橙色底+白字+📸相机图标\n- 版式：日记感排版，时间轴结构"
+};
+</script>
+</head>
+<body>
+<div class="page">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div>
+      <div class="brand">山东事业编面试班 · <span class="brand-highlight">内容洞察 &amp; 笔记Prompt灵感</span></div>
+      <div class="brand-sub">适用于聚光图文笔记 · 山东事业编面试备考</div>
+    </div>
+    <div class="meta">
+      <span class="badge-internal">仅限内部使用</span><br>
+      数据来源：小红书RedBI · 小红书Insight · 小红书灵犀平台<br>
+      数据周期：2026-03 ~ 2026-04 · 真实数据，仅供参考
+    </div>
+  </div>
+
+  <!-- 客户标识条 -->
+  <div class="track-banner">
+    当前客户：<strong>橙啦公考</strong> · 山东事业编面试班 · 目标人群：参加山东省考/事业编面试的备考者
+  </div>
+
+  <div class="main-layout">
+  <div class="left-col">
+
+  <!-- 00 · 产品卖点 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">00</span>
+      <span class="section-title">橙啦公考核心卖点</span>
+      <span class="section-sub">内容创作的差异化支撑点</span>
+    </div>
+    <div class="selling-grid">
+      <div class="selling-card">
+        <div class="selling-num">卖点 01</div>
+        <div class="selling-title">师资顶配</div>
+        <div class="selling-desc">清华问号哥每天亲自授课（清华硕士+前部委公务员，国考面试92.7分，唯一敢参考晒分的老师）</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 02</div>
+        <div class="selling-title">0元上岸再付款</div>
+        <div class="selling-desc">大中小围全部0元学，上岸之后再交钱，先证明能帮你，你再付</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 03</div>
+        <div class="selling-title">严格岗位保护</div>
+        <div class="selling-desc">你的答题思路别人抄不走，你的亮点别人学不会，上岸更安全</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 04</div>
+        <div class="selling-title">山东本地真小班</div>
+        <div class="selling-desc">6-9人真小班，山东本地体制内老师点评，能学到考前</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 05</div>
+        <div class="selling-title">点评老师碾压</div>
+        <div class="selling-desc">拒绝兼职助教，全部山东本地体制内老师点评，实力远超其他机构主讲</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 06</div>
+        <div class="selling-title">强悍战绩</div>
+        <div class="selling-desc">25年山东省考守擂100%/攻擂70%；26年守擂近100%/逆袭翻盘70%</div>
+      </div>
+      <div class="selling-card">
+        <div class="selling-num">卖点 07</div>
+        <div class="selling-title">包住四星酒店</div>
+        <div class="selling-desc">封闭集训食宿全包，四星级酒店住宿，专注备考不分心</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 · 数据来源 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">数据来源与分析方法</span>
+      <span class="section-sub">四源交叉验证 · 数据驱动内容方向</span>
+    </div>
+    <div class="source-grid">
+      <div class="source-card">
+        <div class="source-name">📊 自身投放优质笔记</div>
+        <div class="source-method">近60天消耗&gt;1000、CTR&gt;5% · 拆解标题/封面/正文框架</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">🔍 同行竞品优质笔记</div>
+        <div class="source-method">同赛道高消耗+高CTR · 识别差异化空白与内容天花板</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">🔥 平台热搜词数据</div>
+        <div class="source-method">Insight热词 · 近30天搜索量 · 5维度分类打标</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">💡 社区热门洞察</div>
+        <div class="source-method">灵犀飙升话题+人群图谱 · 定位社区共鸣内容切入点</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 · 人群图谱 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">核心人群图谱</span>
+      <span class="section-sub">山东事业编面试赛道 · 省考备考人群</span>
+    </div>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-label">人群 A · 主力</div>
+        <div class="persona-name">😰 焦虑型备考者</div>
+        <div class="persona-rows">
+          <div class="persona-row"><span class="persona-key">身份</span><span class="persona-val">已笔试上岸，面试经验少，时间紧，怕被逆袭</span></div>
+          <div class="persona-row"><span class="persona-key">核心痛点</span><span class="persona-val">怕失败——守不住排名被逆袭，面试经验几乎为零</span></div>
+          <div class="persona-row"><span class="persona-key">搜索行为</span><span class="persona-val">事业编面试技巧、怎么不被逆袭、山东面试培训</span></div>
+          <div class="persona-row"><span class="persona-key">决策触发</span><span class="persona-val">笔试成绩公示 / 面试时间临近 / 看到逆袭案例</span></div>
+          <div class="persona-row"><span class="persona-key">内容钩子</span><span class="persona-val">守擂成功100% · 不被逆袭 · 岗位保护</span></div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-label">人群 B · 高价值</div>
+        <div class="persona-name">🎯 精明比价型</div>
+        <div class="persona-rows">
+          <div class="persona-row"><span class="persona-key">身份</span><span class="persona-val">已在多家机构对比，关注师资背景和战绩真实性</span></div>
+          <div class="persona-row"><span class="persona-key">核心痛点</span><span class="persona-val">不知道哪家靠谱——机构都说自己好，没法分辨</span></div>
+          <div class="persona-row"><span class="persona-key">搜索行为</span><span class="persona-val">面试机构怎么选、机构对比、山东省考培训哪家好</span></div>
+          <div class="persona-row"><span class="persona-key">决策触发</span><span class="persona-val">看到老师真实成绩 / 看到体制内老师点评背书</span></div>
+          <div class="persona-row"><span class="persona-key">内容钩子</span><span class="persona-val">问号哥亲自参考晒分 · 体制内老师点评</span></div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-label">人群 C · 潜在转化</div>
+        <div class="persona-name">🔍 价格敏感型</div>
+        <div class="persona-rows">
+          <div class="persona-row"><span class="persona-key">身份</span><span class="persona-val">想提升面试但经济压力大，迟迟未决策</span></div>
+          <div class="persona-row"><span class="persona-key">核心痛点</span><span class="persona-val">怕交钱没效果——交了钱上不了岸亏了</span></div>
+          <div class="persona-row"><span class="persona-key">搜索行为</span><span class="persona-val">免费面试培训、性价比机构、事业编面试零基础</span></div>
+          <div class="persona-row"><span class="persona-key">决策触发</span><span class="persona-val">看到0元上岸再付款 / 免费体验入口</span></div>
+          <div class="persona-row"><span class="persona-key">内容钩子</span><span class="persona-val">0元学，上岸再付款 · 先体验再决定</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 · 热搜词洞察 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">热搜词洞察</span>
+      <span class="section-sub">真实数据 · 2026-03~04 · 仅供参考</span>
+    </div>
+    <div class="kw-grid">
+
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--primary-dark);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;">🔥 Top 10 热搜词</div>
+        <div class="rising-kws">
+          <div class="rising-kw"><span class="rising-kw-text">山东事业编面试</span><span class="rising-badge">备考资讯</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">事业单位面试技巧</span><span class="rising-badge">学习方法</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">事业编面试培训机构</span><span class="rising-badge">选机构</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">山东省考面试</span><span class="rising-badge">备考资讯</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">面试结构化答题</span><span class="rising-badge">技能学习</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">事业单位面试真题</span><span class="rising-badge">刷题备考</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">面试机构怎么选</span><span class="rising-badge">选机构</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">封闭式面试培训</span><span class="rising-badge">选机构/产品</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">问号哥公考</span><span class="rising-badge">品牌/师资</span></div>
+          <div class="rising-kw"><span class="rising-kw-text">公考面试上岸攻略</span><span class="rising-badge">学习方法</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--primary-dark);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;">📊 搜索意图分布</div>
+        <div class="cat-grid">
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">选机构/验机构</span><span class="cat-pct">45%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:100%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">事业编面试培训机构</span><span class="cat-kw">面试机构怎么选</span><span class="cat-kw">封闭式面试培训</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">学习方法/技巧</span><span class="cat-pct">30%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:67%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">事业单位面试技巧</span><span class="cat-kw">面试结构化答题</span><span class="cat-kw">公考面试上岸攻略</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">备考资讯</span><span class="cat-pct">15%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:33%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">山东事业编面试</span><span class="cat-kw">山东省考面试</span><span class="cat-kw">事业单位面试真题</span></div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-header"><span class="cat-name">品牌/师资</span><span class="cat-pct">10%</span></div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:22%"></div></div>
+            <div class="cat-cnt">代表词</div>
+            <div class="cat-kws"><span class="cat-kw">问号哥公考</span><span class="cat-kw">橙啦公考</span><span class="cat-kw">问号哥面试课</span></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <span class="insight-icon">💡</span>
+          <div><strong>关键洞察：</strong>近半数搜索在「选机构/验机构」——用户核心动机是信任建立，内容策略应以战绩透明化、师资真实背书、岗位保护机制为主轴</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  </div><!-- end left-col -->
+  <div class="right-col">
+
+  <!-- 04 · 笔记Prompt -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">三组笔记创作Prompt · 小红书风格</span>
+      <span class="section-sub">A 先种后收(8个) · B 软文种草(4个) · C 硬广收割(3个)</span>
+    </div>
+
+    <div class="var-input-area">
+      <div class="var-input-title">✏️ 填写笔记中希望包含的内容关键词（非必须），Prompt将自动更新</div>
+      <div class="var-input-subtitle">填写后，下方所有Prompt中的变量将被实时替换，空时显示灰色占位</div>
+      <div class="var-input-grid">
+        <div class="var-input-group">
+          <label class="var-input-label" for="input-keywords">
+            热门关键词
+            <span class="var-label-badge">{{KEYWORDS}}</span>
+          </label>
+          <input class="var-input-field" id="input-keywords" type="text" placeholder='如「山东事业编面试」' value='山东事业编面试'/>
+        </div>
+        <div class="var-input-group">
+          <label class="var-input-label" for="input-advantages">
+            产品/品牌优势
+            <span class="var-label-badge">{{ADVANTAGES}}</span>
+          </label>
+          <input class="var-input-field" id="input-advantages" type="text" placeholder='如「稳岗保护+问号哥亲授+0元上岸再付款」' value='稳岗保护+问号哥亲授+0元上岸再付款'/>
+        </div>
+        <div class="var-input-group">
+          <label class="var-input-label" for="input-brand">
+            产品名称
+            <span class="var-label-badge">{{BRAND}}</span>
+          </label>
+          <input class="var-input-field" id="input-brand" type="text" placeholder='如「橙啦公考」' value='橙啦公考'/>
+        </div>
+      </div>
+      <div class="var-update-hint" id="update-hint">✓ 实时预览已更新</div>
+    </div>
+
+    <div class="suite-tab-wrapper">
+      <div class="suite-tabs">
+        <div class="suite-tab active" onclick="switchSuite('A')">
+          <span class="tab-main">A · 先种后收</span>
+          <span class="tab-scene">焦虑型备考者</span>
+        </div>
+        <div class="suite-tab" onclick="switchSuite('B')">
+          <span class="tab-main">B · 软文种草</span>
+          <span class="tab-scene">精明比价型</span>
+        </div>
+        <div class="suite-tab" onclick="switchSuite('C')">
+          <span class="tab-main">C · 硬广收割</span>
+          <span class="tab-scene">价格敏感型</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="suite-content-wrap">
+
+      <!-- Suite A -->
+      <div class="suite-content active" id="suite-A">
+        <div class="prompt-grid">
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-1 · 先种后收</div>
+            <div class="prompt-title">上岸学员真实故事（UGC口吻）</div>
+            <div class="prompt-body" id="prompt-A1"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A1',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A1','A1-上岸学员真实故事')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-2 · 先种后收</div>
+            <div class="prompt-title">问号哥师资揭秘（导师背景型）</div>
+            <div class="prompt-body" id="prompt-A2"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A2',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A2','A2-问号哥师资揭秘')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-3 · 先种后收</div>
+            <div class="prompt-title">封闭集训体验记（沉浸探营型）</div>
+            <div class="prompt-body" id="prompt-A3"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A3',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A3','A3-封闭集训体验记')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-4 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">学员上岸播报型（官方口吻）</div>
+            <div class="prompt-body" id="prompt-A4"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A4',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A4','A4-学员上岸播报')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-5 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">备考3大误区干货科普型（问号哥口吻）</div>
+            <div class="prompt-body" id="prompt-A5"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A5',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A5','A5-备考误区干货科普')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-6 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">岗位保护机制深度解析型</div>
+            <div class="prompt-body" id="prompt-A6"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A6',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A6','A6-岗位保护机制解析')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-7 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">学员高频Q&A型（FAQ）</div>
+            <div class="prompt-body" id="prompt-A7"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A7',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A7','A7-学员高频QA')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">A-8 · 先种后收 · 品牌号</div>
+            <div class="prompt-title">集训现场跟拍日记型（Vlog）</div>
+            <div class="prompt-body" id="prompt-A8"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-A8',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-A8','A8-集训现场跟拍日记')">⬇ 下载</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Suite B -->
+      <div class="suite-content" id="suite-B">
+        <div class="prompt-grid">
+
+          <div class="prompt-card">
+            <div class="prompt-tag">B-1 · 软文种草</div>
+            <div class="prompt-title">师资对比选机构攻略（避坑型）</div>
+            <div class="prompt-body" id="prompt-B1"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-B1',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-B1','B1-师资对比选机构攻略')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">B-2 · 软文种草</div>
+            <div class="prompt-title">大班vs真小班真实对比（对比型）</div>
+            <div class="prompt-body" id="prompt-B2"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-B2',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-B2','B2-大班vs小班真实对比')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">B-3 · 软文种草</div>
+            <div class="prompt-title">付款模式怎么看（信任建立型）</div>
+            <div class="prompt-body" id="prompt-B3"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-B3',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-B3','B3-付款模式怎么看')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">B-4 · 软文种草 · 品牌号</div>
+            <div class="prompt-title">战绩透明化播报（官方口吻）</div>
+            <div class="prompt-body" id="prompt-B4"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-B4',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-B4','B4-战绩透明化播报')">⬇ 下载</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Suite C -->
+      <div class="suite-content" id="suite-C">
+        <div class="prompt-grid">
+
+          <div class="prompt-card">
+            <div class="prompt-tag">C-1 · 硬广收割</div>
+            <div class="prompt-title">限时免费体验硬广</div>
+            <div class="prompt-body" id="prompt-C1"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-C1',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-C1','C1-限时免费体验硬广')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">C-2 · 硬广收割</div>
+            <div class="prompt-title">0元上岸再付款透明化硬广</div>
+            <div class="prompt-body" id="prompt-C2"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-C2',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-C2','C2-0元付款透明化硬广')">⬇ 下载</button>
+            </div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-tag">C-3 · 硬广收割</div>
+            <div class="prompt-title">真实学员口碑（平衡评价型）</div>
+            <div class="prompt-body" id="prompt-C3"></div>
+            <button class="prompt-toggle" onclick="togglePrompt(this)">▼ 展开完整Prompt</button>
+            <div class="prompt-actions">
+              <button class="btn-copy" onclick="copyPrompt('prompt-C3',this)">📋 复制</button>
+              <button class="btn-dl" onclick="dlPrompt('prompt-C3','C3-真实学员口碑')">⬇ 下载</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- end suite-content-wrap -->
+  </div><!-- end section 04 -->
+  </div><!-- end right-col -->
+  </div><!-- end main-layout -->
+
+</div><!-- end page -->
+
+<script>
+const PLACEHOLDERS = { keywords: '{{KEYWORDS}}', advantages: '{{ADVANTAGES}}', brand: '{{BRAND}}' };
+
+function getValues() {
+  return {
+    keywords:   document.getElementById('input-keywords').value.trim(),
+    advantages: document.getElementById('input-advantages').value.trim(),
+    brand:      document.getElementById('input-brand').value.trim()
+  };
+}
+
+function getReplacedText(template) {
+  const v = getValues();
+  let out = template;
+  out = out.replaceAll(PLACEHOLDERS.keywords,   v.keywords   || PLACEHOLDERS.keywords);
+  out = out.replaceAll(PLACEHOLDERS.advantages, v.advantages || PLACEHOLDERS.advantages);
+  out = out.replaceAll(PLACEHOLDERS.brand,      v.brand      || PLACEHOLDERS.brand);
+  return out;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderPromptBody(el) {
+  const template = PROMPT_TEMPLATES[el.id] || el.dataset.template || '';
+  const v = getValues();
+  let html = escapeHtml(template);
+  [
+    { ph: PLACEHOLDERS.keywords,   val: v.keywords   },
+    { ph: PLACEHOLDERS.advantages, val: v.advantages },
+    { ph: PLACEHOLDERS.brand,      val: v.brand      }
+  ].forEach(({ ph, val }) => {
+    const esc = escapeHtml(ph);
+    html = html.replaceAll(esc, val
+      ? `<span class="var-replaced">${escapeHtml(val)}</span>`
+      : `<span class="var-empty">${esc}</span>`);
+  });
+  el.innerHTML = html;
+}
+
+function renderAllPrompts() {
+  document.querySelectorAll('.prompt-body').forEach(renderPromptBody);
+}
+renderAllPrompts();
+
+let hintTimer;
+['input-keywords','input-advantages','input-brand'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    renderAllPrompts();
+    const hint = document.getElementById('update-hint');
+    hint.classList.add('visible');
+    clearTimeout(hintTimer);
+    hintTimer = setTimeout(() => hint.classList.remove('visible'), 2000);
+  });
+});
+
+function switchSuite(s) {
+  document.querySelectorAll('.suite-tab').forEach((t, i) => {
+    t.classList.toggle('active', ['A','B','C'][i] === s);
+  });
+  document.querySelectorAll('.suite-content').forEach(c => {
+    c.classList.toggle('active', c.id === 'suite-' + s);
+  });
+}
+
+function copyPrompt(id, btn) {
+  const el = document.getElementById(id);
+  const text = getReplacedText(PROMPT_TEMPLATES[id] || el.dataset.template || '');
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ 已复制';
+    btn.style.background = 'var(--primary-dark)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--primary-dark)';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = ''; }, 1800);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    const orig = btn.textContent; btn.textContent = '✓ 已复制';
+    setTimeout(() => { btn.textContent = orig; }, 1800);
+  });
+}
+
+function dlPrompt(id, name) {
+  const el = document.getElementById(id);
+  const text = getReplacedText(PROMPT_TEMPLATES[id] || el.dataset.template || '');
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `橙啦公考_Prompt_${name}.txt`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+function togglePrompt(btn) {
+  const card = btn.closest('.prompt-card');
+  const body = card.querySelector('.prompt-body');
+  const expanded = body.classList.toggle('expanded');
+  btn.textContent = expanded ? '▲ 收起Prompt' : '▼ 展开完整Prompt';
+}
+</script>
+</body>
+</html>
