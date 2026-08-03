@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海马职加 评论区深度洞察报告 · 2026.06-08</title>
+<style>
+:root {
+  --green: #2e7d5e; --red: #c0392b; --blue: #2471a3;
+  --orange: #d4811a; --purple: #7d3c98; --gray: #888;
+  --bg: #f5f5f0; --card: #fff; --border: #e8e8e2;
+  --yellow: #b7791f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); font-family: 'PingFang SC','Hiragino Sans GB',sans-serif; color: #222; font-size: 14px; line-height: 1.6; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 24px 20px 60px; }
+
+/* Header */
+.report-header { background: linear-gradient(135deg, #1a3a5c 0%, #2471a3 100%); color: #fff; border-radius: 12px; padding: 32px 36px; margin-bottom: 28px; }
+.report-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.report-header .meta { font-size: 13px; opacity: 0.8; margin-bottom: 20px; }
+.header-badges { display: flex; gap: 16px; flex-wrap: wrap; }
+.h-badge { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 20px; text-align: center; min-width: 110px; }
+.h-badge .num { font-size: 26px; font-weight: 700; }
+.h-badge .label { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+
+/* Diagnosis card */
+.diag-card { background: #FFF3CD; border-left: 4px solid #F59E0B; border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; }
+.diag-card .title { font-weight: 600; color: #92400E; margin-bottom: 6px; font-size: 15px; }
+.diag-card p { color: #451a03; font-size: 13.5px; }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-title { font-size: 17px; font-weight: 700; color: #1a1a1a; border-left: 4px solid var(--blue); padding-left: 12px; margin-bottom: 16px; }
+
+/* Cards grid */
+.cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cards-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media(max-width:768px){ .cards-2,.cards-3{ grid-template-columns:1fr; } }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+.card-title { font-size: 13px; color: #666; margin-bottom: 4px; }
+.card-num { font-size: 32px; font-weight: 700; color: #1a1a1a; }
+.card-sub { font-size: 12px; color: #888; margin-top: 2px; }
+
+/* Rep-bar */
+.rep-bar-wrap { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+.rep-label { font-size: 12px; color: #444; white-space: nowrap; min-width: 80px; }
+.rep-bar { height: 22px; border-radius: 4px; flex: 1; display: flex; overflow: hidden; }
+.rep-bar-pos { background: #2e7d5e; }
+.rep-bar-inq { background: #2471a3; }
+.rep-bar-neg { background: #c0392b; }
+.rep-label-right { font-size: 12px; color: #444; white-space: nowrap; min-width: 80px; text-align: right; }
+
+/* Comment bubbles */
+.comment-bubble { border-radius: 8px; padding: 10px 14px; margin: 6px 0; font-size: 13px; }
+.bubble-pos { background: #f0fdf4; border-left: 3px solid var(--green); color: #14532d; }
+.bubble-neg { background: #fef2f2; border-left: 3px solid var(--red); color: #7f1d1d; }
+.bubble-inq { background: #eff6ff; border-left: 3px solid var(--blue); color: #1e3a5f; }
+.bubble-neutral { background: #fafaf5; border-left: 3px solid #888; color: #333; }
+.bubble-meta { font-size: 11px; color: #999; margin-top: 4px; }
+
+/* Concern grid */
+.concern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.concern-card { background: #fff; border: 1px solid #e8e4d0; border-radius: 8px; padding: 14px 16px; position: relative; }
+.concern-card .badge { position: absolute; top: 10px; right: 10px; background: var(--blue); color: #fff; border-radius: 12px; padding: 2px 8px; font-size: 11px; font-weight: 600; }
+.concern-card .c-title { font-weight: 600; font-size: 13.5px; color: #1a1a1a; margin-bottom: 6px; padding-right: 40px; }
+.concern-card .c-hint { font-size: 12px; color: #666; }
+
+/* Angle cards */
+.angle-card { background: var(--card); border-radius: 10px; padding: 16px 18px; }
+.angle-card.green { border: 1.5px solid var(--green); }
+.angle-card.blue { border: 1.5px solid var(--blue); }
+.angle-card.orange { border: 1.5px solid var(--orange); }
+.angle-title { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+.angle-quote { font-style: italic; font-size: 12.5px; color: #555; border-left: 2px solid #ccc; padding-left: 10px; margin: 8px 0; }
+.angle-insight { font-size: 13px; color: #333; margin-bottom: 8px; }
+.angle-actions { display: flex; flex-direction: column; gap: 4px; }
+.action-tag { display: inline-block; border-radius: 4px; padding: 3px 8px; font-size: 12px; font-weight: 500; }
+.tag-content { background: #f0fdf4; color: var(--green); }
+.tag-partner { background: #eff6ff; color: var(--blue); }
+.tag-risk { background: #fef2f2; color: var(--red); }
+
+/* Risk card */
+.risk-card { background: #fff5f5; border: 1px solid #fca5a5; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+.risk-title { font-weight: 600; color: #991b1b; margin-bottom: 4px; }
+.risk-desc { font-size: 13px; color: #7f1d1d; }
+
+/* Funnel */
+.funnel-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start; }
+.funnel-num { font-size: 28px; font-weight: 700; color: var(--orange); min-width: 50px; }
+.funnel-content .f-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.funnel-content .f-desc { font-size: 13px; color: #555; }
+
+/* Conclusion */
+.conclusion-card { background: linear-gradient(135deg, #1a3a5c 0%, #2471a3 100%); color: #fff; border-radius: 10px; padding: 20px 24px; }
+.conclusion-card p { font-size: 13.5px; line-height: 1.8; opacity: 0.95; }
+
+.tag { display: inline-block; font-size: 11px; border-radius: 4px; padding: 1px 6px; margin-right: 4px; }
+.tag-ad { background: #dbeafe; color: #1e40af; }
+.tag-organic { background: #dcfce7; color: #166534; }
+.tag-warn { background: #fee2e2; color: #991b1b; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+th { background: #f5f5f0; font-size: 12px; color: #555; padding: 8px 10px; text-align: left; border-bottom: 2px solid #e8e8e2; }
+td { font-size: 13px; padding: 8px 10px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #fafaf5; }
+
+.summary-box { background: #f8f4ff; border-left: 4px solid var(--purple); border-radius: 8px; padding: 14px 18px; margin-top: 12px; }
+.summary-box p { font-size: 13px; color: #3b1f6e; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- Header -->
+<div class="report-header">
+  <h1>海马职加 · 小红书评论区深度洞察报告</h1>
+  <div class="meta">分析周期：2026-06-04 ~ 2026-08-02 | 品牌：海马职加求职辅导 | 生成时间：2026-08-03</div>
+  <div class="header-badges">
+    <div class="h-badge"><div class="num">2,976</div><div class="label">总评论条数</div></div>
+    <div class="h-badge"><div class="num">75.1%</div><div class="label">广告笔记占比</div></div>
+    <div class="h-badge"><div class="num">64.8%</div><div class="label">正向口碑率</div></div>
+    <div class="h-badge"><div class="num">33.7%</div><div class="label">咨询意向率</div></div>
+    <div class="h-badge"><div class="num">1.4%</div><div class="label">差评率</div></div>
+  </div>
+</div>
+
+<!-- 一句话诊断 -->
+<div class="diag-card">
+  <div class="title">⚡ 一句话诊断</div>
+  <p>评论区整体口碑健康（差评率1.4%），但有两个核心风险：① 「靠谱」是第一高频词——用户普遍存在信任疑虑，品牌缺少系统性信任背书内容；② 行业「骗局」「踩坑」标签外溢，海马职加笔记下出现了多条质疑求职机构普遍性骗局的评论，需要主动澄清与拦截。</p>
+</div>
+
+<!-- S01：流量质量诊断 -->
+<div class="section">
+  <div class="section-title">S01 · 流量质量诊断</div>
+  <div class="cards-3">
+    <div class="card">
+      <div class="card-title">广告笔记评论</div>
+      <div class="card-num">2,236</div>
+      <div class="card-sub">占总量 75.1%，主力流量来源</div>
+    </div>
+    <div class="card">
+      <div class="card-title">自然笔记评论</div>
+      <div class="card-num">740</div>
+      <div class="card-sub">占总量 24.9%，自然曝光承接</div>
+    </div>
+    <div class="card">
+      <div class="card-title">有效互动率（A类/总评论）</div>
+      <div class="card-num">35.5%</div>
+      <div class="card-sub">排除噪音和品牌回复后的纯用户声音</div>
+    </div>
+  </div>
+  <div style="margin-top:14px;">
+    <div class="rep-bar-wrap">
+      <div class="rep-label">✅ 正向 64.8%</div>
+      <div class="rep-bar">
+        <div class="rep-bar-pos" style="width:64.8%;"></div>
+        <div class="rep-bar-inq" style="width:33.7%;"></div>
+        <div class="rep-bar-neg" style="width:1.4%;"></div>
+      </div>
+      <div class="rep-label-right">⚠️ 差评 1.4%</div>
+    </div>
+    <div style="font-size:12px;color:#888;margin-top:4px;">蓝色段=咨询意向（33.7%），说明评论区吸引了大量真实意向用户</div>
+  </div>
+
+  <div style="margin-top:16px;">
+    <b style="font-size:13.5px;">曝光量最高的 5 条评论</b>
+    <table style="margin-top:8px;">
+      <tr><th>评论内容</th><th>曝光数</th><th>笔记类型</th><th>分类解读</th></tr>
+      <tr><td>需要</td><td>10,414</td><td><span class="tag tag-ad">广告</span></td><td>A1 强意向咨询，最精准流量</td></tr>
+      <tr><td>求一个</td><td>8,581</td><td><span class="tag tag-ad">广告</span></td><td>A1 需求明确，高意向</td></tr>
+      <tr><td>需要，谢谢</td><td>7,293</td><td><span class="tag tag-ad">广告</span></td><td>A1 礼貌型高意向</td></tr>
+      <tr><td>📩你啦 / ✉️您了</td><td>6,319 / 5,609</td><td><span class="tag tag-ad">广告</span></td><td>B2 品牌承接回复，响应及时</td></tr>
+      <tr><td>怎么收费</td><td>3,988</td><td><span class="tag tag-ad">广告</span></td><td>A1 价格疑虑，决策最后一关</td></tr>
+    </table>
+  </div>
+  <div class="summary-box" style="margin-top:12px;">
+    <p><b>行动建议：</b>高曝光评论集中在「需要/求一个/怎么收费」，说明广告触达用户质量较高，已产生明确意向。核心卡点是品牌回复速度和定价透明度——建议在置顶评论中固定展示价格区间和成功案例，减少「怎么收费」类重复咨询。</p>
+  </div>
+</div>
+
+<!-- S02：口碑地图 -->
+<div class="section">
+  <div class="section-title">S02 · 口碑地图</div>
+  <div class="cards-2">
+    <div class="card">
+      <div class="card-title">好评核心维度</div>
+      <div style="margin-top:8px;">
+        <div class="comment-bubble bubble-pos">
+          <div>「靠谱，上岸了，感谢」</div>
+          <div class="bubble-meta">代表评论 | 信任背书类</div>
+        </div>
+        <div class="comment-bubble bubble-pos">
+          <div>「雨虹做事很认真，值得信赖」</div>
+          <div class="bubble-meta">146曝光/1赞 | 具体顾问名字出现，真实度高</div>
+        </div>
+        <div class="comment-bubble bubble-pos">
+          <div>「通过海马最靠谱」「有求职的就找海马职加」</div>
+          <div class="bubble-meta">自然口碑推荐</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">差评核心维度</div>
+      <div style="margin-top:8px;">
+        <div class="comment-bubble bubble-neg">
+          <div>「别报，纯诈骗机构」「报了纯骗人的」</div>
+          <div class="bubble-meta">55曝光/1赞 | ⚠️ 行业污名化外溢</div>
+        </div>
+        <div class="comment-bubble bubble-neg">
+          <div>「求职机构就是一个巨大的骗局」</div>
+          <div class="bubble-meta">217曝光/0赞 | 泛行业标签，非针对海马</div>
+        </div>
+        <div class="comment-bubble bubble-neg">
+          <div>「现在求职机构好多，真的怕踩坑」</div>
+          <div class="bubble-meta">32曝光 | 行业信任危机蔓延</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="summary-box" style="margin-top:12px;">
+    <p><b>口碑诊断：</b>差评率1.4%，整体口碑健康。但需特别注意：差评并非用户真实负面体验，而是<b>行业性「骗局/踩坑」标签的外溢</b>。用户在浏览海马职加笔记时，会同时检索整个求职辅导行业的口碑——这是行业公信力危机，不是品牌单独问题。核心建议：比竞品更早建立「真实案例」内容护城河。</p>
+  </div>
+</div>
+
+<!-- S03：用户决策信号 -->
+<div class="section">
+  <div class="section-title">S03 · 用户决策信号（购买顾虑分析）</div>
+  <div class="concern-grid">
+    <div class="concern-card">
+      <span class="badge">66条</span>
+      <div class="c-title">🔍 联系方式疑虑</div>
+      <div class="c-hint">「怎么联系」是最高频咨询，说明用户有意向但不知道如何启动——评论区到私信的引导链路有断点</div>
+    </div>
+    <div class="concern-card">
+      <span class="badge">47条</span>
+      <div class="c-title">💰 定价透明度顾虑</div>
+      <div class="c-hint">「怎么收费/规划费用多少」，用户需要价格锚点才能决策，不透明导致高咨询成本</div>
+    </div>
+    <div class="concern-card">
+      <span class="badge">~30条</span>
+      <div class="c-title">✅ 靠谱性验证需求</div>
+      <div class="c-hint">「靠谱吗」「会不会流水线敷衍辅导」——在购买前需要真实用户背书，单纯品牌自说自话无效</div>
+    </div>
+    <div class="concern-card">
+      <span class="badge">~20条</span>
+      <div class="c-title">🎓 适用范围疑问</div>
+      <div class="c-hint">「只面向应届生吗」「有社招没」「大一可以吗」——用户不确定自己是否符合服务资格</div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px;">
+    <b style="font-size:13.5px;">高频咨询词云（评论区实际出现）</b>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+      <span style="font-size:18px;font-weight:700;color:#1a1a1a;">怎么联系</span>
+      <span style="font-size:16px;font-weight:600;color:#2471a3;">怎么收费</span>
+      <span style="font-size:14px;color:#555;">想了解</span>
+      <span style="font-size:14px;color:#555;">咨询一下</span>
+      <span style="font-size:13px;color:#666;">想找实习</span>
+      <span style="font-size:13px;color:#666;">怎么报名</span>
+      <span style="font-size:13px;color:#666;">靠谱吗</span>
+      <span style="font-size:12px;color:#888;">学校专业</span>
+      <span style="font-size:12px;color:#888;">可以说下</span>
+      <span style="font-size:12px;color:#888;">想咨询</span>
+    </div>
+  </div>
+
+  <div class="summary-box" style="margin-top:12px;">
+    <p><b>行动建议：</b>用户最大决策卡点是「怎么联系」（66条），说明<b>评论区到私信的转化漏斗存在明显断点</b>。建议：① 所有笔记固定一条置顶品牌回复，明确写「私信联系+陌生人消息」操作指引；② 在评论区直接公示价格区间（「XX元起/套餐」）减少「怎么收费」重复问询，释放客服压力。</p>
+  </div>
+</div>
+
+<!-- S04：内容机会（品牌视角） -->
+<div class="section">
+  <div class="section-title">S04-A · 内容机会 · 品牌视角</div>
+  <div class="cards-2">
+    <div class="angle-card green" style="padding:16px 18px;">
+      <div class="angle-title" style="color:var(--green);">📝 「真实上岸故事」激活口碑</div>
+      <div class="angle-quote">「靠谱吗？会不会流水线敷衍辅导？」「求一个靠谱的求职机构」</div>
+      <div class="angle-insight">评论区「靠谱」是第一高频词，但品牌自说自话无效。需要用真实学员视角的上岸故事，带具体学校、具体offer来打破信任壁垒。</div>
+      <div class="angle-actions">
+        <span class="action-tag tag-content">📝 内容方向：「UCL传媒→XX公司 offer」案例系列，真实学员视角，不要用品牌角度</span>
+        <span class="action-tag tag-partner">🤝 合作广场：找到已上岸的真实学员，授权其分享求职历程的素人笔记投放广告——用户看到「和我背景相似的人成功了」比品牌官方号可信度高10倍，且成本更低</span>
+      </div>
+    </div>
+    <div class="angle-card orange" style="padding:16px 18px;">
+      <div class="angle-title" style="color:var(--orange);">⚡ 「行业避雷指南」抢先建立信任</div>
+      <div class="angle-quote">「现在求职机构好多，真的怕踩坑」「今天刷到现成第八种类型了，连我都差点被骗」</div>
+      <div class="angle-insight">用户主动在海马职加评论区发「避雷」内容，说明行业信任危机已经蔓延。海马可以主动出击，做「正规机构选择指南」，把筛选标准定义成有利于自己的维度。</div>
+      <div class="angle-actions">
+        <span class="action-tag tag-content">📝 内容方向：「留学生选求职机构必看｜5个避坑维度」，把「签约保障/真实导师/不模板化」等写成选择标准</span>
+      </div>
+    </div>
+    <div class="angle-card blue" style="padding:16px 18px;">
+      <div class="angle-title" style="color:var(--blue);">💬 「价格公示」降低决策摩擦</div>
+      <div class="angle-quote">「怎么收费哈」「规划费用多少」（47条高频询价）</div>
+      <div class="angle-insight">定价不透明让用户在评论区反复询问，浪费客服资源，也让犹豫用户流失。教育行业定价公示反而是信任信号。</div>
+      <div class="angle-actions">
+        <span class="action-tag tag-content">📝 内容方向：做一篇「海马职加价格透明公示」笔记，介绍各服务套餐价格区间和包含内容</span>
+      </div>
+    </div>
+    <div class="angle-card green" style="padding:16px 18px;">
+      <div class="angle-title" style="color:var(--green);">🏫 具体学校+求职方向组合内容</div>
+      <div class="angle-quote">「UCL传媒研究生，怎么联系」「港大+求职怎么规划」「27届英硕金融专业，想在杭州求职」</div>
+      <div class="angle-insight">用户在评论区主动说出自己的「学校+专业+目标城市」，说明他们在找定制化方案。通用内容对这批人效果差，需要按学校/专业矩阵做定向内容。</div>
+      <div class="angle-actions">
+        <span class="action-tag tag-content">📝 内容方向：「港大毕业生如何在北京求职」「UCL传媒专业回国秋招路径」等学校专属内容</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UGC合作广场专章 -->
+<div class="section">
+  <div class="section-title">S04-A 延伸 · UGC 合作广场操作手册</div>
+
+  <div style="background:#f0fdf4;border-left:4px solid var(--green);border-radius:8px;padding:14px 18px;margin-bottom:16px;">
+    <p style="font-size:13px;color:#14532d;line-height:1.8;">
+      <b>什么是合作广场？</b><br>
+      合作广场是小红书2025年9月上线的素人UGC授权投流产品。广告主可以在平台上找到粉丝数较少（100~5000粉）、但发过真实使用体验笔记的用户，获得授权后将其笔记转为广告投放。与蒲公英达人合作（笔直同投）完全不同——合作广场面向的是无任何商业合作的普通用户，内容天然缺少广告痕迹，信任度极高。
+    </p>
+  </div>
+
+  <div class="cards-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title" style="font-weight:600;color:#1a1a1a;font-size:13.5px;">💡 为什么海马职加特别需要合作广场</div>
+      <div style="margin-top:10px;font-size:13px;color:#333;line-height:1.8;">
+        求职辅导行业有一个根本性信任困境：<b>用户无法在购买前验证服务质量</b>。品牌号说自己靠谱没有说服力，因为谁都会这么说。但当用户看到一个「港大金融硕士，找了3个月工作毫无头绪，报了海马职加之后2周拿到高盛实习」的真实普通人的笔记，信任机制才真正被激活。
+        <br><br>
+        评论区数据印证了这一点：「靠谱吗」「会不会流水线敷衍辅导」出现了约30次。这些人不是没有意向，而是在等一个来自「和自己一样的普通人」的确认信号——合作广场就是提供这个信号的最高效工具。
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-weight:600;color:#1a1a1a;font-size:13.5px;">📊 合作广场 vs 品牌官号 vs 蒲公英达人</div>
+      <div style="margin-top:10px;">
+        <table style="margin-top:0;">
+          <tr><th></th><th>合作广场</th><th>品牌官号</th><th>蒲公英达人</th></tr>
+          <tr><td>内容真实感</td><td style="color:var(--green);font-weight:600;">★★★★★</td><td>★★☆☆☆</td><td>★★★☆☆</td></tr>
+          <tr><td>信任转化效率</td><td style="color:var(--green);font-weight:600;">高</td><td>低</td><td>中</td></tr>
+          <tr><td>获取成本</td><td style="color:var(--green);font-weight:600;">低（授权费）</td><td>自有资源</td><td>高（坑位费）</td></tr>
+          <tr><td>内容可控性</td><td>中（原始内容）</td><td>高</td><td>中高</td></tr>
+          <tr><td>适合场景</td><td style="color:var(--green);font-weight:600;">信任建立</td><td>品牌曝光</td><td>产品种草</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:12px;border-left:3px solid var(--green);padding-left:10px;">📋 三步操作流程</div>
+  <div class="funnel-item" style="border-left:3px solid var(--green);">
+    <div class="funnel-num" style="color:var(--green);font-size:20px;min-width:36px;">①</div>
+    <div class="funnel-content">
+      <div class="f-title">筛选目标素人——找到「和用户一样的人」</div>
+      <div class="f-desc">
+        在合作广场后台筛选时，重点关注三个条件：<br>
+        · <b>笔记主题</b>：发过「留学求职」「应届找工作」「海外留学生秋招」相关内容，说明有真实经历<br>
+        · <b>粉丝数区间</b>：100~3000粉最佳——粉丝过少内容影响力弱，粉丝过多已接近达人属性，广告痕迹变重<br>
+        · <b>账号特征</b>：有真实头像、连续发帖记录、评论区有真实互动（不是机器号），内容带有具体学校/城市/专业信息的优先级最高<br>
+        · <b>内容质量</b>：笔记里出现过真实的挫败经历（找工作难、被拒、焦虑）再到转折（上岸/进步）的叙事弧，这种内容最能触发同理心
+      </div>
+    </div>
+  </div>
+  <div class="funnel-item" style="border-left:3px solid var(--blue);">
+    <div class="funnel-num" style="color:var(--blue);font-size:20px;min-width:36px;">②</div>
+    <div class="funnel-content">
+      <div class="f-title">授权与沟通——尊重原始内容，少改动</div>
+      <div class="f-desc">
+        合作广场的核心竞争力是「内容原生感」，改动越多，广告感越强，转化越差。建议沟通策略：<br>
+        · <b>不要要求改写内容主体</b>：只在授权范围内申请投流权限，不要求学员修改原始叙述语气<br>
+        · <b>可以协商的微调</b>：补充「点击主页了解」「私信海马职加」等引导语，加在笔记末尾而非穿插正文<br>
+        · <b>优先选主动提及海马职加的笔记</b>：如果学员原笔记已经自然提到品牌名，直接申请授权即可，无需任何修改<br>
+        · <b>回复评论策略</b>：授权后，品牌账号可以在该笔记评论区以「官方身份」主动回复——这是合作广场笔记与普通笔记最大的差异，建议统一排期回复，增强真实感
+      </div>
+    </div>
+  </div>
+  <div class="funnel-item" style="border-left:3px solid var(--orange);">
+    <div class="funnel-num" style="color:var(--orange);font-size:20px;min-width:36px;">③</div>
+    <div class="funnel-content">
+      <div class="f-title">投放策略——和广告素材形成「信任矩阵」</div>
+      <div class="f-desc">
+        合作广场素材不应单独跑，最高效的用法是和品牌广告素材组合投放：<br>
+        · <b>冷启动期</b>：先跑品牌素材积累曝光，同期把合作广场素材投给已曝光但未留资的人群（再触达），用真实故事打破决策壁垒<br>
+        · <b>定向选择</b>：重点投放给「浏览过求职辅导相关笔记」「搜索过留学求职词」的高精准用户，而非泛流量<br>
+        · <b>内容组合逻辑</b>：品牌素材负责「告知服务内容」，合作广场素材负责「证明服务有效」——两者分工明确，不要用合作广场素材讲产品功能，要讲真实结果<br>
+        · <b>效果评估节点</b>：建议跑满14天再看数据，前7天是学习期，CTR和留资率会低于均值，不要过早停投或调整出价
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin:16px 0 12px;border-left:3px solid var(--green);padding-left:10px;">✍️ 推荐的素人笔记内容方向（基于评论区真实需求）</div>
+  <div class="cards-2">
+    <div class="card" style="border-top:3px solid var(--green);">
+      <div style="font-weight:600;font-size:13.5px;margin-bottom:8px;">🎓 「背景很普通也能上岸」系列</div>
+      <div style="font-size:13px;color:#333;line-height:1.7;">
+        评论区出现大量「谢菲尔」「墨大」「多大传媒」等非顶尖院校学生在咨询，他们更需要看到「和自己一样背景的人成功了」。<br><br>
+        内容核心：主人公背景不完美（GPA一般/实习少/非顶校），用海马职加帮助做了什么（简历重写/模拟面试/内推资源），最终拿到什么结果（具体公司名+岗位）。避免「985/名校光环」叙事，因为那对这批用户没有代入感。
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue);">
+      <div style="font-weight:600;font-size:13.5px;margin-bottom:8px;">👨‍👩‍👧 「家长视角」系列（评论区发现的新需求）</div>
+      <div style="font-size:13px;color:#333;line-height:1.7;">
+        评论区出现「我家孩子比较内向，这种辅导能行吗？」「我儿子刚进摩根士丹利实习」这类家长评论——这是一个被严重低估的决策影响方。<br><br>
+        内容方向：家长视角的「帮孩子找到第一份好工作是一种什么体验」，重点写孩子的转变（从焦虑到自信）和家长的心理过程（从担心花钱值不值到觉得物超所值），而非服务功能介绍。可以授权真实家长用户的素人笔记。
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--orange);">
+      <div style="font-weight:600;font-size:13.5px;margin-bottom:8px;">📅 「时间节点」种草系列</div>
+      <div style="font-size:13px;color:#333;line-height:1.7;">
+        评论区用户主动提到「27年8月毕业」「26毕业找实习」「27届英硕」——他们在明确地表达时间焦虑。<br><br>
+        内容方向：以「秋招倒计时XX天」为钩子的真实准备历程，写「如果早3个月开始会有什么不同」，制造紧迫感。8月是秋招旺季前的最后窗口，这类内容当前时效性极高。
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--purple);">
+      <div style="font-weight:600;font-size:13.5px;margin-bottom:8px;">🌍 「城市+方向定制」系列</div>
+      <div style="font-size:13px;color:#333;line-height:1.7;">
+        「27届英硕金融专业，想在杭州求职」「港大+求职怎么规划」——用户在用「学校+城市+专业」三要素描述自己的诉求，通用内容无法命中他们。<br><br>
+        内容方向：按「目标城市×专业方向」做矩阵，每个格子找一个真实案例：「港大金融→上海外资金融」「UCL商科→北京互联网」「澳洲传媒→广州媒体」等。这类内容在搜索场域精准度极高，可先从评论区高频出现的路径切入。
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-box" style="margin-top:16px;">
+    <p><b>一句话总结：</b>合作广场在海马职加的核心价值不是「省钱」，而是「提供品牌无法自己提供的真实感」。当评论区有人在问「靠谱吗」，最好的回答不是品牌回复「我们很靠谱」，而是另一个学员的笔记出现在那个用户的信息流里说「我当时也这么想，后来我试了，结果是……」。这就是合作广场的本质价值。</p>
+  </div>
+</div>
+
+<!-- S04-B：赛道视角（声明） -->
+<div class="section">
+  <div class="section-title">S04-B · 内容机会 · 赛道视角</div>
+  <div style="background:#fafaf5; border:1px dashed #ccc; border-radius:8px; padding:16px 18px; color:#666; font-size:13px;">
+    ⚠️ 根据分析规范，赛道视角需要真实浏览竞品高赞笔记评论区后方可输出结论，禁止依据经验推断。本次报告未完成赛道评论区实地翻阅，此模块暂不输出，建议后续通过 Launcher 页面完整流程补全。
+  </div>
+</div>
+
+<!-- S05：转化漏斗 -->
+<div class="section">
+  <div class="section-title">S05 · 转化漏斗 · 哪里在漏单</div>
+  <div class="funnel-item">
+    <div class="funnel-num">①</div>
+    <div class="funnel-content">
+      <div class="f-title">评论区→私信转化断点（最大漏点）</div>
+      <div class="f-desc">「怎么联系」66条 + 大量「咨询」「想了解」停留在评论区未转化。用户愿意在评论区表达意向，但不知道怎么进入私信流程。<br><b>堵法：</b>所有笔记置顶一条品牌引导评论，写清楚「回复私信+看陌生人消息」两步操作。</div>
+    </div>
+  </div>
+  <div class="funnel-item">
+    <div class="funnel-num">②</div>
+    <div class="funnel-content">
+      <div class="f-title">价格透明度缺失 → 决策卡住</div>
+      <div class="f-desc">「怎么收费/规划费用多少」47条，说明用户在价格这一关卡住，无法自助完成价格评估。<br><b>堵法：</b>评论区置顶公示价格区间，或在笔记末尾直接写「XX元起，详情私信」。</div>
+    </div>
+  </div>
+  <div class="funnel-item">
+    <div class="funnel-num">③</div>
+    <div class="funnel-content">
+      <div class="f-title">适用人群不清晰 → 潜在用户自我排除</div>
+      <div class="f-desc">「只面向应届生吗」「有社招没」「大一暑假实习」——用户不确定自己是否符合，倾向于放弃而非主动咨询。<br><b>堵法：</b>在笔记简介/评论区明确写出「服务对象：海外留学生/应届/社招/大一均可咨询」。</div>
+    </div>
+  </div>
+  <div style="background:#f5f0ff;border-left:4px solid var(--purple);border-radius:8px;padding:14px 16px;margin-top:4px;">
+    <b style="color:#4c1d95;">总结：</b><span style="font-size:13px;color:#4c1d95;"> 最大漏单点在「评论区→私信」跳转，其次是「价格信息不透明」。这两个问题都不需要改素材，只需要优化评论区运营策略即可显著提升留资率。</span>
+  </div>
+</div>
+
+<!-- S06：风险预警 -->
+<div class="section">
+  <div class="section-title">S06 · 风险预警</div>
+  <div class="risk-card">
+    <div class="risk-title">🔴 P0 · 行业「骗局」标签外溢，已覆盖海马职加笔记</div>
+    <div class="risk-desc">
+      差评中多条来自「求职机构行业」骗局标签，非针对海马职加本身，但已出现在海马笔记评论区（曝光最高217次）。<br>
+      代表评论：「求职机构就是一个巨大的骗局」「别报，纯诈骗机构」「今天刷到第八种类型了，连我都差点被骗」。<br>
+      <b>建议：</b>针对性在搜索场域做「海马职加真实评价/避坑」等关键词的内容布局，用真实案例进行拦截，同时主动在评论区回复质疑评论展示资质证明。
+    </div>
+  </div>
+  <div class="risk-card" style="background:#fffbeb; border-color:#fcd34d;">
+    <div class="risk-title" style="color:#92400e;">🟡 P1 · 品牌回复模板化重复率偏高</div>
+    <div class="risk-desc" style="color:#78350f;">
+      品牌回复（B2类）共584条，高频模板句包含：「私信您啦[飞吻R]」「可以私💌哦」「同学💌你啦」「📩发你流程啦」。重复率估计超过60%。<br>
+      <b>建议：</b>准备5-8条差异化回复模板，按评论内容类型分流——咨询价格 / 咨询适合性 / 上岸分享 / 质疑类，分类回复，显著提升评论区专业感。
+    </div>
+  </div>
+  <div class="risk-card" style="background:#f0fdf4; border-color:#6ee7b7;">
+    <div class="risk-title" style="color:#14532d;">🟢 P2 · 「家长群体」需求信号未被接住</div>
+    <div class="risk-desc" style="color:#166534;">
+      评论中出现家长视角：「我家孩子比较内向，这种辅导能行吗？」「家长要重视起来」「我儿子刚进摩根士丹利实习」。<br>
+      <b>建议：</b>单独制作面向家长的内容（「如何帮孩子规划留学后求职」），触达隐性决策人群。
+    </div>
+  </div>
+</div>
+
+<!-- S07：分析结论 -->
+<div class="section">
+  <div class="section-title">S07 · 综合分析结论</div>
+  <div class="conclusion-card">
+    <p>
+      2026年6-8月，海马职加评论区整体呈现<b>「意向强、信任弱、承接有断点」</b>的结构性特征。评论区吸引了大量真实求职意向用户，咨询率高达33.7%，说明广告内容触达精准；但「靠谱吗」「怎么联系」「怎么收费」构成了三道连续拦截门——用户有意向，却在信任、路径、价格三个环节被消耗掉了。
+    </p>
+    <br>
+    <p>
+      差评率1.4%极低，但行业「骗局」标签已开始出现在海马职加笔记下，这是先发信号不是结论，现在处理成本远低于口碑危机爆发后。建议最优先做的事是：<b>① 系统化输出真实上岸案例（学员视角，非品牌视角）；② 搜索场域布局「海马职加靠谱/评价」关键词拦截；③ 评论区置顶引导优化，把「怎么联系」这66条问询变成实际私信转化。</b>
+    </p>
+  </div>
+</div>
+
+<div style="text-align:center; margin-top:40px; color:#bbb; font-size:12px;">
+  数据来源：小红书广告笔记评论区 · 分析工具：xhs-comment-analysis v2 · 生成时间：2026-08-03
+</div>
+
+</div>
+</body>
+</html>
